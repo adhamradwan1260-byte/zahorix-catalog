@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ZAhorix Watches</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>ZAhorix Watches</h1>
+<p>اختار ساعتك واطلبها بسهولة</p>
+</header>
+
+<div class="cats">
+<button>كل الساعات</button>
+<button>رجالي</button>
+</div>
+
+<div id="products" class="grid"></div>
+
+<script>
+const phone="201283337061";
+fetch("products.json")
+.then(r=>r.json())
+.then(products=>{
+ const box=document.getElementById("products");
+ products.forEach(p=>{
+  box.innerHTML += `
+  <div class="card">
+   <img src="${p.image}">
+   <h2>${p.name}</h2>
+   <div class="price">${p.price}</div>
+   <a class="btn call" href="tel:${phone}">☎ اتصال</a>
+   <a class="btn wa" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">💬 واتساب</a>
+   <a class="order" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">🛒 اطلب الآن</a>
+  </div>`;
+ });
+});
+</script>
+</body>
+</html>
