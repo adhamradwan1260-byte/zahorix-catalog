@@ -10,3 +10,13 @@ header h1{margin:0;font-size:30px}
 .price{font-size:22px;font-weight:bold;margin:10px}
 .btn,.order{display:block;padding:12px;margin:8px;border-radius:10px;text-decoration:none;color:#111;background:#eee}
 .order{background:#111;color:#fff}
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 10px;
+}
+
+.new-price {
+  font-weight: bold;
+  color: #000;
+}
