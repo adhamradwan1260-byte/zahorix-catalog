@@ -5,7 +5,6 @@ body{
     padding:0;
 }
 
-
 header{
     background:#111;
     color:#fff;
@@ -13,25 +12,20 @@ header{
     padding:25px;
 }
 
-
 header h1{
     margin:0;
     font-size:30px;
 }
-
 
 header p{
     margin-top:10px;
     font-size:16px;
 }
 
-
-
 .cats{
     text-align:center;
     padding:15px;
 }
-
 
 .cats button{
     padding:10px 25px;
@@ -43,16 +37,12 @@ header p{
     font-size:15px;
 }
 
-
-
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:15px;
     padding:15px;
 }
-
-
 
 .card{
     background:white;
@@ -62,16 +52,11 @@ header p{
     overflow:hidden;
 }
 
-
-
-/* Slider */
-
 .slider{
     position:relative;
     width:100%;
+    overflow:hidden;
 }
-
-
 
 .product-img{
     width:100%;
@@ -79,12 +64,10 @@ header p{
     object-fit:cover;
     border-radius:10px;
     display:block;
+    user-select:none;
+    -webkit-user-drag:none;
+    touch-action:pan-y;
 }
-
-
-
-
-/* نقاط الصور */
 
 .dots{
     position:absolute;
@@ -93,45 +76,35 @@ header p{
     transform:translateX(-50%);
     display:flex;
     gap:7px;
+    background:rgba(255,255,255,0.65);
+    padding:6px 10px;
+    border-radius:20px;
 }
-
-
 
 .dot{
     width:9px;
     height:9px;
-    background:#ddd;
+    background:#ccc;
     border-radius:50%;
     cursor:pointer;
     transition:.3s;
 }
-
-
 
 .dot.active{
     background:#111;
     transform:scale(1.2);
 }
 
-
-
-
-
 .card h2{
     font-size:20px;
     margin:15px 0 5px;
 }
-
-
-
 
 .price{
     font-size:22px;
     font-weight:bold;
     margin:10px;
 }
-
-
 
 .old-price{
     text-decoration:line-through;
@@ -140,16 +113,10 @@ header p{
     font-size:16px;
 }
 
-
-
 .new-price{
     font-weight:bold;
     color:#990000;
 }
-
-
-
-
 
 .btn,
 .order{
@@ -163,20 +130,14 @@ header p{
     transition:.3s;
 }
 
-
-
 .btn:hover{
     background:#ddd;
 }
-
-
 
 .order{
     background:#111;
     color:#fff;
 }
-
-
 
 .order:hover{
     background:#333;
