@@ -5,19 +5,22 @@
     "price": "700 جنيه",
     "category": "رجالي",
     "images": [
-      "rolex.png",
-      "rolex-2.png",
-      "rolex-3.png"
+      "rolex-style-blue-1-front.png",
+      "rolex-style-blue-2-angle.png",
+      "rolex-style-blue-3-side.png",
+      "rolex-style-blue-4-back.png",
+      "rolex-style-blue-5-clasp.png",
+      "rolex-style-blue-6-profile.png"
     ]
   },
   {
-    "name": "Cartier Classic Silver",
+    "name": "Rolex Pepsi",
     "price": "450 جنيه",
     "category": "رجالي",
     "images": [
-      "cartier.png",
-      "cartier-2.png",
-      "cartier-3.png"
+      "rolex-pepsi-1-front.png",
+      "rolex-pepsi-2-back.png",
+      "rolex-pepsi-3-side.png"
     ]
   },
   {
