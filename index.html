@@ -30,8 +30,10 @@ fetch("products.json")
   <div class="card">
    <img src="${p.image}">
    <h2>${p.name}</h2>
-   <div class="price">${p.price}</div>
-   <a class="btn call" href="tel:${phone}">☎ اتصال</a>
+<div class="price">
+  <span class="old-price">${p.oldPrice || ""}</span>
+  <span class="new-price">${p.price}</span>
+</div>   <a class="btn call" href="tel:${phone}">☎ اتصال</a>
    <a class="btn wa" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">💬 واتساب</a>
    <a class="order" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">🛒 اطلب الآن</a>
   </div>`;
