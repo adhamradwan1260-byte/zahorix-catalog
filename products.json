@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Rolex Style Blue",
+    "price": "700 جنيه",
+    "category": "رجالي",
+    "image": "images/rolex.png"
+  },
+  {
+    "name": "Cartier Classic Silver",
+    "price": "450 جنيه",
+    "category": "رجالي",
+    "image": "images/cartier.png"
+  },
+  {
+    "name": "AP Royal Oak Style",
+    "price": "450 جنيه",
+    "category": "رجالي",
+    "image": "images/ap.png"
+  }
+]
