@@ -1,44 +1,219 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>ZAhorix Watches</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
+
+
 <header>
 <h1>ZAhorix Watches</h1>
 <p>اختار ساعتك واطلبها بسهولة</p>
 </header>
+
+
 
 <div class="cats">
 <button>كل الساعات</button>
 <button>رجالي</button>
 </div>
 
+
+
 <div id="products" class="grid"></div>
 
+
+
+
 <script>
+
 const phone="201283337061";
+
+
+let productImages = {};
+
+
+
 fetch("products.json")
+
 .then(r=>r.json())
+
 .then(products=>{
- const box=document.getElementById("products");
- products.forEach(p=>{
-  box.innerHTML += `
-  <div class="card">
-   <img src="${p.image}">
-   <h2>${p.name}</h2>
+
+
+const box=document.getElementById("products");
+
+
+
+products.forEach(p=>{
+
+
+let imgs = p.images || [p.image];
+
+productImages[p.name] = imgs;
+
+
+
+box.innerHTML += `
+
+
+<div class="card">
+
+
+<div class="slider">
+
+
+<img 
+id="img-${p.name}" 
+src="${imgs[0]}" 
+class="product-img"
+>
+
+
+
+<div class="dots">
+
+${imgs.map((img,index)=>`
+
+<span 
+class="dot ${index===0?'active':''}"
+onclick="changeImg('${p.name}',${index})">
+
+</span>
+
+`).join("")}
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<h2>${p.name}</h2>
+
+
+
+
+
 <div class="price">
-  <span class="old-price">${p.oldPrice || ""}</span>
-  <span class="new-price">${p.price}</span>
-</div>   <a class="btn call" href="tel:${phone}">☎ اتصال</a>
-   <a class="btn wa" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">💬 واتساب</a>
-   <a class="order" target="_blank" href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">🛒 اطلب الآن</a>
-  </div>`;
- });
+
+<span class="old-price">
+${p.oldPrice || ""}
+</span>
+
+
+<span class="new-price">
+${p.price}
+</span>
+
+
+</div>
+
+
+
+
+
+<a class="btn call" href="tel:${phone}">
+☎ اتصال
+</a>
+
+
+
+
+
+<a 
+class="btn wa" 
+target="_blank"
+href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
+
+💬 واتساب
+
+</a>
+
+
+
+
+
+<a 
+class="order"
+target="_blank"
+href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
+
+🛒 اطلب الآن
+
+</a>
+
+
+
+
+</div>
+
+
+
+`;
+
+
+
 });
+
+
+
+});
+
+
+
+
+
+
+
+function changeImg(name,index){
+
+
+let img = document.getElementById("img-"+name);
+
+
+img.src = productImages[name][index];
+
+
+
+let dots = img.parentElement.querySelectorAll(".dot");
+
+
+
+dots.forEach(dot=>{
+
+dot.classList.remove("active");
+
+});
+
+
+
+dots[index].classList.add("active");
+
+
+
+}
+
+
+
+
 </script>
+
+
+
 </body>
+
 </html>
