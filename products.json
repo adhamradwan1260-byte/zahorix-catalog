@@ -15,7 +15,8 @@
   },
   {
     "name": "Rolex Pepsi",
-    "price": "450 جنيه",
+    "oldPrice": "750 جنيه",
+    "price": "550 جنيه",
     "category": "رجالي",
     "images": [
       "rolex-pepsi-1-front.png",
