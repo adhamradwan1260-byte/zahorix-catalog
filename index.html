@@ -21,6 +21,7 @@
 
 
 
+
 <div class="cats">
 
 <button onclick="filterProducts('all')">
@@ -34,7 +35,10 @@
 </div>
 
 
-<!-- البحث -->
+
+
+<div class="search-container">
+
 <div class="search-box">
 
 <input 
@@ -46,9 +50,14 @@ oninput="searchProducts()"
 
 </div>
 
+</div>
+
+
+
 
 
 <div id="products" class="grid"></div>
+
 
 
 
@@ -63,6 +72,8 @@ let allProducts = [];
 
 
 
+
+
 fetch("products.json")
 
 .then(r=>r.json())
@@ -73,8 +84,10 @@ allProducts = products;
 
 renderProducts(allProducts);
 
-
 });
+
+
+
 
 
 
@@ -86,7 +99,7 @@ function renderProducts(products){
 
 const box = document.getElementById("products");
 
-box.innerHTML="";
+box.innerHTML = "";
 
 
 
@@ -108,6 +121,7 @@ data-product-index="${index}"
 data-current-index="0">
 
 
+
 <img
 id="img-${index}"
 src="${imgs[0]}"
@@ -115,6 +129,7 @@ class="product-img"
 alt="${p.name}"
 draggable="false"
 >
+
 
 
 
@@ -132,11 +147,12 @@ onclick="changeImg(${index},${i})">
 `).join("")}
 
 
-
 </div>
 
 
+
 </div>
+
 
 
 
@@ -147,9 +163,7 @@ onclick="changeImg(${index},${i})">
 
 
 
-
 <div class="price">
-
 
 <span class="old-price">
 ${p.oldPrice || ""}
@@ -162,6 +176,7 @@ ${p.price}
 
 
 </div>
+
 
 
 
@@ -200,13 +215,16 @@ href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساع
 
 
 
+
 </div>
 
 
 `;
 
 
+
 });
+
 
 
 initSwipe();
@@ -219,15 +237,17 @@ initSwipe();
 
 
 
-// فلتر التصنيفات
+
+
 
 function filterProducts(category){
 
 
-
 if(category==="all"){
 
+
 renderProducts(allProducts);
+
 
 }
 
@@ -249,7 +269,9 @@ renderProducts(filtered);
 
 
 
-// البحث
+
+
+
 
 function searchProducts(){
 
@@ -257,7 +279,8 @@ function searchProducts(){
 let value = document
 .getElementById("searchInput")
 .value
-.toLowerCase();
+.toLowerCase()
+.trim();
 
 
 
@@ -274,6 +297,7 @@ return product.name
 
 
 renderProducts(results);
+
 
 
 }
@@ -297,14 +321,15 @@ const imgs = product.images || [product.image];
 
 
 
-const imgEl=document.getElementById(`img-${productIndex}`);
-
-
-imgEl.src=imgs[imgIndex];
+const imgEl = document.getElementById(`img-${productIndex}`);
 
 
 
-const dots=document
+imgEl.src = imgs[imgIndex];
+
+
+
+const dots = document
 .getElementById(`dots-${productIndex}`)
 .querySelectorAll(".dot");
 
@@ -326,32 +351,31 @@ dots[imgIndex].classList.add("active");
 
 
 
-
 function nextImg(index){
 
 
 
-const slider=document.querySelector(
+const slider = document.querySelector(
 `.slider[data-product-index="${index}"]`
 );
 
 
 
-let current=parseInt(
+let current = parseInt(
 slider.getAttribute("data-current-index")
 );
 
 
 
-let imgs=allProducts[index].images;
+let imgs = allProducts[index].images;
 
 
 
 current++;
 
 
-if(current>=imgs.length)
-current=0;
+if(current >= imgs.length)
+current = 0;
 
 
 
@@ -373,30 +397,33 @@ changeImg(index,current);
 
 
 
+
+
 function prevImg(index){
 
 
-const slider=document.querySelector(
+
+const slider = document.querySelector(
 `.slider[data-product-index="${index}"]`
 );
 
 
 
-let current=parseInt(
+let current = parseInt(
 slider.getAttribute("data-current-index")
 );
 
 
 
-let imgs=allProducts[index].images;
+let imgs = allProducts[index].images;
 
 
 
 current--;
 
 
-if(current<0)
-current=imgs.length-1;
+if(current < 0)
+current = imgs.length - 1;
 
 
 
@@ -429,10 +456,9 @@ document.querySelectorAll(".slider")
 .forEach(slider=>{
 
 
-let startX=0;
+let startX = 0;
 
-
-let endX=0;
+let endX = 0;
 
 
 
@@ -440,9 +466,11 @@ slider.addEventListener(
 "touchstart",
 e=>{
 
-startX=e.touches[0].clientX;
+startX = e.touches[0].clientX;
 
-},{passive:true});
+},
+{passive:true}
+);
 
 
 
@@ -452,9 +480,11 @@ slider.addEventListener(
 "touchmove",
 e=>{
 
-endX=e.touches[0].clientX;
+endX = e.touches[0].clientX;
 
-},{passive:true});
+},
+{passive:true}
+);
 
 
 
@@ -466,10 +496,11 @@ slider.addEventListener(
 ()=>{
 
 
-let diff=startX-endX;
+let diff = startX - endX;
 
 
-let index=parseInt(
+
+let index = parseInt(
 slider.getAttribute("data-product-index")
 );
 
@@ -478,15 +509,18 @@ slider.getAttribute("data-product-index")
 if(Math.abs(diff)>40){
 
 
-if(diff>0)
+if(diff>0){
 
 nextImg(index);
 
+}
 
-else
+else{
 
 prevImg(index);
 
+}
+
 
 }
 
@@ -498,8 +532,8 @@ prevImg(index);
 });
 
 
-
 }
+
 
 
 
@@ -507,4 +541,5 @@ prevImg(index);
 
 
 </body>
+
 </html>
