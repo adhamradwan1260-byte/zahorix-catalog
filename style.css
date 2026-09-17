@@ -6,7 +6,6 @@ body{
 }
 
 
-
 header{
     background:#111;
     color:#fff;
@@ -25,9 +24,6 @@ header p{
     margin-top:10px;
     font-size:16px;
 }
-
-
-
 
 
 /* Categories */
@@ -57,10 +53,6 @@ header p{
 
 
 
-
-
-
-
 /* Search */
 
 .search-container{
@@ -68,6 +60,20 @@ header p{
     display:flex;
     justify-content:center;
     align-items:center;
+}
+
+
+/* تثبيت البحث في الموبايل */
+@media (max-width:768px){
+
+    .search-container{
+        position:sticky;
+        top:0;
+        z-index:999;
+        background:#f5f5f5;
+        padding:10px 0;
+    }
+
 }
 
 
@@ -98,11 +104,6 @@ header p{
 
 
 
-
-
-
-
-
 /* Products */
 
 .grid{
@@ -123,10 +124,6 @@ header p{
 
 
 
-
-
-
-
 /* Slider */
 
 .slider{
@@ -140,50 +137,28 @@ header p{
 
 
 
-
-
-
-
 /* Best Seller Badge */
 
 .badge{
 
     position:absolute;
-
     top:15px;
-
     right:15px;
-
     width:78px;
-
     height:78px;
-
     background:#d60000;
-
     color:#fff;
-
     border-radius:50%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     font-size:13px;
-
     font-weight:bold;
-
     line-height:1.4;
-
     padding:10px;
-
     box-sizing:border-box;
-
     z-index:10;
-
     border:3px dashed #fff;
 
     box-shadow:
@@ -193,26 +168,19 @@ header p{
 }
 
 
-
 .badge::before{
 
     content:"";
-
     position:absolute;
-
     inset:5px;
-
     border:1px solid rgba(255,255,255,0.5);
-
     border-radius:50%;
 
 }
 
 
 
-
-
-
+/* Product Image */
 
 .product-img{
 
@@ -227,10 +195,6 @@ header p{
     touch-action:pan-y;
 
 }
-
-
-
-
 
 
 
@@ -266,15 +230,9 @@ header p{
 .dot.active{
 
     background:#111;
-
     transform:scale(1.2);
 
 }
-
-
-
-
-
 
 
 
@@ -283,51 +241,36 @@ header p{
 .card h2{
 
     font-size:20px;
-
     margin:15px 0 5px;
 
 }
 
 
-
 .price{
 
     font-size:22px;
-
     font-weight:bold;
-
     margin:10px;
 
 }
 
 
-
 .old-price{
 
     text-decoration:line-through;
-
     color:#888;
-
     margin-left:10px;
-
     font-size:16px;
 
 }
 
 
-
 .new-price{
 
     font-weight:bold;
-
     color:#990000;
 
 }
-
-
-
-
-
 
 
 
@@ -337,23 +280,15 @@ header p{
 .order{
 
     display:block;
-
     padding:12px;
-
     margin:8px;
-
     border-radius:10px;
-
     text-decoration:none;
-
     color:#111;
-
     background:#eee;
-
     transition:.3s;
 
 }
-
 
 
 .btn:hover{
@@ -363,15 +298,12 @@ header p{
 }
 
 
-
 .order{
 
     background:#111;
-
     color:#fff;
 
 }
-
 
 
 .order:hover{
@@ -379,14 +311,18 @@ header p{
     background:#333;
 
 }
+
+
 .subtitle {
-  display: inline-block;
-  background: #c87500;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 3px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+
+  display:inline-block;
+  background:#c87500;
+  color:white;
+  font-size:12px;
+  font-weight:bold;
+  padding:4px 10px;
+  border-radius:3px;
+  margin-top:5px;
+  margin-bottom:10px;
+
 }
