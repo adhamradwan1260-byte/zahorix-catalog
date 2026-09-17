@@ -2,12 +2,14 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>ZAhorix Watches</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 
@@ -15,31 +17,42 @@
 
 
 <header>
+
 <h1>ZAhorix Watches</h1>
+
 <p>اختار ساعتك واطلبها بسهولة</p>
+
 </header>
+
 
 
 
 
 <div class="cats">
 
+
 <button onclick="filterProducts('all')">
 كل الساعات
 </button>
 
+
 <button onclick="filterProducts('رجالي')">
 رجالي
 </button>
+
 
 </div>
 
 
 
 
+
+
 <div class="search-container">
 
+
 <div class="search-box">
+
 
 <input 
 type="text" 
@@ -48,9 +61,12 @@ placeholder="ابحث عن الساعة..."
 oninput="searchProducts()"
 >
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 
@@ -63,12 +79,16 @@ oninput="searchProducts()"
 
 
 
+
+
 <script>
 
 
 const phone = "201283337061";
 
+
 let allProducts = [];
+
 
 
 
@@ -80,9 +100,12 @@ fetch("products.json")
 
 .then(products=>{
 
+
 allProducts = products;
 
+
 renderProducts(allProducts);
+
 
 });
 
@@ -99,14 +122,19 @@ function renderProducts(products){
 
 const box = document.getElementById("products");
 
+
 box.innerHTML = "";
 
 
 
-products.forEach((p,index)=>{
+products.forEach((p)=>{
+
 
 
 let imgs = p.images || [p.image];
+
+
+
 
 
 
@@ -116,9 +144,15 @@ box.innerHTML += `
 <div class="card">
 
 
+
 <div class="slider"
-data-product-index="${index}"
+
+data-product-name="${p.name}"
+
 data-current-index="0">
+
+
+
 
 
 
@@ -126,32 +160,49 @@ ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
 
 
 
+
+
+
+
 <img
-id="img-${index}"
+
 src="${imgs[0]}"
+
 class="product-img"
+
 alt="${p.name}"
+
 draggable="false"
+
 >
 
 
 
 
-<div class="dots"
-id="dots-${index}">
+
+
+<div class="dots">
+
 
 
 ${imgs.map((img,i)=>`
 
+
 <span
+
 class="dot ${i===0?'active':''}"
-onclick="changeImg(${index},${i})">
+
+onclick="changeImg('${p.name}',${i},this)">
+
 </span>
+
 
 `).join("")}
 
 
+
 </div>
+
 
 
 
@@ -164,20 +215,30 @@ onclick="changeImg(${index},${i})">
 
 <h2>${p.name}</h2>
 
+
+
 ${p.subtitle ? `<span class="subtitle">${p.subtitle}</span>` : ""}
+
+
 
 
 
 <div class="price">
 
+
 <span class="old-price">
+
 ${p.oldPrice || ""}
+
 </span>
 
 
 <span class="new-price">
+
 ${p.price}
+
 </span>
+
 
 
 </div>
@@ -187,35 +248,52 @@ ${p.price}
 
 
 
+
 <a class="btn call" href="tel:${phone}">
+
 ☎ اتصال
+
 </a>
 
 
 
 
 
+
 <a 
+
 class="btn wa"
+
 target="_blank"
+
 href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
+
 
 💬 واتساب
 
+
 </a>
+
+
 
 
 
 
 
 <a 
+
 class="order"
+
 target="_blank"
+
 href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
+
 
 🛒 اطلب الآن
 
+
 </a>
+
 
 
 
@@ -232,7 +310,9 @@ href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساع
 
 
 
+
 initSwipe();
+
 
 
 }
@@ -246,6 +326,7 @@ initSwipe();
 
 
 function filterProducts(category){
+
 
 
 if(category==="all"){
@@ -268,6 +349,7 @@ renderProducts(filtered);
 }
 
 
+
 }
 
 
@@ -281,11 +363,17 @@ renderProducts(filtered);
 function searchProducts(){
 
 
+
 let value = document
+
 .getElementById("searchInput")
+
 .value
+
 .toLowerCase()
+
 .trim();
+
 
 
 
@@ -293,8 +381,11 @@ let results = allProducts.filter(product=>{
 
 
 return product.name
+
 .toLowerCase()
+
 .includes(value);
+
 
 
 });
@@ -306,27 +397,36 @@ renderProducts(results);
 
 
 }
+function changeImg(productName,imgIndex,dotElement){
+
+
+const product = allProducts.find(
+p => p.name === productName
+);
 
 
 
+if(!product) return;
 
-
-
-
-
-
-function changeImg(productIndex,imgIndex){
-
-
-
-const product = allProducts[productIndex];
 
 
 const imgs = product.images || [product.image];
 
 
 
-const imgEl = document.getElementById(`img-${productIndex}`);
+const slider = [...document.querySelectorAll(".slider")]
+
+.find(
+s => s.dataset.productName === productName
+);
+
+
+
+if(!slider) return;
+
+
+
+const imgEl = slider.querySelector(".product-img");
 
 
 
@@ -334,15 +434,36 @@ imgEl.src = imgs[imgIndex];
 
 
 
-const dots = document
-.getElementById(`dots-${productIndex}`)
-.querySelectorAll(".dot");
+slider.setAttribute(
+"data-current-index",
+imgIndex
+);
 
 
 
-dots.forEach(dot=>dot.classList.remove("active"));
+const dots = slider.querySelectorAll(".dot");
+
+
+
+dots.forEach(dot=>{
+
+dot.classList.remove("active");
+
+});
+
+
+
+if(dotElement){
+
+dotElement.classList.add("active");
+
+}
+
+else if(dots[imgIndex]){
 
 dots[imgIndex].classList.add("active");
+
+}
 
 
 
@@ -355,43 +476,52 @@ dots[imgIndex].classList.add("active");
 
 
 
-
-function nextImg(index){
-
+function nextImg(slider){
 
 
-const slider = document.querySelector(
-`.slider[data-product-index="${index}"]`
+
+const productName = slider.dataset.productName;
+
+
+
+const product = allProducts.find(
+
+p => p.name === productName
+
 );
+
+
+
+if(!product) return;
+
+
+
+const imgs = product.images || [product.image];
 
 
 
 let current = parseInt(
+
 slider.getAttribute("data-current-index")
+
 );
-
-
-
-let imgs = allProducts[index].images;
 
 
 
 current++;
 
 
-if(current >= imgs.length)
+
+if(current >= imgs.length){
+
 current = 0;
 
-
-
-slider.setAttribute(
-"data-current-index",
-current
-);
+}
 
 
 
-changeImg(index,current);
+changeImg(productName,current);
+
 
 
 }
@@ -404,42 +534,51 @@ changeImg(index,current);
 
 
 
-function prevImg(index){
+function prevImg(slider){
 
 
 
-const slider = document.querySelector(
-`.slider[data-product-index="${index}"]`
+const productName = slider.dataset.productName;
+
+
+
+const product = allProducts.find(
+
+p => p.name === productName
+
 );
+
+
+
+if(!product) return;
+
+
+
+const imgs = product.images || [product.image];
 
 
 
 let current = parseInt(
+
 slider.getAttribute("data-current-index")
+
 );
-
-
-
-let imgs = allProducts[index].images;
 
 
 
 current--;
 
 
-if(current < 0)
+
+if(current < 0){
+
 current = imgs.length - 1;
 
-
-
-slider.setAttribute(
-"data-current-index",
-current
-);
+}
 
 
 
-changeImg(index,current);
+changeImg(productName,current);
 
 
 
@@ -458,7 +597,9 @@ function initSwipe(){
 
 
 document.querySelectorAll(".slider")
+
 .forEach(slider=>{
+
 
 
 let startX = 0;
@@ -467,28 +608,44 @@ let endX = 0;
 
 
 
+
+
 slider.addEventListener(
+
 "touchstart",
+
 e=>{
+
 
 startX = e.touches[0].clientX;
 
+
 },
+
 {passive:true}
+
 );
 
 
 
 
 
+
+
 slider.addEventListener(
+
 "touchmove",
+
 e=>{
+
 
 endX = e.touches[0].clientX;
 
+
 },
+
 {passive:true}
+
 );
 
 
@@ -496,49 +653,57 @@ endX = e.touches[0].clientX;
 
 
 
+
+
 slider.addEventListener(
+
 "touchend",
+
 ()=>{
+
 
 
 let diff = startX - endX;
 
 
 
-let index = parseInt(
-slider.getAttribute("data-product-index")
-);
-
-
-
 if(Math.abs(diff)>40){
 
 
-if(diff>0){
 
-nextImg(index);
+if(diff > 0){
+
+
+nextImg(slider);
+
 
 }
 
 else{
 
-prevImg(index);
+
+prevImg(slider);
+
 
 }
 
 
 }
+
+
+
+}
+
+
+);
 
 
 
 });
 
 
-});
-
 
 }
-
 
 
 
