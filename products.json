@@ -25,13 +25,13 @@
     ]
   },
   {
-    "name": "AP Royal Oak Style",
-    "price": "450 جنيه",
+    "name": "Cartier Tank",
+    "oldPrice": "700 جنيه",
+    "price": "550 جنيه",
     "category": "رجالي",
     "images": [
-      "ap.png",
-      "ap-2.png",
-      "ap-3.png"
+      "cartier-tank-1-white-dial.png",
+      "cartier-tank-2-black-dial.png"
     ]
   }
 ]
