@@ -25,14 +25,25 @@
     ]
   },
   {
-  "name": "Cartier Tank",
-  "oldPrice": "700 جنيه",
-  "price": "550 جنيه",
-  "category": "رجالي",
-  "badge": "الأكثر مبيعًا",
-  "images": [
-    "cartier-tank-1-white-dial.png",
-    "cartier-tank-2-black-dial.png"
-  ]
-}
+    "name": "Cartier Tank",
+    "oldPrice": "700 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي",
+    "badge": "الأكثر مبيعًا",
+    "images": [
+      "cartier-tank-1-white-dial.png",
+      "cartier-tank-2-black-dial.png"
+    ]
+  },
+  {
+    "name": "AUDEMARSPIGUET(AP)",
+    "oldPrice": "700 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي",
+    "images": [
+      "AUDEMARSPIGUET(AP)-white-1.webp",
+      "AUDEMARSPIGUET(AP)-blue-1.webp",
+      "AUDEMARSPIGUET(AP)-black-1.webp"
+    ]
+  }
 ]
