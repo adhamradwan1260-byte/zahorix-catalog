@@ -5,6 +5,8 @@ body{
     padding:0;
 }
 
+
+
 header{
     background:#111;
     color:#fff;
@@ -12,15 +14,19 @@ header{
     padding:25px;
 }
 
+
 header h1{
     margin:0;
     font-size:30px;
 }
 
+
 header p{
     margin-top:10px;
     font-size:16px;
 }
+
+
 
 
 
@@ -53,18 +59,28 @@ header p{
 
 
 
+
+
 /* Search */
 
+.search-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
 .search-box{
-    text-align:center;
+    width:90%;
+    max-width:400px;
     padding:5px 15px 15px;
 }
 
 
 .search-box input{
 
-    width:90%;
-    max-width:400px;
+    width:100%;
 
     padding:13px 20px;
 
@@ -80,9 +96,10 @@ header p{
 
     outline:none;
 
-    transition:.3s;
+    box-sizing:border-box;
 
 }
+
 
 
 .search-box input:focus{
@@ -97,14 +114,16 @@ header p{
 
 
 
-/* Products Grid */
+
+
+
+/* Products */
 
 .grid{
 
     display:grid;
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
     gap:15px;
 
@@ -118,7 +137,7 @@ header p{
 
 .card{
 
-    background:white;
+    background:#fff;
 
     border-radius:15px;
 
@@ -159,6 +178,41 @@ header p{
 
 
 
+
+/* Badge */
+
+.badge{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    background:#d60000;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    z-index:5;
+
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+
+}
+
+
+
+
+
+
+
 .product-img{
 
     width:100%;
@@ -186,8 +240,8 @@ header p{
 
 
 
-/* Image dots */
 
+/* Dots */
 
 .dots{
 
@@ -245,8 +299,9 @@ header p{
 
 
 
-/* Product Info */
 
+
+/* Product Info */
 
 .card h2{
 
@@ -273,7 +328,6 @@ header p{
 
 
 
-
 .old-price{
 
     text-decoration:line-through;
@@ -285,7 +339,6 @@ header p{
     font-size:16px;
 
 }
-
 
 
 
@@ -304,8 +357,8 @@ header p{
 
 
 
-/* Buttons */
 
+/* Buttons */
 
 .btn,
 .order{
