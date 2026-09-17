@@ -48,12 +48,26 @@
   },
   {
     "name": "Rolex OYSTER",
+    "oldPrice": "600 جنيه",
     "price": "450 جنيه",
     "category": "رجالي",
     "images": [
       "Rolex OYSTER-white-1.webp",
       "Rolex OYSTER-blue-1.webp",
       "Rolex OYSTER-black-1.webp"
+    ]
+  },
+  {
+    "name": "TISSOT Chrono",
+    "oldPrice": "1000 جنيه",
+    "price": "750 جنيه",
+    "category": "رجالي",
+    "badge": "عدادات شغالة",
+    "images": [
+      "TISSOT-Chrono-brown-1.webp",
+      "TISSOT-Chrono-black-1.webp",
+      "TISSOT-Chrono-brown-white-dial-1.webp",
+      "TISSOT-Chrono-black-white-dial-1.webp"
     ]
   }
 ]
