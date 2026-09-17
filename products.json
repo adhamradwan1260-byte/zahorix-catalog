@@ -45,5 +45,15 @@
       "AUDEMARSPIGUET(AP)-blue-1.webp",
       "AUDEMARSPIGUET(AP)-black-1.webp"
     ]
+  },
+  {
+    "name": "Rolex OYSTER",
+    "price": "450 جنيه",
+    "category": "رجالي",
+    "images": [
+      "Rolex OYSTER-white-1.webp",
+      "Rolex OYSTER-blue-1.webp",
+      "Rolex OYSTER-black-1.webp"
+    ]
   }
 ]
