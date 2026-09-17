@@ -79,35 +79,21 @@ header p{
 
 
 .search-box input{
-
     width:100%;
-
     padding:13px 20px;
-
     border-radius:25px;
-
     border:1px solid #ddd;
-
     background:#fff;
-
     font-size:16px;
-
     text-align:right;
-
     outline:none;
-
     box-sizing:border-box;
-
 }
 
 
-
 .search-box input:focus{
-
     border-color:#111;
-
     box-shadow:0 0 8px rgba(0,0,0,0.15);
-
 }
 
 
@@ -120,33 +106,19 @@ header p{
 /* Products */
 
 .grid{
-
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
     gap:15px;
-
     padding:15px;
-
 }
 
 
-
-
-
 .card{
-
     background:#fff;
-
     border-radius:15px;
-
     padding:15px;
-
     text-align:center;
-
     overflow:hidden;
-
 }
 
 
@@ -158,19 +130,12 @@ header p{
 /* Slider */
 
 .slider{
-
     position:relative;
-
     width:100%;
-
     height:350px;
-
-    overflow:hidden;
-
+    overflow:visible;
     background:#fff;
-
     border-radius:10px;
-
 }
 
 
@@ -182,29 +147,83 @@ header p{
 /* Badge */
 
 .badge{
-
     position:absolute;
-
-    top:12px;
-
-    right:12px;
-
-    background:#d60000;
-
-    color:#fff;
-
-    padding:8px 14px;
-
-    border-radius:20px;
-
-    font-size:14px;
-
+    top:14px;
+    right:14px;
+    width:92px;
+    height:92px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:12px;
     font-weight:bold;
+    line-height:1.4;
+    color:#5a3200;
+    background:radial-gradient(circle at 30% 30%, #fff6bf, #f5cc4e 42%, #d89c00 75%, #b77900 100%);
+    border-radius:50%;
+    border:4px solid #f8e08a;
+    box-shadow:0 6px 16px rgba(0,0,0,0.22);
+    padding:10px;
+    box-sizing:border-box;
+    z-index:10;
+}
 
-    z-index:5;
 
-    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+.badge::before{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border-radius:50%;
+    background:conic-gradient(
+        #f6d24a 0deg 12deg,
+        transparent 12deg 24deg,
+        #f6d24a 24deg 36deg,
+        transparent 36deg 48deg,
+        #f6d24a 48deg 60deg,
+        transparent 60deg 72deg,
+        #f6d24a 72deg 84deg,
+        transparent 84deg 96deg,
+        #f6d24a 96deg 108deg,
+        transparent 108deg 120deg,
+        #f6d24a 120deg 132deg,
+        transparent 132deg 144deg,
+        #f6d24a 144deg 156deg,
+        transparent 156deg 168deg,
+        #f6d24a 168deg 180deg,
+        transparent 180deg 192deg,
+        #f6d24a 192deg 204deg,
+        transparent 204deg 216deg,
+        #f6d24a 216deg 228deg,
+        transparent 228deg 240deg,
+        #f6d24a 240deg 252deg,
+        transparent 252deg 264deg,
+        #f6d24a 264deg 276deg,
+        transparent 276deg 288deg,
+        #f6d24a 288deg 300deg,
+        transparent 300deg 312deg,
+        #f6d24a 312deg 324deg,
+        transparent 324deg 336deg,
+        #f6d24a 336deg 348deg,
+        transparent 348deg 360deg
+    );
+    z-index:-2;
+}
 
+
+.badge::after{
+    content:"";
+    position:absolute;
+    bottom:-34px;
+    left:50%;
+    transform:translateX(-50%);
+    width:60px;
+    height:48px;
+    background:
+        linear-gradient(135deg, #cf1313 0%, #ff4d4d 100%) left/24px 100% no-repeat,
+        linear-gradient(225deg, #cf1313 0%, #ff4d4d 100%) right/24px 100% no-repeat;
+    clip-path:polygon(0 0, 100% 0, 85% 65%, 68% 100%, 50% 72%, 32% 100%, 15% 65%);
+    z-index:-1;
 }
 
 
@@ -214,25 +233,15 @@ header p{
 
 
 .product-img{
-
     width:100%;
-
     height:350px;
-
     object-fit:contain;
-
     background:#fff;
-
     border-radius:10px;
-
     display:block;
-
     user-select:none;
-
     -webkit-user-drag:none;
-
     touch-action:pan-y;
-
 }
 
 
@@ -244,54 +253,31 @@ header p{
 /* Dots */
 
 .dots{
-
     position:absolute;
-
     bottom:12px;
-
     left:50%;
-
     transform:translateX(-50%);
-
     display:flex;
-
     gap:7px;
-
     background:rgba(255,255,255,0.65);
-
     padding:6px 10px;
-
     border-radius:20px;
-
 }
-
-
 
 
 .dot{
-
     width:9px;
-
     height:9px;
-
     background:#ccc;
-
     border-radius:50%;
-
     cursor:pointer;
-
     transition:.3s;
-
 }
 
 
-
 .dot.active{
-
     background:#111;
-
     transform:scale(1.2);
-
 }
 
 
@@ -304,51 +290,29 @@ header p{
 /* Product Info */
 
 .card h2{
-
     font-size:20px;
-
     margin:15px 0 5px;
-
 }
-
-
-
 
 
 .price{
-
     font-size:22px;
-
     font-weight:bold;
-
     margin:10px;
-
 }
-
-
 
 
 .old-price{
-
     text-decoration:line-through;
-
     color:#888;
-
     margin-left:10px;
-
     font-size:16px;
-
 }
 
 
-
-
 .new-price{
-
     font-weight:bold;
-
     color:#990000;
-
 }
 
 
@@ -362,53 +326,28 @@ header p{
 
 .btn,
 .order{
-
     display:block;
-
     padding:12px;
-
     margin:8px;
-
     border-radius:10px;
-
     text-decoration:none;
-
     color:#111;
-
     background:#eee;
-
     transition:.3s;
-
 }
-
-
-
 
 
 .btn:hover{
-
     background:#ddd;
-
 }
-
-
-
 
 
 .order{
-
     background:#111;
-
     color:#fff;
-
 }
 
 
-
-
-
 .order:hover{
-
     background:#333;
-
 }
