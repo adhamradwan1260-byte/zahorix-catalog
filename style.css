@@ -379,3 +379,14 @@ header p{
     background:#333;
 
 }
+.subtitle {
+  display: inline-block;
+  background: #c87500;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
