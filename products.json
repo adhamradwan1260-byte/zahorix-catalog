@@ -25,13 +25,14 @@
     ]
   },
   {
-    "name": "Cartier Tank",
-    "oldPrice": "700 جنيه",
-    "price": "550 جنيه",
-    "category": "رجالي",
-    "images": [
-      "cartier-tank-1-white-dial.png",
-      "cartier-tank-2-black-dial.png"
-    ]
-  }
+  "name": "Cartier Tank",
+  "oldPrice": "700 جنيه",
+  "price": "550 جنيه",
+  "category": "رجالي",
+  "badge": "الأكثر مبيعًا",
+  "images": [
+    "cartier-tank-1-white-dial.png",
+    "cartier-tank-2-black-dial.png"
+  ]
+}
 ]
