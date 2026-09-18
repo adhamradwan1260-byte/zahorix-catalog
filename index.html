@@ -367,38 +367,49 @@ renderProducts(filtered);
 
 function searchProducts(){
 
-
-
 let value = document
-
 .getElementById("searchInput")
-
 .value
-
 .toLowerCase()
-
 .trim();
 
 
+let translate = {
+
+"رولكس": "rolex",
+"روليكس": "rolex",
+"رولكس": "rolex",
+
+"تيسوت": "tissot",
+"تيسو": "tissot",
+"توسيت": "tissot",
+
+"كارتير": "cartier",
+"كارتيه": "cartier",
+
+"اوديمار": "audemar",
+"اوديمارس": "audemar"
+
+};
+
+
+if(translate[value]){
+value = translate[value];
+}
 
 
 let results = allProducts.filter(product=>{
 
-
 return product.name
-
 .toLowerCase()
-
 .includes(value);
-
-
 
 });
 
 
-
 renderProducts(results);
 
+}
 
 
 }
