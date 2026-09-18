@@ -71,3 +71,17 @@
     ]
   }
 ]
+{
+  "name": "Suede Rolex",
+  "oldPrice": "450 جنيه",
+  "price": "300 جنيه",
+  "category": "رجالي",
+  "subtitle": "استراب شمواه",
+  "images": [
+    "rolex-black-brown-strap.webp",
+    "rolex-black-dial-black-strap.webp",
+    "rolex-white-dial-black-strap.webp",
+    "rolex-white-dial-brown-strap.webp",
+    "rolex-white-dial-dark-brown-strap.webp"
+  ]
+}
