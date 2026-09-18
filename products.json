@@ -3,7 +3,7 @@
     "name": "Rolex Style Blue",
     "oldPrice": "900 جنيه",
     "price": "700 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "images": [
       "rolex-style-blue-1-front.png",
       "rolex-style-blue-2-angle.png",
@@ -17,7 +17,7 @@
     "name": "Rolex Pepsi",
     "oldPrice": "750 جنيه",
     "price": "550 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "images": [
       "rolex-pepsi-1-front.png",
       "rolex-pepsi-2-back.png",
@@ -28,7 +28,7 @@
     "name": "Cartier Tank",
     "oldPrice": "700 جنيه",
     "price": "550 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "badge": "الأكثر مبيعًا",
     "images": [
       "cartier-tank-1-white-dial.png",
@@ -39,7 +39,7 @@
     "name": "AUDEMARSPIGUET(AP)",
     "oldPrice": "700 جنيه",
     "price": "550 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "images": [
       "AUDEMARSPIGUET(AP)-white-1.webp",
       "AUDEMARSPIGUET(AP)-blue-1.webp",
@@ -50,7 +50,7 @@
     "name": "Rolex OYSTER",
     "oldPrice": "600 جنيه",
     "price": "450 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "images": [
       "Rolex OYSTER-white-1.webp",
       "Rolex OYSTER-blue-1.webp",
@@ -61,7 +61,7 @@
     "name": "TISSOT Chrono",
     "oldPrice": "1000 جنيه",
     "price": "750 جنيه",
-    "category": "رجالي",
+    "category": "رجالي استانلس",
     "subtitle": "عدادات شغالة",
     "images": [
       "TISSOT-Chrono-brown-1.webp",
@@ -74,7 +74,7 @@
     "name": "Suede Rolex",
     "oldPrice": "450 جنيه",
     "price": "300 جنيه",
-    "category": "رجالي",
+    "category": "رجالي شمواه",
     "subtitle": "استراب شمواه",
     "images": [
       "rolex-black-brown-strap.webp",
