@@ -321,17 +321,7 @@ initSwipe();
 
 
 }
-
-
-
-
-
-
-
-
-
-function filterProducts(category){
-
+  function filterProducts(category){
 
 
 if(category==="all"){
@@ -367,6 +357,7 @@ renderProducts(filtered);
 
 function searchProducts(){
 
+
 let value = document
 .getElementById("searchInput")
 .value
@@ -374,11 +365,12 @@ let value = document
 .trim();
 
 
+
 let translate = {
+
 
 "رولكس": "rolex",
 "روليكس": "rolex",
-"رولكس": "rolex",
 
 "تيسوت": "tissot",
 "تيسو": "tissot",
@@ -390,34 +382,55 @@ let translate = {
 "اوديمار": "audemar",
 "اوديمارس": "audemar"
 
+
 };
 
 
+
 if(translate[value]){
+
 value = translate[value];
+
 }
+
 
 
 let results = allProducts.filter(product=>{
 
+
 return product.name
+
 .toLowerCase()
+
 .includes(value);
+
+
 
 });
 
 
+
 renderProducts(results);
 
-}
 
 
 }
+
+
+
+
+
+
+
+
+
 function changeImg(productName,imgIndex,dotElement){
 
 
 const product = allProducts.find(
+
 p => p.name === productName
+
 );
 
 
@@ -433,7 +446,9 @@ const imgs = product.images || [product.image];
 const slider = [...document.querySelectorAll(".slider")]
 
 .find(
+
 s => s.dataset.productName === productName
+
 );
 
 
@@ -451,8 +466,11 @@ imgEl.src = imgs[imgIndex];
 
 
 slider.setAttribute(
+
 "data-current-index",
+
 imgIndex
+
 );
 
 
@@ -484,6 +502,7 @@ dots[imgIndex].classList.add("active");
 
 
 }
+
 
 
 
@@ -599,16 +618,7 @@ changeImg(productName,current);
 
 
 }
-
-
-
-
-
-
-
-
-
-function initSwipe(){
+  function initSwipe(){
 
 
 
