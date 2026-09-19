@@ -165,7 +165,7 @@
     ]
   },
   {
-    "name": "ساعة بولغاري سيربنتي (Bvlgari Serpenti)",
+    "name": "Bvlgari Serpenti",
     "slug": "bvlgari-serpenti",
     "brand": "Bvlgari",
     "oldPrice": "450 جنيه",
@@ -187,8 +187,8 @@
       "ذهبي"
     ],
     "images": [
-      "images/bvlgari-serpenti/Bvlgari Serpenti Silver.webp",
-      "images/bvlgari-serpenti/Bvlgari Serpenti Gold.webp"
+      "Bvlgari Serpenti Silver.webp",
+      "Bvlgari Serpenti Gold.webp"
     ]
   }
 ]
