@@ -135,6 +135,63 @@
   </main>
 
 
+  <!-- نافذة طلب الساعة (Order Modal) -->
+  <div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" type="button" onclick="closeOrderModal()">&times;</button>
+      <h3 class="modal-title">استمارة طلب ساعة</h3>
+      <p class="modal-subtitle" id="modalProductName">اسم الساعة</p>
+
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label for="clientName">اسم العميل بالكامل *</label>
+          <input type="text" id="clientName" required placeholder="أدخل اسمك الكريم">
+        </div>
+
+        <div class="form-group">
+          <label for="clientPhone">رقم الهاتف (للتواصل والتوصيل) *</label>
+
+          <input type="tel" id="clientPhone" required placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="watchQuantity">عدد الساعات *</label>
+            <select id="watchQuantity" required>
+              <option value="1">1 قطعة</option>
+              <option value="2">2 قطعة</option>
+              <option value="3">3 قطع</option>
+              <option value="4">4 قطع</option>
+              <option value="5">5 قطع</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="watchColor">لون الساعة *</label>
+            <select id="watchColor" required>
+              <!-- يتم ملء الخيارات تلقائياً -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="clientAddress">العنوان التفصيلي (المحافظة / المنطقة / الشارع) *</label>
+          <textarea id="clientAddress" rows="2" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="clientNotes">ملاحظات إضافية (اختياري)</label>
+          <input type="text" id="clientNotes" placeholder="أي تفاصيل أخرى تخص الشحن">
+        </div>
+
+        <button type="submit" class="submit-order-btn">
+          🚀 إرسال الطلب عبر الواتساب
+        </button>
+      </form>
+    </div>
+  </div>
+
+
   <!-- فوتر حقوق الملكية والتطوير -->
   <footer class="main-footer">
     <div class="footer-content">
@@ -156,6 +213,8 @@
     let allProducts = [];
 
     let currentProduct = null;
+
+    let selectedProductForOrder = null;
 
 
     /* أسماء البحث البديلة */
@@ -290,8 +349,8 @@
       const images =
         product.images || [product.image];
 
-      const orderMessage = encodeURIComponent(
-        `السلام عليكم أريد طلب ساعة ${product.name} السعر ${product.price}`
+      const directWaMessage = encodeURIComponent(
+        `السلام عليكم أريد الاستفسار عن ساعة ${product.name} بسعر ${product.price}`
       );
 
       const productLink =
@@ -404,23 +463,119 @@
               class="btn wa"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://wa.me/${phone}?text=${orderMessage}"
+              href="https://wa.me/${phone}?text=${directWaMessage}"
             >
               💬 واتساب
             </a>
           </div>
 
-          <a
+          <button
             class="order"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://wa.me/${phone}?text=${orderMessage}"
+            type="button"
+            onclick="openOrderModal('${product.slug}')"
           >
             🛒 اطلب الآن
-          </a>
+          </button>
 
         </article>
       `;
+
+    }
+
+
+    /* فتح استمارة الطلب Modal */
+    function openOrderModal(productSlug) {
+
+      const product = allProducts.find(item => item.slug === productSlug);
+
+      if (!product) return;
+
+      selectedProductForOrder = product;
+
+      document.getElementById("modalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
+
+      const colorSelect = document.getElementById("watchColor");
+
+      colorSelect.innerHTML = "";
+
+      const availableColors = product.colors || ["اللون الافتراضي"];
+
+      availableColors.forEach(color => {
+        const option = document.createElement("option");
+        option.value = color;
+        option.textContent = color;
+        colorSelect.appendChild(option);
+      });
+
+      document.getElementById("orderModal").classList.add("active");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    /* إغلاق استمارة الطلب Modal */
+    function closeOrderModal(event) {
+
+      if (event && event.target !== document.getElementById("orderModal") && !event.target.classList.contains("modal-close-btn")) {
+        return;
+      }
+
+      document.getElementById("orderModal").classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    /* إرسال الطلب عبر الواتساب */
+    function submitOrder(event) {
+
+      event.preventDefault();
+
+      if (!selectedProductForOrder) return;
+
+      const name = document.getElementById("clientName").value.trim();
+
+      const phoneNum = document.getElementById("clientPhone").value.trim();
+
+      const quantity = document.getElementById("watchQuantity").value;
+
+      const color = document.getElementById("watchColor").value;
+
+      const address = document.getElementById("clientAddress").value.trim();
+
+      const notes = document.getElementById("clientNotes").value.trim();
+
+      let orderMessage = `*طلب جديد من موقع ZAhorix Watches* 🛒\n\n`;
+
+      orderMessage += `📌 *اسم الساعة:* ${selectedProductForOrder.name}\n`;
+
+      orderMessage += `💰 *السعر:* ${selectedProductForOrder.price}\n`;
+
+      orderMessage += `🔢 *العدد:* ${quantity}\n`;
+
+      orderMessage += `🎨 *اللون المطلوب:* ${color}\n`;
+
+      orderMessage += `-----------------------------------\n`;
+
+      orderMessage += `👤 *اسم العميل:* ${name}\n`;
+
+      orderMessage += `📞 *رقم الهاتف:* ${phoneNum}\n`;
+
+      orderMessage += `📍 *العنوان:* ${address}\n`;
+
+      if (notes) {
+        orderMessage += `📝 *ملاحظات:* ${notes}\n`;
+      }
+
+      const encodedMessage = encodeURIComponent(orderMessage);
+
+      window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+
+      closeOrderModal();
+
+      document.getElementById("orderForm").reset();
 
     }
 
