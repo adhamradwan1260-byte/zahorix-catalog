@@ -19,18 +19,25 @@
 <header class="main-header">
 
 
-<div class="header-search">
+<div class="menu-btn" onclick="toggleMenu()">
 
-<button onclick="focusSearch()">
-🔍
-</button>
+☰
 
 </div>
+
 
 
 <div class="header-logo">
 
 <img src="zahorix-logo.webp" alt="ZAhorix Watches">
+
+</div>
+
+
+
+<div class="header-search">
+
+🔍
 
 </div>
 
@@ -41,46 +48,22 @@
 
 
 
-<div class="cats">
+<div class="side-menu" id="sideMenu">
 
 
-<button onclick="filterProducts('all')">
+<button onclick="filterProducts('all');toggleMenu()">
 كل الساعات
 </button>
 
 
-<button onclick="filterProducts('رجالي استانلس')">
+<button onclick="filterProducts('رجالي استانلس');toggleMenu()">
 رجالي استانلس
 </button>
 
 
-<button onclick="filterProducts('رجالي جلد')">
+<button onclick="filterProducts('رجالي جلد');toggleMenu()">
 رجالي جلد
 </button>
-
-
-</div>
-
-
-
-
-
-
-<div class="search-container">
-
-
-<div class="search-box">
-
-
-<input 
-type="text" 
-id="searchInput"
-placeholder="ابحث عن الساعة..."
-oninput="searchProducts()"
->
-
-
-</div>
 
 
 </div>
@@ -345,81 +328,13 @@ renderProducts(filtered);
 
 
 
-function searchProducts(){
-
-
-let value = document
-
-.getElementById("searchInput")
-
-.value
-
-.toLowerCase()
-
-.trim();
-
-
-
-
-
-let translate = {
-
-
-"رولكس": "rolex",
-"روليكس": "rolex",
-
-"تيسوت": "tissot",
-"تيسو": "tissot",
-"توسيت": "tissot",
-
-"كارتير": "cartier",
-"كارتيه": "cartier",
-
-"اوديمار": "audemar",
-"اوديمارس": "audemar"
-
-
-};
-
-
-
-
-
-if(translate[value]){
-
-value = translate[value];
-
-}
-
-
-
-
-
-let results = allProducts.filter(product=>{
-
-
-return product.name
-
-.toLowerCase()
-
-.includes(value);
-
-
-
-});
-
-
-
-renderProducts(results);
-
-
-
-}
-  function changeImg(productName,imgIndex,dotElement){
+function changeImg(productName,imgIndex,dotElement){
 
 
 const product = allProducts.find(
+
 p => p.name === productName
+
 );
 
 
@@ -435,7 +350,9 @@ const imgs = product.images || [product.image];
 const slider = [...document.querySelectorAll(".slider")]
 
 .find(
+
 s => s.dataset.productName === productName
+
 );
 
 
@@ -453,8 +370,11 @@ imgEl.src = imgs[imgIndex];
 
 
 slider.setAttribute(
+
 "data-current-index",
+
 imgIndex
+
 );
 
 
@@ -486,16 +406,7 @@ dots[imgIndex].classList.add("active");
 
 
 }
-
-
-
-
-
-
-
-
-
-function nextImg(slider){
+  function nextImg(slider){
 
 
 const productName = slider.dataset.productName;
@@ -723,26 +634,13 @@ prevImg(slider);
 
 
 
-function focusSearch(){
+function toggleMenu(){
 
 
-document
-
-.getElementById("searchInput")
-
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
+let menu = document.getElementById("sideMenu");
 
 
-
-document
-
-.getElementById("searchInput")
-
-.focus();
+menu.classList.toggle("open");
 
 
 }
