@@ -1,9 +1,20 @@
 [
   {
     "name": "Rolex Style Blue",
+    "slug": "rolex-style-blue",
+    "brand": "Rolex",
     "oldPrice": "900 جنيه",
     "price": "700 جنيه",
     "category": "رجالي استانلس",
+    "keywords": [
+      "رولكس",
+      "روليكس",
+      "رولكس ازرق",
+      "روليكس ازرق",
+      "ساعة رولكس",
+      "ساعة روليكس",
+      "ساعة استانلس"
+    ],
     "images": [
       "rolex-style-blue-1-front.png",
       "rolex-style-blue-2-angle.png",
@@ -15,8 +26,19 @@
   },
   {
     "name": "Rolex Pepsi",
+    "slug": "rolex-pepsi",
+    "brand": "Rolex",
     "price": "650 جنيه",
     "category": "رجالي استانلس",
+    "keywords": [
+      "رولكس",
+      "روليكس",
+      "رولكس بيبسي",
+      "روليكس بيبسي",
+      "ساعة رولكس بيبسي",
+      "ساعة روليكس بيبسي",
+      "ساعة استانلس"
+    ],
     "images": [
       "rolex-pepsi-1-front.png",
       "rolex-pepsi-2-back.png",
@@ -25,10 +47,22 @@
   },
   {
     "name": "Cartier Tank",
+    "slug": "cartier-tank",
+    "brand": "Cartier",
     "oldPrice": "700 جنيه",
     "price": "550 جنيه",
     "category": "رجالي استانلس",
     "badge": "الأكثر مبيعًا",
+    "keywords": [
+      "كارتير",
+      "كارتيه",
+      "كارتييه",
+      "كارتير تانك",
+      "كارتيه تانك",
+      "كارتييه تانك",
+      "ساعة كارتير",
+      "ساعة استانلس"
+    ],
     "images": [
       "cartier-tank-1-white-dial.png",
       "cartier-tank-2-black-dial.png"
@@ -36,9 +70,21 @@
   },
   {
     "name": "AUDEMARSPIGUET(AP)",
+    "slug": "audemars-piguet-ap",
+    "brand": "Audemars Piguet",
     "oldPrice": "700 جنيه",
     "price": "550 جنيه",
     "category": "رجالي استانلس",
+    "keywords": [
+      "اوديمار",
+      "اوديمارس",
+      "اوديمار بيجيه",
+      "اوديمار بيغيه",
+      "اوديمارس بيجيه",
+      "اي بي",
+      "ساعة اوديمار",
+      "ساعة استانلس"
+    ],
     "images": [
       "AUDEMARSPIGUET(AP)-white-1.webp",
       "AUDEMARSPIGUET(AP)-blue-1.webp",
@@ -47,9 +93,20 @@
   },
   {
     "name": "Rolex OYSTER",
+    "slug": "rolex-oyster",
+    "brand": "Rolex",
     "oldPrice": "600 جنيه",
     "price": "450 جنيه",
     "category": "رجالي استانلس",
+    "keywords": [
+      "رولكس",
+      "روليكس",
+      "رولكس اويستر",
+      "روليكس اويستر",
+      "ساعة رولكس اويستر",
+      "ساعة روليكس اويستر",
+      "ساعة استانلس"
+    ],
     "images": [
       "Rolex OYSTER-white-1.webp",
       "Rolex OYSTER-blue-1.webp",
@@ -58,10 +115,22 @@
   },
   {
     "name": "TISSOT Chrono",
+    "slug": "tissot-chrono",
+    "brand": "Tissot",
     "oldPrice": "1000 جنيه",
     "price": "750 جنيه",
     "category": "رجالي جلد",
     "subtitle": "عدادات شغالة",
+    "keywords": [
+      "تيسوت",
+      "تيسو",
+      "تيسوت كرونو",
+      "تيسو كرونو",
+      "ساعة تيسوت",
+      "ساعة جلد",
+      "عدادات",
+      "عدادات شغالة"
+    ],
     "images": [
       "TISSOT-Chrono-brown-1.webp",
       "TISSOT-Chrono-black-1.webp",
@@ -71,10 +140,22 @@
   },
   {
     "name": "Suede Rolex",
+    "slug": "suede-rolex",
+    "brand": "Rolex",
     "oldPrice": "450 جنيه",
     "price": "300 جنيه",
     "category": "رجالي جلد",
     "subtitle": "استراب شمواه",
+    "keywords": [
+      "رولكس",
+      "روليكس",
+      "رولكس شمواه",
+      "روليكس شمواه",
+      "ساعة رولكس جلد",
+      "ساعة روليكس جلد",
+      "ساعة جلد",
+      "استراب شمواه"
+    ],
     "images": [
       "rolex-black-brown-strap.webp",
       "rolex-black-dial-black-strap.webp",
