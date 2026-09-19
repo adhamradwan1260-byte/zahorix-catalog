@@ -40,9 +40,9 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 15px 4px;
+  padding: 12px 15px 6px;
   background: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
@@ -57,7 +57,7 @@ select {
 }
 
 
-/* Logo Styling (شعار أصل متناسق ومريح للعين) */
+/* Logo Styling (لوجو بارز ومحدد بشكل متناسق) */
 
 .header-logo {
   display: flex;
@@ -74,36 +74,53 @@ select {
 
 .header-logo img {
   display: block;
-  height: 52px;
+  height: 60px;
   width: auto;
-  max-width: 180px;
+  max-width: 210px;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.12));
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .header-logo img:hover {
   transform: scale(1.03);
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.18));
 }
 
 
-/* Search Button */
+/* Search Bar Button on the Right (مربع البحث على اليمين) */
 
-.header-search {
+.header-search-bar {
   position: absolute;
-  left: 10px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  border: 0;
-  background: transparent;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f4f4f4;
+  padding: 7px 14px;
+  border-radius: 20px;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
+  border: 1px solid #e2e2e2;
+  transition: all 0.2s ease;
 }
 
-.header-search:hover {
-  background-color: #f0f0f0;
+.header-search-bar:hover {
+  background: #eaeaea;
+  border-color: #c5a059;
+}
+
+.search-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.search-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
 }
 
 
@@ -115,7 +132,7 @@ select {
   justify-content: center;
   gap: 22px;
   width: 100%;
-  padding: 4px 0 8px;
+  padding: 4px 0 6px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -145,7 +162,7 @@ select {
 .top-nav .nav-btn.active::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 0;
   right: 0;
   height: 2.5px;
@@ -153,8 +170,13 @@ select {
   border-radius: 4px;
 }
 
+.arrow {
+  font-size: 11px;
+  margin-right: 2px;
+}
 
-/* Dropdown Menu (القائمة المنسدلة لـ رجالي) */
+
+/* Dropdown Menu (القائمة المنسدلة) */
 
 .dropdown {
   position: relative;
@@ -222,12 +244,12 @@ select {
 
 
 /* =========================
-   Search Panel
+   Search Panel (تم حل مشكلة الخط هنا)
 ========================= */
 
 .search-panel {
   position: sticky;
-  top: 95px;
+  top: 88px;
   z-index: 998;
   display: flex;
   gap: 8px;
@@ -235,13 +257,14 @@ select {
   padding: 0 15px;
   overflow: hidden;
   background: #ffffff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0px solid transparent; /* إلغاء الحد الافتراضي لمنع ظهور الخط مع السكرول */
   transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
 .search-panel.open {
   max-height: 75px;
   padding: 12px 15px 15px;
+  border-bottom: 1px solid #eee; /* إظهار الحد فقط عند فتح مربع البحث */
 }
 
 .search-panel input {
@@ -622,7 +645,16 @@ select {
 @media (max-width: 600px) {
 
   .header-logo img {
-    height: 46px;
+    height: 50px;
+  }
+
+  .search-text {
+    display: none; /* إخفاء نص "ابحث هنا..." على الجوالات وتوفير المساحة للأيقونة فقط */
+  }
+
+  .header-search-bar {
+    padding: 6px 10px;
+    border-radius: 50%;
   }
 
   .top-nav {
