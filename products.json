@@ -165,3 +165,31 @@
     ]
   }
 ]
+{
+  "slug": "bvlgari-serpenti",
+  "name": "ساعة بولغاري سيربنتي (Bvlgari Serpenti)",
+  "subtitle": "تصميم الثعبان الملتوي المميز - مرصعة بفصوص - متوفرة باللون الذهبي والفضة",
+  "brand": "Bvlgari",
+  "category": "حريمي",
+  "price": "300 ج.م",
+  "oldPrice": "450 ج.م",
+  "badge": "جديد",
+  "image": "images/bvlgari-serpenti/Bvlgari Serpenti Silver.webp",
+  "images": [
+    "images/bvlgari-serpenti/Bvlgari Serpenti Silver.webp",
+    "images/bvlgari-serpenti/Bvlgari Serpenti Gold.webp"
+  ],
+  "keywords": [
+    "bvlgari",
+    "serpenti",
+    "بولغاري",
+    "بولجري",
+    "سيربنتي",
+    "ثعبان",
+    "الثعبان",
+    "حريمي",
+    "ساعة حريمي",
+    "فضي",
+    "ذهبي"
+  ]
+}
