@@ -44,7 +44,7 @@
     <input
       id="searchInput"
       type="search"
-      placeholder="ابحث باسم الساعة..."
+      placeholder="ابحث باسم الساعة بالعربي أو الإنجليزي..."
       autocomplete="off"
       oninput="searchProducts(this.value)"
     >
@@ -81,19 +81,90 @@
 
     let allProducts = [];
 
+    /*
+      أسماء البحث البديلة:
+      يمكن إضافة أي اسم عربي أو إنجليزي جديد هنا.
+    */
+    const searchAliases = {
+
+      /* Rolex */
+      "رولكس": "rolex",
+      "روليكس": "rolex",
+      "رولكس اويستر": "rolex oyster",
+      "روليكس اويستر": "rolex oyster",
+      "رولكس بيبسي": "rolex pepsi",
+      "روليكس بيبسي": "rolex pepsi",
+      "رولكس ستايل": "rolex style",
+      "روليكس ستايل": "rolex style",
+      "رولكس ازرق": "rolex style blue",
+      "روليكس ازرق": "rolex style blue",
+
+      /* Cartier */
+      "كارتير": "cartier",
+      "كارتيه": "cartier",
+      "كارتييه": "cartier",
+      "كارتير تانك": "cartier tank",
+      "كارتيه تانك": "cartier tank",
+      "كارتييه تانك": "cartier tank",
+
+      /* Tissot */
+      "تيسوت": "tissot",
+      "تيسو": "tissot",
+      "تيسوت كرونو": "tissot chrono",
+      "تيسو كرونو": "tissot chrono",
+
+      /* Audemars Piguet */
+      "اوديمار": "audemars",
+      "اوديمارس": "audemars",
+      "اوديمار بيجيه": "audemarspiguet",
+      "اوديمار بيغيه": "audemarspiguet",
+      "اوديمارس بيجيه": "audemarspiguet",
+      "اي بي": "ap",
+
+      /* Categories */
+      "ساعه جلد": "رجالي جلد",
+      "ساعة جلد": "رجالي جلد",
+      "ساعات جلد": "رجالي جلد",
+      "جلد": "رجالي جلد",
+
+      "ساعه استانلس": "رجالي استانلس",
+      "ساعة استانلس": "رجالي استانلس",
+      "ساعات استانلس": "رجالي استانلس",
+      "استانلس": "رجالي استانلس",
+
+      /* Features */
+      "عدادات": "عدادات شغاله",
+      "عدادات شغاله": "عدادات شغاله",
+      "عدادات شغالة": "عدادات شغاله",
+
+      /* Suede */
+      "شمواه": "suede",
+      "رولكس شمواه": "suede rolex",
+      "روليكس شمواه": "suede rolex"
+
+    };
+
+
+    /* تحميل المنتجات */
     fetch("products.json")
       .then(response => {
+
         if (!response.ok) {
           throw new Error("تعذر تحميل بيانات الساعات");
         }
 
         return response.json();
+
       })
       .then(products => {
+
         allProducts = products;
+
         renderProducts(allProducts);
+
       })
       .catch(error => {
+
         console.error(error);
 
         document.getElementById("products").innerHTML = `
@@ -101,8 +172,11 @@
             حدث خطأ أثناء تحميل الساعات. حاول تحديث الصفحة.
           </div>
         `;
+
       });
 
+
+    /* عرض المنتجات */
     function renderProducts(products) {
 
       const box = document.getElementById("products");
@@ -110,6 +184,7 @@
       box.innerHTML = "";
 
       if (products.length === 0) {
+
         box.innerHTML = `
           <div class="no-results">
             لا توجد ساعات مطابقة لبحثك.
@@ -117,9 +192,10 @@
         `;
 
         return;
+
       }
 
-      products.forEach((product, productIndex) => {
+      products.forEach(product => {
 
         const images = product.images || [product.image];
 
@@ -132,7 +208,6 @@
 
             <div
               class="slider"
-              data-product-index="${productIndex}"
               data-product-name="${product.name}"
               data-current-index="0"
             >
@@ -219,6 +294,8 @@
 
     }
 
+
+    /* فتح وإغلاق البحث */
     function toggleSearch() {
 
       const searchPanel = document.getElementById("searchPanel");
@@ -227,32 +304,96 @@
       searchPanel.classList.toggle("open");
 
       if (searchPanel.classList.contains("open")) {
+
         setTimeout(() => {
           searchInput.focus();
         }, 100);
+
       }
 
     }
 
+
+    /* توحيد طريقة كتابة كلمات البحث */
+    function normalizeSearchText(text) {
+
+      return String(text || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[أإآ]/g, "ا")
+        .replace(/ة/g, "ه")
+        .replace(/ى/g, "ي")
+        .replace(/ؤ/g, "و")
+        .replace(/ئ/g, "ي")
+        .replace(/[\u064B-\u065F]/g, "")
+        .replace(/[()_-]/g, " ")
+        .replace(/\s+/g, " ");
+
+    }
+
+
+    /* استخراج الكلمات الإنجليزية المقابلة للبحث العربي */
+    function getSearchTerms(searchValue) {
+
+      const normalizedValue = normalizeSearchText(searchValue);
+
+      const searchTerms = [normalizedValue];
+
+      Object.entries(searchAliases).forEach(
+        ([arabicName, englishName]) => {
+
+          const normalizedArabicName =
+            normalizeSearchText(arabicName);
+
+          const normalizedEnglishName =
+            normalizeSearchText(englishName);
+
+          if (
+            normalizedArabicName.includes(normalizedValue) ||
+            normalizedValue.includes(normalizedArabicName)
+          ) {
+            searchTerms.push(normalizedEnglishName);
+          }
+
+        }
+      );
+
+      return [...new Set(searchTerms)];
+
+    }
+
+
+    /* البحث بالعربي والإنجليزي */
     function searchProducts(searchValue) {
 
-      const searchText = searchValue.trim().toLowerCase();
+      const normalizedValue = normalizeSearchText(searchValue);
 
-      if (searchText === "") {
+      if (normalizedValue === "") {
+
         renderProducts(allProducts);
+
         return;
+
       }
+
+      const searchTerms = getSearchTerms(searchValue);
 
       const filteredProducts = allProducts.filter(product => {
 
-        const productName = (product.name || "").toLowerCase();
-        const productCategory = (product.category || "").toLowerCase();
-        const productSubtitle = (product.subtitle || "").toLowerCase();
+        const productKeywords = Array.isArray(product.keywords)
+          ? product.keywords.join(" ")
+          : "";
 
-        return (
-          productName.includes(searchText) ||
-          productCategory.includes(searchText) ||
-          productSubtitle.includes(searchText)
+        const searchableText = normalizeSearchText(`
+          ${product.name || ""}
+          ${product.category || ""}
+          ${product.subtitle || ""}
+          ${product.badge || ""}
+          ${productKeywords}
+        `);
+
+        return searchTerms.some(term =>
+          searchableText.includes(term)
         );
 
       });
@@ -261,6 +402,8 @@
 
     }
 
+
+    /* مسح البحث */
     function clearSearch() {
 
       const searchInput = document.getElementById("searchInput");
@@ -273,13 +416,20 @@
 
     }
 
+
+    /* فلترة الأقسام */
     function filterProducts(category) {
 
-      clearSearch();
+      const searchInput = document.getElementById("searchInput");
+
+      searchInput.value = "";
 
       if (category === "all") {
+
         renderProducts(allProducts);
+
         return;
+
       }
 
       const filteredProducts = allProducts.filter(
@@ -290,6 +440,8 @@
 
     }
 
+
+    /* تغيير صورة الساعة */
     function changeImg(slider, imageIndex) {
 
       if (!slider) {
@@ -307,8 +459,12 @@
       }
 
       const images = product.images || [product.image];
-      const imageElement = slider.querySelector(".product-img");
-      const dots = slider.querySelectorAll(".dot");
+
+      const imageElement =
+        slider.querySelector(".product-img");
+
+      const dots =
+        slider.querySelectorAll(".dot");
 
       imageElement.src = images[imageIndex];
 
@@ -324,6 +480,8 @@
 
     }
 
+
+    /* الصورة التالية */
     function nextImg(slider) {
 
       const productName = slider.dataset.productName;
@@ -338,7 +496,8 @@
 
       const images = product.images || [product.image];
 
-      let currentIndex = Number(slider.dataset.currentIndex || 0);
+      let currentIndex =
+        Number(slider.dataset.currentIndex || 0);
 
       currentIndex++;
 
@@ -350,6 +509,8 @@
 
     }
 
+
+    /* الصورة السابقة */
     function prevImg(slider) {
 
       const productName = slider.dataset.productName;
@@ -364,7 +525,8 @@
 
       const images = product.images || [product.image];
 
-      let currentIndex = Number(slider.dataset.currentIndex || 0);
+      let currentIndex =
+        Number(slider.dataset.currentIndex || 0);
 
       currentIndex--;
 
@@ -376,6 +538,8 @@
 
     }
 
+
+    /* السحب على شاشة الموبايل */
     function initSwipe() {
 
       document.querySelectorAll(".slider").forEach(slider => {
@@ -386,8 +550,10 @@
         slider.addEventListener(
           "touchstart",
           event => {
+
             startX = event.touches[0].clientX;
             endX = startX;
+
           },
           { passive: true }
         );
@@ -395,7 +561,9 @@
         slider.addEventListener(
           "touchmove",
           event => {
+
             endX = event.touches[0].clientX;
+
           },
           { passive: true }
         );
@@ -420,6 +588,8 @@
 
     }
 
+
+    /* فتح وإغلاق القائمة */
     function toggleMenu() {
 
       const menu = document.getElementById("sideMenu");
