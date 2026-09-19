@@ -1,577 +1,540 @@
-body{
+* {
+    box-sizing: border-box;
+}
 
-    font-family:Arial, sans-serif;
-    background:#f5f5f5;
-    margin:0;
-    padding:0;
-
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #111;
 }
 
 
+/* =========================
+   Header
+========================= */
 
-/* Header */
-
-.main-header{
-
-    position:sticky;
-    top:0;
-
-    z-index:999;
-
-    height:70px;
-
-    background:#111;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: 70px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 
 /* Logo */
 
-.header-logo img{
-
-    width:120px;
-
-    height:auto;
-
-    display:block;
-
+.header-logo {
+    width: 120px;
+    height: 82px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.header-logo img {
+    width: 105px;
+    max-height: 76px;
+    object-fit: contain;
+    display: block;
+}
 
 
 /* Menu Button */
 
-.menu-btn{
-
-    position:absolute;
-
-    left:20px;
-
-    color:white;
-
-    font-size:28px;
-
-    cursor:pointer;
-
+.menu-btn {
+    position: absolute;
+    left: 20px;
+    padding: 6px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
 }
 
 
+/* Search Button */
 
-/* Search Icon */
-
-.header-search{
-
-    position:absolute;
-
-    right:20px;
-
-    color:white;
-
-    font-size:24px;
-
+.header-search {
+    position: absolute;
+    right: 20px;
+    padding: 7px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
 }
 
 
+/* =========================
+   Search Panel
+========================= */
 
+.search-panel {
+    position: sticky;
+    top: 70px;
+    z-index: 998;
+    display: flex;
+    gap: 8px;
+    max-height: 0;
+    padding: 0 15px;
+    overflow: hidden;
+    background: #111;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+}
 
+.search-panel.open {
+    max-height: 75px;
+    padding: 10px 15px 14px;
+}
 
-/* Side Menu */
+.search-panel input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    background: #fff;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    outline: none;
+}
 
-.side-menu{
+.search-panel input:focus {
+    border-color: #8b5a2b;
+    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
+}
 
-    position:fixed;
-
-    top:70px;
-
-    left:-260px;
-
-    width:230px;
-
-    height:100%;
-
-    background:#111;
-
-    z-index:1000;
-
-    padding:20px;
-
-    transition:.3s;
-
+.search-panel button {
+    padding: 0 18px;
+    border: 0;
+    border-radius: 9px;
+    background: #8b5a2b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 
+/* =========================
+   Side Menu
+========================= */
 
-.side-menu.open{
+.side-menu {
+    position: fixed;
+    top: 70px;
+    left: -270px;
+    z-index: 1000;
+    width: 250px;
+    height: calc(100% - 70px);
+    padding: 20px;
+    background: #111;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+}
 
-    left:0;
+.side-menu.open {
+    left: 0;
+}
 
+.side-menu button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #fff;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.side-menu button:hover {
+    background: #eee;
+}
+
+.cats {
+    display: none;
 }
 
 
+/* =========================
+   Products Grid
+========================= */
 
-.side-menu button{
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: start;
+    gap: 15px;
+    padding: 15px;
+}
 
-    width:100%;
-
-    padding:15px;
-
-    margin-bottom:10px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:#fff;
-
-    font-size:16px;
-
-    cursor:pointer;
-
+.card {
+    overflow: hidden;
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 
+/* =========================
+   Product Slider
+========================= */
 
-/* Categories hidden */
-
-.cats{
-
-    display:none;
-
-}
-/* Products */
-
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:15px;
-
-    padding:15px;
-
+.slider {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
 }
 
-
-
-.card{
-
-    background:#fff;
-
-    border-radius:15px;
-
-    padding:15px;
-
-    text-align:center;
-
-    overflow:hidden;
-
+.product-img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    background: #fff;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: pan-y;
 }
 
 
+/* =========================
+   Best Seller Badge
+========================= */
 
-
-
-
-/* Slider */
-
-
-.slider{
-
-    position:relative;
-
-    width:100%;
-
-    height:350px;
-
-    overflow:hidden;
-
-    background:#fff;
-
-    border-radius:10px;
-
-}
-
-
-
-
-
-
-/* Badge */
-
-
-.badge{
-
-    position:absolute;
-
-    top:15px;
-
-    right:15px;
-
-    width:78px;
-
-    height:78px;
-
-    background:#d60000;
-
-    color:#fff;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    line-height:1.4;
-
-    padding:10px;
-
-    box-sizing:border-box;
-
-    z-index:10;
-
-    border:3px dashed #fff;
-
-
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    display: flex;
+    width: 78px;
+    height: 78px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 3px dashed #fff;
+    border-radius: 50%;
+    background: #d60000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
     box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
 
-    0 4px 12px rgba(0,0,0,0.25),
+.badge::before {
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    content: "";
+}
 
-    inset 0 0 0 3px rgba(255,255,255,0.15);
+
+/* =========================
+   Slider Dots
+========================= */
+
+.dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    display: flex;
+    gap: 7px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    transform: translateX(-50%);
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.dot.active {
+    background: #111;
+    transform: scale(1.2);
+}
+
+
+/* =========================
+   Product Information
+========================= */
+
+.card h2 {
+    min-height: 29px;
+    margin: 18px 0 10px;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+/* Brown Subtitle */
+
+.subtitle {
+    display: inline-flex;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    padding: 6px 15px;
+    border-radius: 6px;
+    background: #8b5a2b;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Prices
+========================= */
+
+.price {
+    display: flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 3px 0 12px;
+    direction: rtl;
+}
+
+/* Old crossed-out price */
+
+.old-price {
+    color: #777;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: line-through;
+    text-decoration-color: #777;
+    text-decoration-thickness: 2px;
+}
+
+/* New red price */
+
+.new-price {
+    color: #d60000;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   Contact and Order Buttons
+========================= */
+
+.btn,
+.order {
+    display: flex;
+    width: 100%;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    border-radius: 7px;
+    font-size: 15px;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.btn:hover,
+.order:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+}
+
+/* Call Button */
+
+.btn.call {
+    background: #ededed;
+    color: #111;
+}
+
+/* WhatsApp Button */
+
+.btn.wa {
+    background: #ededed;
+    color: #111;
+}
+
+/* Order Now Button */
+
+.order {
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* =========================
+   No Search Results
+========================= */
+
+.no-results {
+    grid-column: 1 / -1;
+    padding: 50px 20px;
+    border-radius: 12px;
+    background: #fff;
+    color: #555;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* =========================
+   Mobile Screens
+========================= */
+
+@media (max-width: 600px) {
+
+    .main-header {
+        height: 64px;
+    }
+
+    .header-logo {
+        width: 104px;
+        height: 74px;
+    }
+
+    .header-logo img {
+        width: 92px;
+        max-height: 68px;
+    }
+
+    .menu-btn {
+        left: 12px;
+    }
+
+    .header-search {
+        right: 12px;
+    }
+
+    .search-panel {
+        top: 64px;
+    }
+
+    .side-menu {
+        top: 64px;
+        height: calc(100% - 64px);
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .card {
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .slider,
+    .product-img {
+        height: 230px;
+    }
+
+    .card h2 {
+        min-height: 42px;
+        margin: 12px 0 8px;
+        font-size: 18px;
+    }
+
+    .badge {
+        top: 8px;
+        right: 8px;
+        width: 64px;
+        height: 64px;
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .subtitle {
+        min-height: 27px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .price {
+        min-height: 50px;
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 10px;
+    }
+
+    .old-price {
+        font-size: 13px;
+    }
+
+    .new-price {
+        font-size: 19px;
+    }
+
+    .btn,
+    .order {
+        min-height: 39px;
+        font-size: 13px;
+    }
 
 }
 
 
-
-.badge::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:5px;
-
-    border:1px solid rgba(255,255,255,0.5);
-
-    border-radius:50%;
-
-}
-
-
-
-
-
-
-/* Product Image */
-
-
-.product-img{
-
-    width:100%;
-
-    height:350px;
-
-    object-fit:contain;
-
-    background:#fff;
-
-    border-radius:10px;
-
-    display:block;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-    touch-action:pan-y;
-
-}
-
-
-
-
-
-
-/* Dots */
-
-
-.dots{
-
-    position:absolute;
-
-    bottom:12px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:7px;
-
-    background:rgba(255,255,255,0.65);
-
-    padding:6px 10px;
-
-    border-radius:20px;
-
-}
-
-
-
-.dot{
-
-    width:9px;
-
-    height:9px;
-
-    background:#ccc;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-
-.dot.active{
-
-    background:#111;
-
-    transform:scale(1.2);
-
-}
-/* Products */
-
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:15px;
-
-    padding:15px;
-
-}
-
-
-
-.card{
-
-    background:#fff;
-
-    border-radius:15px;
-
-    padding:15px;
-
-    text-align:center;
-
-    overflow:hidden;
-
-}
-
-
-
-
-
-
-/* Slider */
-
-
-.slider{
-
-    position:relative;
-
-    width:100%;
-
-    height:350px;
-
-    overflow:hidden;
-
-    background:#fff;
-
-    border-radius:10px;
-
-}
-
-
-
-
-
-
-/* Badge */
-
-
-.badge{
-
-    position:absolute;
-
-    top:15px;
-
-    right:15px;
-
-    width:78px;
-
-    height:78px;
-
-    background:#d60000;
-
-    color:#fff;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    line-height:1.4;
-
-    padding:10px;
-
-    box-sizing:border-box;
-
-    z-index:10;
-
-    border:3px dashed #fff;
-
-
-    box-shadow:
-
-    0 4px 12px rgba(0,0,0,0.25),
-
-    inset 0 0 0 3px rgba(255,255,255,0.15);
-
-}
-
-
-
-.badge::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:5px;
-
-    border:1px solid rgba(255,255,255,0.5);
-
-    border-radius:50%;
-
-}
-
-
-
-
-
-
-/* Product Image */
-
-
-.product-img{
-
-    width:100%;
-
-    height:350px;
-
-    object-fit:contain;
-
-    background:#fff;
-
-    border-radius:10px;
-
-    display:block;
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-    touch-action:pan-y;
-
-}
-
-
-
-
-
-
-/* Dots */
-
-
-.dots{
-
-    position:absolute;
-
-    bottom:12px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:7px;
-
-    background:rgba(255,255,255,0.65);
-
-    padding:6px 10px;
-
-    border-radius:20px;
-
-}
-
-
-
-.dot{
-
-    width:9px;
-
-    height:9px;
-
-    background:#ccc;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-
-.dot.active{
-
-    background:#111;
-
-    transform:scale(1.2);
+/* =========================
+   Very Small Screens
+========================= */
+
+@media (max-width: 380px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .slider,
+    .product-img {
+        height: 330px;
+    }
+
+    .card h2 {
+        min-height: auto;
+        font-size: 21px;
+    }
 
 }
