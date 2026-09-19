@@ -172,6 +172,7 @@
     "price": "300 جنيه",
     "category": "حريمي",
     "subtitle": "تصميم الثعبان الملتوي المميز - مرصعة بفصوص",
+    "badge": "جديد",
     "keywords": [
       "bvlgari",
       "serpenti",
@@ -194,9 +195,10 @@
     "name": "cartier women",
     "slug": "cartier-women",
     "brand": "Cartier",
+    "oldPrice": "350 جنيه",
     "price": "250 جنيه",
     "category": "حريمي",
-    "subtitle": "مرصعة بفصوص ",
+    "subtitle": "تصميم أنيق - مرصعة بفصوص - متوفرة ألوان",
     "badge": "جديد",
     "keywords": [
       "cartier",
@@ -212,6 +214,30 @@
     "images": [
       "Cartier Silver.webp",
       "Cartier Gold.webp"
+    ]
+  },
+  {
+    "name": "GUCCI women",
+    "slug": "gucci-women",
+    "brand": "Gucci",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "تصميم أنيق فخم - متوفرة باللون الذهبي والفضة",
+    "badge": "جديد",
+    "keywords": [
+      "gucci",
+      "جوتشي",
+      "قوتشي",
+      "حريمي",
+      "ساعة حريمي",
+      "ساعة جوتشي",
+      "فضي",
+      "ذهبي"
+    ],
+    "images": [
+      "GUCCI حريمي Gold.webp",
+      "GUCCI حريمي Silver.webp"
     ]
   }
 ]
