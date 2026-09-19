@@ -15,16 +15,12 @@
 
     <div class="header-top-row">
 
-      <!-- مربع البحث على اليمين -->
-      <button
-        class="header-search-bar"
-        type="button"
-        onclick="toggleSearch()"
-        aria-label="البحث في الساعات"
-      >
-        <span class="search-icon">🔍</span>
-        <span class="search-text">ابحث هنا...</span>
-      </button>
+      <!-- اللوجو على اليمين (بارز وواضح) -->
+      <div class="header-logo">
+        <a href="./" onclick="event.preventDefault(); showCatalog();" aria-label="العودة إلى الصفحة الرئيسية">
+          <img src="zahorix-logo.webp" alt="ZAhorix Watches">
+        </a>
+      </div>
 
       <!-- أيقونات التواصل الاجتماعي في المنتصف -->
       <div class="header-social-links">
@@ -39,12 +35,16 @@
         </a>
       </div>
 
-      <!-- اللوجو على اليسار -->
-      <div class="header-logo">
-        <a href="./" onclick="event.preventDefault(); showCatalog();" aria-label="العودة إلى الصفحة الرئيسية">
-          <img src="zahorix-logo.webp" alt="ZAhorix Watches">
-        </a>
-      </div>
+      <!-- مربع البحث على اليسار -->
+      <button
+        class="header-search-bar"
+        type="button"
+        onclick="toggleSearch()"
+        aria-label="البحث في الساعات"
+      >
+        <span class="search-icon">🔍</span>
+        <span class="search-text">ابحث هنا...</span>
+      </button>
 
     </div>
 
@@ -60,6 +60,10 @@
 
       <button type="button" class="nav-btn" onclick="selectNavTab(this, 'رجالي استانلس')">
         رجالي استانلس
+      </button>
+
+      <button type="button" class="nav-btn" onclick="selectNavTab(this, 'حريمي')">
+        حريمي
       </button>
     </nav>
 
@@ -137,7 +141,7 @@
       <p>جميع الحقوق محفوظة © 2026 لـ <strong>ZAhorix Watches</strong></p>
       <p class="developer-credit">
         تم التطوير بواسطة 
-        <a href="https://wa.me/201283337061" target="_blank" rel="noopener noreferrer" style="color: #c5a059; font-weight: 700; text-decoration: none;">
+        <a href="https://wa.me/201283337061" target="_blank" rel="noopener noreferrer">
           أدهم هشام
         </a>
       </p>
@@ -201,6 +205,11 @@
       "ساعة استانلس": "رجالي استانلس",
       "ساعات استانلس": "رجالي استانلس",
       "استانلس": "رجالي استانلس",
+
+      "حريمي": "حريمي",
+      "ساعات حريمي": "حريمي",
+      "نسائي": "حريمي",
+      "ستاتي": "حريمي",
 
       /* Features */
       "عدادات": "عدادات شغاله",
@@ -273,7 +282,7 @@
     }
 
 
-    /* إنشاء كارت ساعة مع تصميم الأزرار المطور (الشكل الأول) */
+    /* إنشاء كارت ساعة */
     function createProductCard(product, options = {}) {
 
       const isFeatured = options.featured === true;
