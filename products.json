@@ -172,7 +172,6 @@
     "price": "300 جنيه",
     "category": "حريمي",
     "subtitle": "تصميم الثعبان الملتوي المميز - مرصعة بفصوص",
-    "badge": "جديد",
     "keywords": [
       "bvlgari",
       "serpenti",
@@ -189,6 +188,30 @@
     "images": [
       "Bvlgari Serpenti Silver.webp",
       "Bvlgari Serpenti Gold.webp"
+    ]
+  },
+  {
+    "name": "Cartier",
+    "slug": "cartier-women",
+    "brand": "Cartier",
+    "price": "250 جنيه",
+    "category": "حريمي",
+    "subtitle": "مرصعة بفصوص ",
+    "badge": "جديد",
+    "keywords": [
+      "cartier",
+      "كارتير",
+      "كارتيه",
+      "كارتييه",
+      "حريمي",
+      "ساعة حريمي",
+      "ساعة كارتير",
+      "فضي",
+      "ذهبي"
+    ],
+    "images": [
+      "Cartier Silver.webp",
+      "Cartier Gold.webp"
     ]
   }
 ]
