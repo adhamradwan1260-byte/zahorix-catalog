@@ -7,6 +7,58 @@
   <title>ZAhorix Watches</title>
   <!-- ربط ملف التنسيقات الخارجي -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- تنسيقات مدمجة لضمان ظهور نص البحث والقائمة المنسدلة على كل الأجهزة -->
+  <style>
+    /* إظهار نص البحث على الموبايل والكمبيوتر بنفس الشكل */
+    .search-text {
+      display: inline-block !important;
+    }
+
+    /* تنسيقات القائمة المنسدلة لزر رجالي */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #ffffff;
+      min-width: 150px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      z-index: 9999;
+      padding: 6px 0;
+      border: 1px solid #e5e5e5;
+      margin-top: 5px;
+    }
+
+    .dropdown-menu.show {
+      display: flex !important;
+      flex-direction: column;
+    }
+
+    .dropdown-item {
+      padding: 10px 14px;
+      border: none;
+      background: transparent;
+      text-align: right;
+      width: 100%;
+      cursor: pointer;
+      font-size: 14px;
+      color: #333;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active {
+      background-color: #f5f5f5;
+      color: #c5a059;
+    }
+  </style>
 </head>
 
 <body>
@@ -47,14 +99,11 @@
           رجالي <span class="arrow">▾</span>
         </button>
         <div class="dropdown-menu" id="menDropdown">
-          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي')">
-            كل الرجالي
+          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي جلد')">
+            رجالي جلد
           </button>
           <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي استانلس')">
             رجالي استانلس
-          </button>
-          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي جلد')">
-            رجالي جلد
           </button>
         </div>
       </div>
@@ -898,15 +947,6 @@
 
         return;
 
-      }
-
-      /* إذا تم اختيار كل الساعات الرجالي */
-      if (category === "رجالي") {
-        const filteredProducts = allProducts.filter(
-          product => product.category && product.category.includes("رجالي")
-        );
-        renderProducts(filteredProducts);
-        return;
       }
 
       const filteredProducts =
