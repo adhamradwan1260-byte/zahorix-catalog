@@ -15,12 +15,16 @@
 
     <div class="header-top-row">
 
-      <!-- اللوجو على اليمين (بارز وواضح) -->
-      <div class="header-logo">
-        <a href="./" onclick="event.preventDefault(); showCatalog();" aria-label="العودة إلى الصفحة الرئيسية">
-          <img src="zahorix-logo.webp" alt="ZAhorix Watches">
-        </a>
-      </div>
+      <!-- مربع البحث على اليمين -->
+      <button
+        class="header-search-bar"
+        type="button"
+        onclick="toggleSearch()"
+        aria-label="البحث في الساعات"
+      >
+        <span class="search-icon">🔍</span>
+        <span class="search-text">ابحث هنا...</span>
+      </button>
 
       <!-- أيقونات التواصل الاجتماعي في المنتصف -->
       <div class="header-social-links">
@@ -35,16 +39,12 @@
         </a>
       </div>
 
-      <!-- مربع البحث على اليسار -->
-      <button
-        class="header-search-bar"
-        type="button"
-        onclick="toggleSearch()"
-        aria-label="البحث في الساعات"
-      >
-        <span class="search-icon">🔍</span>
-        <span class="search-text">ابحث هنا...</span>
-      </button>
+      <!-- اللوجو على اليسار -->
+      <div class="header-logo">
+        <a href="./" onclick="event.preventDefault(); showCatalog();" aria-label="العودة إلى الصفحة الرئيسية">
+          <img src="zahorix-logo.webp" alt="ZAhorix Watches">
+        </a>
+      </div>
 
     </div>
 
