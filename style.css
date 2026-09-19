@@ -57,7 +57,7 @@ select {
 }
 
 
-/* Logo Styling (لوجو بارز ومحدد بشكل متناسق) */
+/* Logo Styling */
 
 .header-logo {
   display: flex;
@@ -88,7 +88,7 @@ select {
 }
 
 
-/* Search Bar Button on the Right (مربع البحث على اليمين) */
+/* Search Bar Button on the Right */
 
 .header-search-bar {
   position: absolute;
@@ -169,78 +169,6 @@ select {
   height: 2.5px;
   background-color: #c5a059;
   border-radius: 4px;
-}
-
-.arrow {
-  font-size: 11px;
-  margin-right: 2px;
-}
-
-
-/* Dropdown Menu (القائمة المنسدلة) */
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 50%;
-  transform: translateX(50%);
-  background-color: #ffffff;
-  min-width: 160px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  z-index: 1000;
-  padding: 8px 0;
-  animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(50%, -8px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(50%, 0);
-  }
-}
-
-.dropdown-menu.show {
-  display: block !important;
-}
-
-@media (hover: hover) {
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-}
-
-.dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 10px 18px;
-  text-align: right;
-  background: none;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333333;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.dropdown-item:hover,
-.dropdown-item.active {
-  background-color: #fcf9f4;
-  color: #c5a059;
-  padding-right: 22px;
 }
 
 
@@ -666,11 +594,12 @@ select {
   }
 
   .top-nav {
-    gap: 16px;
+    gap: 12px;
   }
 
   .top-nav .nav-btn {
-    font-size: 14px;
+    font-size: 13.5px;
+    padding: 6px 2px;
   }
 
   .grid {
