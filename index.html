@@ -3,44 +3,194 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZAhorix Watches</title>
-
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* التنسيقات الخاصة بالهيدر والأقسام تحت اللوجو */
+    .main-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 15px 0 15px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative;
+    }
+
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .header-logo img {
+      max-height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .header-search {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    /* الشريط الأفقي للأقسام */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      padding-bottom: 8px;
+    }
+
+    .top-nav .nav-btn {
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333333;
+      cursor: pointer;
+      padding: 6px 4px;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+      font-family: inherit;
+    }
+
+    /* التنسيق للقسم النشط (خط ذهبي بالأسفل) */
+    .top-nav .nav-btn.active {
+      color: #c5a059;
+    }
+
+    .top-nav .nav-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #c5a059;
+      border-radius: 2px;
+    }
+
+    /* القائمة المنسدلة لـ رجالي */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 50%;
+      transform: translateX(50%);
+      background-color: #ffffff;
+      min-width: 140px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+      border: 1px solid #eee;
+      border-radius: 8px;
+      z-index: 1000;
+      padding: 6px 0;
+      margin-top: 6px;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    @media (hover: hover) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 10px 16px;
+      text-align: right;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333333;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+      color: #c5a059;
+    }
+
+    .dropdown-item.active {
+      color: #c5a059;
+    }
+  </style>
 </head>
 
 <body>
 
   <header class="main-header">
 
-    <button
-      class="menu-btn"
-      type="button"
-      onclick="toggleMenu()"
-      aria-label="فتح قائمة الأقسام"
-    >
-      ☰
-    </button>
+    <div class="header-top-row">
+      <div class="header-logo">
+        <a href="./" onclick="event.preventDefault(); showCatalog();" aria-label="العودة إلى الصفحة الرئيسية">
+          <img src="zahorix-logo.webp" alt="ZAhorix Watches">
+        </a>
+      </div>
 
-    <div class="header-logo">
-      <a href="./" aria-label="العودة إلى كل الساعات">
-        <img src="zahorix-logo.webp" alt="ZAhorix Watches">
-      </a>
+      <button
+        class="header-search"
+        type="button"
+        onclick="toggleSearch()"
+        aria-label="البحث في الساعات"
+      >
+        🔍
+      </button>
     </div>
 
-    <button
-      class="header-search"
-      type="button"
-      onclick="toggleSearch()"
-      aria-label="البحث في الساعات"
-    >
-      🔍
-    </button>
+    <!-- الأقسام تحت اللوجو -->
+    <nav class="top-nav" aria-label="أقسام الكتالوج">
+      <button type="button" class="nav-btn active" onclick="selectNavTab(this, 'all')">
+        كل الساعات
+      </button>
+
+      <!-- قائمة رجالي المنسدلة -->
+      <div class="dropdown">
+        <button type="button" class="nav-btn dropdown-toggle" onclick="toggleDropdown(event)">
+          رجالي ▾
+        </button>
+        <div class="dropdown-menu" id="menDropdown">
+          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي')">
+            كل الرجالي
+          </button>
+          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي استانلس')">
+            رجالي استانلس
+          </button>
+          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي جلد')">
+            رجالي جلد
+          </button>
+        </div>
+      </div>
+    </nav>
 
   </header>
 
@@ -58,24 +208,6 @@
 
     <button type="button" onclick="clearSearch()">
       مسح
-    </button>
-
-  </div>
-
-
-  <!-- القائمة الجانبية -->
-  <div class="side-menu" id="sideMenu">
-
-    <button onclick="filterProducts('all'); toggleMenu()">
-      كل الساعات
-    </button>
-
-    <button onclick="filterProducts('رجالي استانلس'); toggleMenu()">
-      رجالي استانلس
-    </button>
-
-    <button onclick="filterProducts('رجالي جلد'); toggleMenu()">
-      رجالي جلد
     </button>
 
   </div>
@@ -476,16 +608,11 @@
       const searchPanel =
         document.getElementById("searchPanel");
 
-      const sideMenu =
-        document.getElementById("sideMenu");
-
       catalogView.hidden = true;
 
       productView.hidden = false;
 
       searchPanel.classList.remove("open");
-
-      sideMenu.classList.remove("open");
 
       featuredProduct.innerHTML =
         createProductCard(product, {
@@ -598,6 +725,13 @@
 
       document.title = "ZAhorix Watches";
 
+      /* إعادة ضبط القسم النشط إلى الأول (كل الساعات) */
+      const firstNavBtn = document.querySelector('.top-nav .nav-btn');
+      if (firstNavBtn) {
+        document.querySelectorAll('.top-nav .nav-btn, .dropdown-item').forEach(btn => btn.classList.remove('active'));
+        firstNavBtn.classList.add('active');
+      }
+
       if (updateHistory) {
 
         window.history.pushState(
@@ -678,10 +812,6 @@
       const searchInput =
         document.getElementById("searchInput");
 
-      /*
-        لو المستخدم داخل صفحة ساعة،
-        يرجع للكتالوج عند فتح البحث.
-      */
       if (currentProduct) {
         showCatalog();
       }
@@ -830,6 +960,50 @@
     }
 
 
+    /* فتح وإغلاق القائمة المنسدلة */
+    function toggleDropdown(event) {
+      event.stopPropagation();
+      const dropdown = document.getElementById("menDropdown");
+      if (dropdown) {
+        dropdown.classList.toggle("show");
+      }
+    }
+
+    /* إغلاق القائمة المنسدلة عند الضغط خارجها */
+    window.addEventListener("click", function (event) {
+      const dropdown = document.getElementById("menDropdown");
+      if (dropdown && !event.target.closest(".dropdown")) {
+        dropdown.classList.remove("show");
+      }
+    });
+
+
+    /* اختيار وتحديد القسم النشط */
+    function selectNavTab(element, category) {
+
+      document.querySelectorAll('.top-nav .nav-btn, .dropdown-item').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      if (element) {
+        element.classList.add('active');
+
+        /* لو الاختيار من القائمة المنسدلة يحدد الأب أيضاً */
+        if (element.classList.contains('dropdown-item')) {
+          const toggle = element.closest('.dropdown')?.querySelector('.dropdown-toggle');
+          if (toggle) toggle.classList.add('active');
+        }
+      }
+
+      /* إغلاق القائمة بعد الاختيار */
+      const dropdown = document.getElementById("menDropdown");
+      if (dropdown) dropdown.classList.remove("show");
+
+      filterProducts(category);
+
+    }
+
+
     /* فلترة الأقسام */
     function filterProducts(category) {
 
@@ -856,6 +1030,15 @@
 
         return;
 
+      }
+
+      /* إذا تم اختيار كل الساعات الرجالي */
+      if (category === "رجالي") {
+        const filteredProducts = allProducts.filter(
+          product => product.category && product.category.includes("رجالي")
+        );
+        renderProducts(filteredProducts);
+        return;
       }
 
       const filteredProducts =
@@ -982,9 +1165,6 @@
 
       document.querySelectorAll(".slider").forEach(slider => {
 
-        /*
-          منع إضافة نفس الأحداث أكثر من مرة.
-        */
         if (slider.dataset.swipeReady === "true") {
           return;
         }
@@ -1050,17 +1230,6 @@
         );
 
       });
-
-    }
-
-
-    /* فتح وإغلاق القائمة */
-    function toggleMenu() {
-
-      const menu =
-        document.getElementById("sideMenu");
-
-      menu.classList.toggle("open");
 
     }
 
