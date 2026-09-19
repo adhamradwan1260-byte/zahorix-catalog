@@ -2,653 +2,433 @@
 <html lang="ar" dir="rtl">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ZAhorix Watches</title>
 
-<title>ZAhorix Watches</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+  <header class="main-header">
+
+    <button
+      class="menu-btn"
+      type="button"
+      onclick="toggleMenu()"
+      aria-label="فتح قائمة الأقسام"
+    >
+      ☰
+    </button>
+
+    <div class="header-logo">
+      <img src="zahorix-logo.webp" alt="ZAhorix Watches">
+    </div>
+
+    <button
+      class="header-search"
+      type="button"
+      onclick="toggleSearch()"
+      aria-label="البحث في الساعات"
+    >
+      🔍
+    </button>
+
+  </header>
+
+  <!-- خانة البحث -->
+  <div class="search-panel" id="searchPanel">
+
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="ابحث باسم الساعة..."
+      autocomplete="off"
+      oninput="searchProducts(this.value)"
+    >
+
+    <button type="button" onclick="clearSearch()">
+      مسح
+    </button>
+
+  </div>
+
+  <!-- القائمة الجانبية -->
+  <div class="side-menu" id="sideMenu">
+
+    <button onclick="filterProducts('all'); toggleMenu()">
+      كل الساعات
+    </button>
+
+    <button onclick="filterProducts('رجالي استانلس'); toggleMenu()">
+      رجالي استانلس
+    </button>
+
+    <button onclick="filterProducts('رجالي جلد'); toggleMenu()">
+      رجالي جلد
+    </button>
+
+  </div>
+
+  <!-- المنتجات -->
+  <div id="products" class="grid"></div>
+
+  <script>
+
+    const phone = "201283337061";
+
+    let allProducts = [];
+
+    fetch("products.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("تعذر تحميل بيانات الساعات");
+        }
+
+        return response.json();
+      })
+      .then(products => {
+        allProducts = products;
+        renderProducts(allProducts);
+      })
+      .catch(error => {
+        console.error(error);
+
+        document.getElementById("products").innerHTML = `
+          <div class="no-results">
+            حدث خطأ أثناء تحميل الساعات. حاول تحديث الصفحة.
+          </div>
+        `;
+      });
+
+    function renderProducts(products) {
+
+      const box = document.getElementById("products");
+
+      box.innerHTML = "";
+
+      if (products.length === 0) {
+        box.innerHTML = `
+          <div class="no-results">
+            لا توجد ساعات مطابقة لبحثك.
+          </div>
+        `;
+
+        return;
+      }
+
+      products.forEach((product, productIndex) => {
+
+        const images = product.images || [product.image];
+
+        const orderMessage = encodeURIComponent(
+          `السلام عليكم أريد طلب ساعة ${product.name} السعر ${product.price}`
+        );
 
-<header class="main-header">
+        box.innerHTML += `
+          <div class="card">
+
+            <div
+              class="slider"
+              data-product-index="${productIndex}"
+              data-product-name="${product.name}"
+              data-current-index="0"
+            >
 
+              ${
+                product.badge
+                  ? `<span class="badge">${product.badge}</span>`
+                  : ""
+              }
 
-<div class="menu-btn" onclick="toggleMenu()">
+              <img
+                src="${images[0]}"
+                class="product-img"
+                alt="${product.name}"
+                draggable="false"
+                loading="lazy"
+              >
 
-☰
+              <div class="dots">
 
-</div>
+                ${images.map((image, imageIndex) => `
+                  <button
+                    class="dot ${imageIndex === 0 ? "active" : ""}"
+                    type="button"
+                    onclick="changeImg(this.closest('.slider'), ${imageIndex})"
+                    aria-label="عرض الصورة ${imageIndex + 1}"
+                  ></button>
+                `).join("")}
 
+              </div>
 
+            </div>
 
-<div class="header-logo">
+            <h2>${product.name}</h2>
 
-<img src="zahorix-logo.webp" alt="ZAhorix Watches">
+            ${
+              product.subtitle
+                ? `<span class="subtitle">${product.subtitle}</span>`
+                : ""
+            }
 
-</div>
+            <div class="price">
 
+              ${
+                product.oldPrice
+                  ? `<span class="old-price">${product.oldPrice}</span>`
+                  : ""
+              }
 
+              <span class="new-price">
+                ${product.price}
+              </span>
 
-<div class="header-search">
+            </div>
 
-🔍
+            <a class="btn call" href="tel:+${phone}">
+              ☎ اتصال
+            </a>
 
-</div>
+            <a
+              class="btn wa"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/${phone}?text=${orderMessage}"
+            >
+              💬 واتساب
+            </a>
 
+            <a
+              class="order"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/${phone}?text=${orderMessage}"
+            >
+              🛒 اطلب الآن
+            </a>
 
-</header>
+          </div>
+        `;
 
+      });
 
+      initSwipe();
 
+    }
 
+    function toggleSearch() {
 
-<div class="side-menu" id="sideMenu">
+      const searchPanel = document.getElementById("searchPanel");
+      const searchInput = document.getElementById("searchInput");
 
+      searchPanel.classList.toggle("open");
 
-<button onclick="filterProducts('all');toggleMenu()">
-كل الساعات
-</button>
+      if (searchPanel.classList.contains("open")) {
+        setTimeout(() => {
+          searchInput.focus();
+        }, 100);
+      }
 
+    }
 
-<button onclick="filterProducts('رجالي استانلس');toggleMenu()">
-رجالي استانلس
-</button>
+    function searchProducts(searchValue) {
 
+      const searchText = searchValue.trim().toLowerCase();
 
-<button onclick="filterProducts('رجالي جلد');toggleMenu()">
-رجالي جلد
-</button>
+      if (searchText === "") {
+        renderProducts(allProducts);
+        return;
+      }
 
+      const filteredProducts = allProducts.filter(product => {
 
-</div>
+        const productName = (product.name || "").toLowerCase();
+        const productCategory = (product.category || "").toLowerCase();
+        const productSubtitle = (product.subtitle || "").toLowerCase();
 
+        return (
+          productName.includes(searchText) ||
+          productCategory.includes(searchText) ||
+          productSubtitle.includes(searchText)
+        );
 
+      });
 
+      renderProducts(filteredProducts);
 
+    }
 
+    function clearSearch() {
 
-<div id="products" class="grid"></div>
+      const searchInput = document.getElementById("searchInput");
 
+      searchInput.value = "";
 
+      renderProducts(allProducts);
 
+      searchInput.focus();
 
+    }
 
+    function filterProducts(category) {
 
+      clearSearch();
 
+      if (category === "all") {
+        renderProducts(allProducts);
+        return;
+      }
 
-<script>
+      const filteredProducts = allProducts.filter(
+        product => product.category === category
+      );
 
+      renderProducts(filteredProducts);
 
-const phone = "201283337061";
+    }
 
+    function changeImg(slider, imageIndex) {
 
-let allProducts = [];
+      if (!slider) {
+        return;
+      }
 
+      const productName = slider.dataset.productName;
 
+      const product = allProducts.find(
+        item => item.name === productName
+      );
 
+      if (!product) {
+        return;
+      }
 
+      const images = product.images || [product.image];
+      const imageElement = slider.querySelector(".product-img");
+      const dots = slider.querySelectorAll(".dot");
 
+      imageElement.src = images[imageIndex];
 
-fetch("products.json")
+      slider.dataset.currentIndex = imageIndex;
 
-.then(r=>r.json())
+      dots.forEach(dot => {
+        dot.classList.remove("active");
+      });
 
-.then(products=>{
+      if (dots[imageIndex]) {
+        dots[imageIndex].classList.add("active");
+      }
 
+    }
 
-allProducts = products;
+    function nextImg(slider) {
 
+      const productName = slider.dataset.productName;
 
-renderProducts(allProducts);
+      const product = allProducts.find(
+        item => item.name === productName
+      );
 
+      if (!product) {
+        return;
+      }
 
-});
-  function renderProducts(products){
+      const images = product.images || [product.image];
 
+      let currentIndex = Number(slider.dataset.currentIndex || 0);
 
-const box = document.getElementById("products");
+      currentIndex++;
 
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
 
-box.innerHTML = "";
+      changeImg(slider, currentIndex);
 
+    }
 
+    function prevImg(slider) {
 
-products.forEach((p)=>{
+      const productName = slider.dataset.productName;
 
+      const product = allProducts.find(
+        item => item.name === productName
+      );
 
-let imgs = p.images || [p.image];
+      if (!product) {
+        return;
+      }
 
+      const images = product.images || [product.image];
 
+      let currentIndex = Number(slider.dataset.currentIndex || 0);
 
-box.innerHTML += `
+      currentIndex--;
 
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      }
 
-<div class="card">
+      changeImg(slider, currentIndex);
 
+    }
 
+    function initSwipe() {
 
-<div class="slider"
+      document.querySelectorAll(".slider").forEach(slider => {
 
-data-product-name="${p.name}"
+        let startX = 0;
+        let endX = 0;
 
-data-current-index="0">
+        slider.addEventListener(
+          "touchstart",
+          event => {
+            startX = event.touches[0].clientX;
+            endX = startX;
+          },
+          { passive: true }
+        );
 
+        slider.addEventListener(
+          "touchmove",
+          event => {
+            endX = event.touches[0].clientX;
+          },
+          { passive: true }
+        );
 
+        slider.addEventListener("touchend", () => {
 
-${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+          const difference = startX - endX;
 
+          if (Math.abs(difference) > 40) {
 
+            if (difference > 0) {
+              nextImg(slider);
+            } else {
+              prevImg(slider);
+            }
 
-<img
+          }
 
-src="${imgs[0]}"
+        });
 
-class="product-img"
+      });
 
-alt="${p.name}"
+    }
 
-draggable="false"
+    function toggleMenu() {
 
->
+      const menu = document.getElementById("sideMenu");
 
+      menu.classList.toggle("open");
 
+    }
 
-<div class="dots">
-
-
-${imgs.map((img,i)=>`
-
-
-<span
-
-class="dot ${i===0?'active':''}"
-
-onclick="changeImg('${p.name}',${i},this)">
-
-</span>
-
-
-`).join("")}
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<h2>${p.name}</h2>
-
-
-
-${p.subtitle ? `<span class="subtitle">${p.subtitle}</span>` : ""}
-
-
-
-
-
-<div class="price">
-
-
-<span class="old-price">
-
-${p.oldPrice || ""}
-
-</span>
-
-
-<span class="new-price">
-
-${p.price}
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-<a class="btn call" href="tel:${phone}">
-
-☎ اتصال
-
-</a>
-
-
-
-
-
-
-<a 
-
-class="btn wa"
-
-target="_blank"
-
-href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
-
-
-💬 واتساب
-
-
-</a>
-
-
-
-
-
-
-
-<a 
-
-class="order"
-
-target="_blank"
-
-href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساعة ${p.name} السعر ${p.price}">
-
-
-🛒 اطلب الآن
-
-
-</a>
-
-
-
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-initSwipe();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function filterProducts(category){
-
-
-if(category==="all"){
-
-
-renderProducts(allProducts);
-
-
-}
-
-else{
-
-
-let filtered = allProducts.filter(product=>product.category===category);
-
-
-renderProducts(filtered);
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function changeImg(productName,imgIndex,dotElement){
-
-
-const product = allProducts.find(
-
-p => p.name === productName
-
-);
-
-
-
-if(!product) return;
-
-
-
-const imgs = product.images || [product.image];
-
-
-
-const slider = [...document.querySelectorAll(".slider")]
-
-.find(
-
-s => s.dataset.productName === productName
-
-);
-
-
-
-if(!slider) return;
-
-
-
-const imgEl = slider.querySelector(".product-img");
-
-
-
-imgEl.src = imgs[imgIndex];
-
-
-
-slider.setAttribute(
-
-"data-current-index",
-
-imgIndex
-
-);
-
-
-
-const dots = slider.querySelectorAll(".dot");
-
-
-
-dots.forEach(dot=>{
-
-dot.classList.remove("active");
-
-});
-
-
-
-if(dotElement){
-
-dotElement.classList.add("active");
-
-}
-
-else if(dots[imgIndex]){
-
-dots[imgIndex].classList.add("active");
-
-}
-
-
-
-}
-  function nextImg(slider){
-
-
-const productName = slider.dataset.productName;
-
-
-
-const product = allProducts.find(
-
-p => p.name === productName
-
-);
-
-
-
-if(!product) return;
-
-
-
-const imgs = product.images || [product.image];
-
-
-
-let current = parseInt(
-
-slider.getAttribute("data-current-index")
-
-);
-
-
-
-current++;
-
-
-
-if(current >= imgs.length){
-
-current = 0;
-
-}
-
-
-
-changeImg(productName,current);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function prevImg(slider){
-
-
-const productName = slider.dataset.productName;
-
-
-
-const product = allProducts.find(
-
-p => p.name === productName
-
-);
-
-
-
-if(!product) return;
-
-
-
-const imgs = product.images || [product.image];
-
-
-
-let current = parseInt(
-
-slider.getAttribute("data-current-index")
-
-);
-
-
-
-current--;
-
-
-
-if(current < 0){
-
-current = imgs.length - 1;
-
-}
-
-
-
-changeImg(productName,current);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function initSwipe(){
-
-
-
-document.querySelectorAll(".slider")
-
-.forEach(slider=>{
-
-
-
-let startX = 0;
-
-let endX = 0;
-
-
-
-
-
-slider.addEventListener(
-
-"touchstart",
-
-e=>{
-
-startX = e.touches[0].clientX;
-
-},
-
-{passive:true}
-
-);
-
-
-
-
-
-
-
-slider.addEventListener(
-
-"touchmove",
-
-e=>{
-
-endX = e.touches[0].clientX;
-
-},
-
-{passive:true}
-
-);
-
-
-
-
-
-
-
-
-slider.addEventListener(
-
-"touchend",
-
-()=>{
-
-
-let diff = startX - endX;
-
-
-
-if(Math.abs(diff)>40){
-
-
-
-if(diff > 0){
-
-nextImg(slider);
-
-}
-
-else{
-
-prevImg(slider);
-
-}
-
-
-
-}
-
-
-
-}
-
-
-
-);
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function toggleMenu(){
-
-
-let menu = document.getElementById("sideMenu");
-
-
-menu.classList.toggle("open");
-
-
-}
-
-
-
-</script>
-
+  </script>
 
 </body>
 
