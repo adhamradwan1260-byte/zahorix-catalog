@@ -7,58 +7,6 @@
   <title>ZAhorix Watches</title>
   <!-- ربط ملف التنسيقات الخارجي -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- تنسيقات مدمجة لضمان ظهور نص البحث والقائمة المنسدلة على كل الأجهزة -->
-  <style>
-    /* إظهار نص البحث على الموبايل والكمبيوتر بنفس الشكل */
-    .search-text {
-      display: inline-block !important;
-    }
-
-    /* تنسيقات القائمة المنسدلة لزر رجالي */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: #ffffff;
-      min-width: 150px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-      border-radius: 8px;
-      z-index: 9999;
-      padding: 6px 0;
-      border: 1px solid #e5e5e5;
-      margin-top: 5px;
-    }
-
-    .dropdown-menu.show {
-      display: flex !important;
-      flex-direction: column;
-    }
-
-    .dropdown-item {
-      padding: 10px 14px;
-      border: none;
-      background: transparent;
-      text-align: right;
-      width: 100%;
-      cursor: pointer;
-      font-size: 14px;
-      color: #333;
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    .dropdown-item:hover,
-    .dropdown-item.active {
-      background-color: #f5f5f5;
-      color: #c5a059;
-    }
-  </style>
 </head>
 
 <body>
@@ -87,26 +35,19 @@
 
     </div>
 
-    <!-- الشريط الأفقي للأقسام -->
+    <!-- الشريط الأفقي للأقسام المباشرة -->
     <nav class="top-nav" aria-label="أقسام الكتالوج">
       <button type="button" class="nav-btn active" onclick="selectNavTab(this, 'all')">
         كل الساعات
       </button>
 
-      <!-- قائمة رجالي المنسدلة -->
-      <div class="dropdown">
-        <button type="button" class="nav-btn dropdown-toggle" onclick="toggleDropdown(event)">
-          رجالي <span class="arrow">▾</span>
-        </button>
-        <div class="dropdown-menu" id="menDropdown">
-          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي جلد')">
-            رجالي جلد
-          </button>
-          <button type="button" class="dropdown-item" onclick="selectNavTab(this, 'رجالي استانلس')">
-            رجالي استانلس
-          </button>
-        </div>
-      </div>
+      <button type="button" class="nav-btn" onclick="selectNavTab(this, 'رجالي جلد')">
+        رجالي جلد
+      </button>
+
+      <button type="button" class="nav-btn" onclick="selectNavTab(this, 'رجالي استانلس')">
+        رجالي استانلس
+      </button>
     </nav>
 
   </header>
@@ -643,9 +584,9 @@
       document.title = "ZAhorix Watches";
 
       /* إعادة ضبط القسم النشط إلى الأول (كل الساعات) */
+      document.querySelectorAll('.top-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
       const firstNavBtn = document.querySelector('.top-nav .nav-btn');
       if (firstNavBtn) {
-        document.querySelectorAll('.top-nav .nav-btn, .dropdown-item').forEach(btn => btn.classList.remove('active'));
         firstNavBtn.classList.add('active');
       }
 
@@ -877,44 +818,16 @@
     }
 
 
-    /* فتح وإغلاق القائمة المنسدلة */
-    function toggleDropdown(event) {
-      event.stopPropagation();
-      const dropdown = document.getElementById("menDropdown");
-      if (dropdown) {
-        dropdown.classList.toggle("show");
-      }
-    }
-
-    /* إغلاق القائمة المنسدلة عند الضغط خارجها */
-    window.addEventListener("click", function (event) {
-      const dropdown = document.getElementById("menDropdown");
-      if (dropdown && !event.target.closest(".dropdown")) {
-        dropdown.classList.remove("show");
-      }
-    });
-
-
     /* اختيار وتحديد القسم النشط */
     function selectNavTab(element, category) {
 
-      document.querySelectorAll('.top-nav .nav-btn, .dropdown-item').forEach(btn => {
+      document.querySelectorAll('.top-nav .nav-btn').forEach(btn => {
         btn.classList.remove('active');
       });
 
       if (element) {
         element.classList.add('active');
-
-        /* لو الاختيار من القائمة المنسدلة يحدد الأب أيضاً */
-        if (element.classList.contains('dropdown-item')) {
-          const toggle = element.closest('.dropdown')?.querySelector('.dropdown-toggle');
-          if (toggle) toggle.classList.add('active');
-        }
       }
-
-      /* إغلاق القائمة بعد الاختيار */
-      const dropdown = document.getElementById("menDropdown");
-      if (dropdown) dropdown.classList.remove("show");
 
       filterProducts(category);
 
