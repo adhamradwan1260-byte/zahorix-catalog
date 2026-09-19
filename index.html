@@ -16,11 +16,24 @@
 <body>
 
 
-<header>
+<header class="main-header">
 
-<h1>ZAhorix Watches</h1>
 
-<p>اختار ساعتك واطلبها بسهولة</p>
+<div class="header-search">
+
+<button onclick="focusSearch()">
+🔍
+</button>
+
+</div>
+
+
+<div class="header-logo">
+
+<img src="zahorix-logo.webp" alt="ZAhorix Watches">
+
+</div>
+
 
 </header>
 
@@ -113,16 +126,7 @@ renderProducts(allProducts);
 
 
 });
-
-
-
-
-
-
-
-
-
-function renderProducts(products){
+  function renderProducts(products){
 
 
 const box = document.getElementById("products");
@@ -135,11 +139,7 @@ box.innerHTML = "";
 products.forEach((p)=>{
 
 
-
 let imgs = p.images || [p.image];
-
-
-
 
 
 
@@ -158,14 +158,7 @@ data-current-index="0">
 
 
 
-
-
-
 ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
-
-
-
-
 
 
 
@@ -183,11 +176,7 @@ draggable="false"
 
 
 
-
-
-
 <div class="dots">
-
 
 
 ${imgs.map((img,i)=>`
@@ -205,14 +194,10 @@ onclick="changeImg('${p.name}',${i},this)">
 `).join("")}
 
 
-
 </div>
 
 
-
-
 </div>
-
 
 
 
@@ -245,9 +230,7 @@ ${p.price}
 </span>
 
 
-
 </div>
-
 
 
 
@@ -303,7 +286,6 @@ href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساع
 
 
 
-
 </div>
 
 
@@ -315,13 +297,21 @@ href="https://wa.me/${phone}?text=السلام عليكم أريد طلب ساع
 
 
 
-
 initSwipe();
 
 
 
 }
-  function filterProducts(category){
+
+
+
+
+
+
+
+
+
+function filterProducts(category){
 
 
 if(category==="all"){
@@ -359,10 +349,16 @@ function searchProducts(){
 
 
 let value = document
+
 .getElementById("searchInput")
+
 .value
+
 .toLowerCase()
+
 .trim();
+
+
 
 
 
@@ -387,11 +383,15 @@ let translate = {
 
 
 
+
+
 if(translate[value]){
 
 value = translate[value];
 
 }
+
+
 
 
 
@@ -415,22 +415,11 @@ renderProducts(results);
 
 
 }
-
-
-
-
-
-
-
-
-
-function changeImg(productName,imgIndex,dotElement){
+  function changeImg(productName,imgIndex,dotElement){
 
 
 const product = allProducts.find(
-
 p => p.name === productName
-
 );
 
 
@@ -446,9 +435,7 @@ const imgs = product.images || [product.image];
 const slider = [...document.querySelectorAll(".slider")]
 
 .find(
-
 s => s.dataset.productName === productName
-
 );
 
 
@@ -466,11 +453,8 @@ imgEl.src = imgs[imgIndex];
 
 
 slider.setAttribute(
-
 "data-current-index",
-
 imgIndex
-
 );
 
 
@@ -512,7 +496,6 @@ dots[imgIndex].classList.add("active");
 
 
 function nextImg(slider){
-
 
 
 const productName = slider.dataset.productName;
@@ -572,7 +555,6 @@ changeImg(productName,current);
 function prevImg(slider){
 
 
-
 const productName = slider.dataset.productName;
 
 
@@ -618,7 +600,16 @@ changeImg(productName,current);
 
 
 }
-  function initSwipe(){
+
+
+
+
+
+
+
+
+
+function initSwipe(){
 
 
 
@@ -642,9 +633,7 @@ slider.addEventListener(
 
 e=>{
 
-
 startX = e.touches[0].clientX;
-
 
 },
 
@@ -664,9 +653,7 @@ slider.addEventListener(
 
 e=>{
 
-
 endX = e.touches[0].clientX;
-
 
 },
 
@@ -688,7 +675,6 @@ slider.addEventListener(
 ()=>{
 
 
-
 let diff = startX - endX;
 
 
@@ -699,26 +685,24 @@ if(Math.abs(diff)>40){
 
 if(diff > 0){
 
-
 nextImg(slider);
-
 
 }
 
 else{
 
-
 prevImg(slider);
 
-
-}
-
-
 }
 
 
 
 }
+
+
+
+}
+
 
 
 );
@@ -727,6 +711,38 @@ prevImg(slider);
 
 });
 
+
+
+}
+
+
+
+
+
+
+
+
+
+function focusSearch(){
+
+
+document
+
+.getElementById("searchInput")
+
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+
+document
+
+.getElementById("searchInput")
+
+.focus();
 
 
 }
