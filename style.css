@@ -14,6 +14,9 @@ body {
   background: #f8f9fa;
   color: #111;
   font-family: "Cairo", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 button,
@@ -52,17 +55,17 @@ select {
   width: 100%;
   max-width: 1200px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 8px;
 }
 
 
-/* Logo Styling */
+/* Logo Styling (اللوجو على اليسار) */
 
 .header-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .header-logo a {
@@ -74,9 +77,9 @@ select {
 
 .header-logo img {
   display: block;
-  height: 60px;
+  height: 55px;
   width: auto;
-  max-width: 210px;
+  max-width: 180px;
   object-fit: contain;
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.12));
   transition: transform 0.25s ease, filter 0.25s ease;
@@ -88,13 +91,9 @@ select {
 }
 
 
-/* Search Bar Button on the Right */
+/* Search Bar Button on the Right (البحث على اليمين) */
 
 .header-search-bar {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -122,6 +121,45 @@ select {
   font-weight: 600;
   color: #555;
   white-space: nowrap;
+}
+
+
+/* Social Links in Header (أيقونات التواصل) */
+
+.header-social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  color: #444;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.social-icon.fb:hover {
+  background: #1877f2;
+}
+
+.social-icon.ig:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-icon.tt:hover {
+  background: #000000;
 }
 
 
@@ -233,6 +271,10 @@ select {
 /* =========================
    Products Grid & Cards
 ========================= */
+
+main {
+  flex: 1;
+}
 
 .grid {
   display: grid;
@@ -425,21 +467,21 @@ select {
 
 
 /* =========================
-   Buttons
+   Buttons & Card Actions (الشكل الأول المطور)
 ========================= */
 
 .product-details-button {
   display: flex;
   width: 100%;
-  min-height: 40px;
+  min-height: 38px;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 10px;
   border: 1px solid #c5a059;
   border-radius: 8px;
   background: #fff;
   color: #c5a059;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -450,7 +492,49 @@ select {
   color: #fff;
 }
 
-.btn,
+.card-contact-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.card-contact-row .btn {
+  flex: 1;
+  margin-top: 0;
+  min-height: 38px;
+  font-size: 13px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn.call,
+.btn.wa {
+  background: #f4f4f4;
+  color: #222;
+  border: 1px solid #e0e0e0;
+}
+
+.btn.wa:hover {
+  background: #25d366;
+  color: #fff;
+  border-color: #25d366;
+}
+
+.btn.call:hover {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
 .order {
   display: flex;
   width: 100%;
@@ -459,27 +543,17 @@ select {
   justify-content: center;
   margin-top: 8px;
   border-radius: 8px;
+  background: #111111;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.btn:hover,
 .order:hover {
-  filter: brightness(0.95);
+  background: #c5a059;
   transform: translateY(-1px);
-}
-
-.btn.call,
-.btn.wa {
-  background: #f4f4f4;
-  color: #222;
-}
-
-.order {
-  background: #111111;
-  color: #ffffff;
 }
 
 
@@ -568,29 +642,78 @@ select {
 
 
 /* =========================
+   Footer Styling
+========================= */
+
+.main-footer {
+  margin-top: auto;
+  background: #ffffff;
+  border-top: 1px solid #eaeaea;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.developer-credit {
+  font-size: 13px !important;
+  color: #888 !important;
+}
+
+.developer-credit a {
+  color: #c5a059;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.developer-credit a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+
+/* =========================
    Mobile Optimization
 ========================= */
 
 @media (max-width: 600px) {
 
   .header-logo img {
-    height: 45px;
+    height: 42px;
   }
 
-  /* إظهار نص البحث وضبط الحجم للشاشات الصغيرة */
   .search-text {
     display: inline-block !important;
     font-size: 11px;
   }
 
   .header-search-bar {
-    padding: 5px 10px;
+    padding: 5px 9px;
     border-radius: 20px;
-    gap: 5px;
+    gap: 4px;
   }
 
   .search-icon {
     font-size: 13px;
+  }
+
+  .header-social-links {
+    gap: 6px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-icon svg {
+    width: 16px;
+    height: 16px;
   }
 
   .top-nav {
