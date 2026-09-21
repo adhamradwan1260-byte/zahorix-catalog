@@ -312,8 +312,8 @@
     ]
   },
   {
-    "name": "GUESS Marina",
-    "slug": "guess-marina-women",
+    "name": "GUESS Oval",
+    "slug": "guess-Oval-women",
     "brand": "Guess",
     "oldPrice": "500 جنيه",
     "price": "299 جنيه",
@@ -327,7 +327,7 @@
       "guess",
       "جس",
       "جيس",
-      "marina",
+      "Oval",
       "مارينا",
       "حريمي",
       "ساعة حريمي",
@@ -337,6 +337,35 @@
     "images": [
       "GUESS Marina حريمي Green.webp",
       "GUESS Marina حريمي Orange.webp"
+    ]
+  },
+  {
+    "name": "GUESS Rectangle",
+    "slug": "guess-rectangle-women",
+    "brand": "Guess",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "متوفرة باللون الوردي والأبيض",
+    "colors": [
+      "وردي",
+      "أبيض"
+    ],
+    "keywords": [
+      "guess",
+      "جس",
+      "جيس",
+      "rectangle",
+      "مستطيل",
+      "حريمي",
+      "ساعة حريمي",
+      "وردي",
+      "أبيض",
+      "بينك"
+    ],
+    "images": [
+      "GUESS Rectangle حريمي Pink.webp",
+      "GUESS Rectangle حريمي White.webp"
     ]
   }
 ]
