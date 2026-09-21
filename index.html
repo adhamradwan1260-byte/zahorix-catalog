@@ -107,19 +107,17 @@
   </main>
 
 
-  <!-- صفحة استمارة الطلب المستقلة بالـ Slug -->
-  <main id="orderView" class="order-page-container" hidden>
-    <div class="order-card">
-      <button class="back-button" type="button" onclick="showCatalog()" style="margin-bottom: 15px;">
-        ← العودة للمتجر
-      </button>
-      <h2 class="order-title">استمارة طلب ساعة</h2>
-      <p class="order-subtitle" id="orderModalProductName">اسم الساعة</p>
+  <!-- نافذة طلب الساعة (Modal كارت ينبثق في نفس الصفحة) -->
+  <div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" type="button" onclick="closeOrderModal()">&times;</button>
+      <p class="modal-subtitle" id="modalProductName" style="font-size: 18px; margin-top: 10px;">اسم الساعة</p>
 
-      <form id="orderForm" class="order-form" onsubmit="submitOrder(event)">
+      <form id="orderForm" onsubmit="submitOrder(event)">
         <div class="form-group">
           <label for="clientName">اسم العميل بالكامل *</label>
-          <input type="text" id="clientName" required placeholder="أدخل اسمك الكريم">
+
+          <input type="text" id="clientName" required placeholder="أدخل الاسم">
         </div>
 
         <div class="form-group">
@@ -149,7 +147,8 @@
 
         <div class="form-group">
           <label for="clientAddress">العنوان التفصيلي (المحافظة / المنطقة / الشارع) *</label>
-          <textarea id="clientAddress" rows="3" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
+
+          <textarea id="clientAddress" rows="2" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
         </div>
 
         <div class="form-group">
@@ -158,11 +157,11 @@
         </div>
 
         <button type="submit" class="submit-order-btn">
-           تأكيد وإرسال الطلب
+          تأكيد وإرسال الطلب
         </button>
       </form>
     </div>
-  </main>
+  </div>
 
 
   <!-- فوتر حقوق الملكية والتطوير -->
@@ -259,19 +258,10 @@
       });
 
 
-    /* تتبع مسار الرابط (رئيسية، تفاصيل ساعة، أو صفحة طلب بالـ Slug) */
+    /* معرفة هل الرابط يحتوي على ساعة معينة */
     function loadPageFromUrl() {
       const urlParameters = new URLSearchParams(window.location.search);
-      const orderSlug = urlParameters.get("order");
       const productSlug = urlParameters.get("product");
-
-      if (orderSlug) {
-        const product = allProducts.find(item => item.slug === orderSlug);
-        if (product) {
-          openOrderPage(product, false);
-          return;
-        }
-      }
 
       if (productSlug) {
         const product = allProducts.find(item => item.slug === productSlug);
@@ -295,7 +285,6 @@
       );
 
       const productLink = `?product=${encodeURIComponent(product.slug)}`;
-      const orderLink = `?order=${encodeURIComponent(product.slug)}`;
 
       return `
         <article class="card ${isFeatured ? "featured-card" : ""}">
@@ -350,30 +339,28 @@
               : ""
           }
 
-            </a>
+          <div class="card-contact-row">
             <a class="btn wa" target="_blank" rel="noopener noreferrer" href="https://wa.me/${phone}?text=${directWaMessage}">
               💬 واتساب
             </a>
           </div>
 
-          <a class="order" href="${orderLink}">
+          <button class="order" type="button" onclick="openOrderModal('${product.slug}')">
             🛒 اطلب الآن
-          </a>
+          </button>
         </article>
       `;
     }
 
 
-    /* الانتقال لصفحة الطلب المستقلة بالـ Slug */
-    function openOrderPage(product, updateHistory = true) {
+    /* فتح استمارة الطلب كـ Modal المنبثق فوق الصفحة */
+    function openOrderModal(productSlug) {
+      const product = allProducts.find(item => item.slug === productSlug);
+      if (!product) return;
+
       selectedProductForOrder = product;
 
-      document.getElementById("catalogView").hidden = true;
-      document.getElementById("productView").hidden = true;
-      document.getElementById("orderView").hidden = false;
-      document.getElementById("searchPanel").classList.remove("open");
-
-      document.getElementById("orderModalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
+      document.getElementById("modalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
 
       const colorSelect = document.getElementById("watchColor");
       colorSelect.innerHTML = "";
@@ -386,17 +373,23 @@
         colorSelect.appendChild(option);
       });
 
-      if (updateHistory) {
-        const orderUrl = `${window.location.pathname}?order=${encodeURIComponent(product.slug)}`;
-        window.history.pushState({ order: product.slug }, "", orderUrl);
-      }
-
-      document.title = `طلب ${product.name} | ZAhorix Watches`;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.getElementById("orderModal").classList.add("active");
+      document.body.style.overflow = "hidden";
     }
 
 
-    /* إرسال الطلب (يمكنك ربط هذا الفورم بخدمة مجانية مثل Formspree لكي يصلك الطلب على الإيميل أو يتم تخزينه مباشرة) */
+    /* إغلاق استمارة الطلب Modal */
+    function closeOrderModal(event) {
+      if (event && event.target !== document.getElementById("orderModal") && !event.target.classList.contains("modal-close-btn")) {
+        return;
+      }
+
+      document.getElementById("orderModal").classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+
+    /* إرسال الطلب */
     function submitOrder(event) {
       event.preventDefault();
 
@@ -409,10 +402,9 @@
       const address = document.getElementById("clientAddress").value.trim();
       const notes = document.getElementById("clientNotes").value.trim();
 
-      // هنا يتم معالجة إرسال الطلب بدون فتح واتساب للعميل
       alert(`شكراً لك يا ${name}! تم تسجيل طلبك بنجاح وسنقوم بالتواصل معك قريباً.`);
 
-      showCatalog();
+      closeOrderModal();
       document.getElementById("orderForm").reset();
     }
 
@@ -458,7 +450,6 @@
 
       document.getElementById("catalogView").hidden = true;
       document.getElementById("productView").hidden = false;
-      document.getElementById("orderView").hidden = true;
       document.getElementById("searchPanel").classList.remove("open");
 
       document.getElementById("featuredProduct").innerHTML =
@@ -494,11 +485,9 @@
     /* العودة لكل الساعات */
     function showCatalog(updateHistory = true) {
       currentProduct = null;
-      selectedProductForOrder = null;
 
       document.getElementById("catalogView").hidden = false;
       document.getElementById("productView").hidden = true;
-      document.getElementById("orderView").hidden = true;
       document.getElementById("searchInput").value = "";
 
       renderProducts(allProducts);
@@ -652,7 +641,6 @@
 
       document.getElementById("catalogView").hidden = false;
       document.getElementById("productView").hidden = true;
-      document.getElementById("orderView").hidden = true;
 
       window.history.pushState({}, "", window.location.pathname);
 
