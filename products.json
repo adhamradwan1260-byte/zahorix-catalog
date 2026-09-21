@@ -248,5 +248,37 @@
       "GUCCI حريمي Gold.webp",
       "GUCCI حريمي Silver.webp"
     ]
+  },
+  {
+    "name": "Rolex Datejust Women",
+    "slug": "rolex-datejust-women",
+    "brand": "Rolex",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "تصميم ديت جَست الشهير - أنيق وفاخر",
+    "badge": "جديد",
+    "colors": ["ذهبي", "أبيض", "أحمر", "أزرق"],
+    "keywords": [
+      "rolex",
+      "datejust",
+      "rolex datejust",
+      "رولكس",
+      "روليكس",
+      "ديت جست",
+      "ديتجاست",
+      "حريمي",
+      "ساعة حريمي",
+      "ذهبي",
+      "ابيض",
+      "احمر",
+      "ازرق"
+    ],
+    "images": [
+      "ROLEW DATE JUST حريمي Gold.webp",
+      "ROLEW DATE JUST حريمي White.webp",
+      "ROLEW DATE JUST حريمي Red.webp",
+      "ROLEW DATE JUST حريمي Blue.webp"
+    ]
   }
 ]
