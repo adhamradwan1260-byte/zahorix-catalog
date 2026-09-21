@@ -158,7 +158,7 @@
         </div>
 
         <button type="submit" class="submit-order-btn">
-          🚀 تأكيد وإرسال الطلب
+           تأكيد وإرسال الطلب
         </button>
       </form>
     </div>
@@ -350,9 +350,6 @@
               : ""
           }
 
-          <div class="card-contact-row">
-            <a class="btn call" href="tel:+${phone}">
-              ☎ اتصال
             </a>
             <a class="btn wa" target="_blank" rel="noopener noreferrer" href="https://wa.me/${phone}?text=${directWaMessage}">
               💬 واتساب
@@ -538,7 +535,7 @@
           return;
         }
         await navigator.clipboard.writeText(productUrl);
-        shareButton.textContent = "✅ تم نسخ الرابط";
+        shareButton.textContent = "تم نسخ الرابط";
         setTimeout(() => { shareButton.textContent = "🔗 مشاركة الساعة"; }, 2000);
       } catch (error) {
         if (error.name !== "AbortError") {
