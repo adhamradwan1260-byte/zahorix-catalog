@@ -7,6 +7,21 @@
   <title>ZAhorix Watches</title>
   <!-- ربط ملف التنسيقات الخارجي -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* تنسيق فلتر الأسعار ليناسب شريط التنقل */
+    .price-select-filter {
+      padding: 6px 12px;
+      border: 1px solid #c5a059;
+      border-radius: 20px;
+      background-color: #fff;
+      color: #111;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      margin-right: 5px;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,7 +63,7 @@
 
     </div>
 
-    <!-- الشريط الأفقي للأقسام المباشرة -->
+    <!-- الشريط الأفقي للأقسام المباشرة مع فلتر الأسعار -->
     <nav class="top-nav" aria-label="أقسام الكتالوج">
       <button type="button" class="nav-btn active" onclick="selectNavTab(this, 'all')">
         كل الساعات
@@ -65,6 +80,14 @@
       <button type="button" class="nav-btn" onclick="selectNavTab(this, 'حريمي')">
         حريمي
       </button>
+
+      <!-- فلتر الأسعار بجانب الأقسام -->
+      <select id="priceFilter" class="price-select-filter" onchange="filterByPrice()">
+        <option value="all">كل الأسعار</option>
+        <option value="100-300">من 100 إلى 300 جنيه</option>
+        <option value="300-600">من 300 إلى 600 جنيه</option>
+        <option value="600-1000">من 600 إلى 1000 جنيه</option>
+      </select>
     </nav>
 
   </header>
@@ -189,6 +212,8 @@
     let currentProduct = null;
 
     let selectedProductForOrder = null;
+
+    let currentCategory = 'all';
 
 
     /* أسماء البحث البديلة */
@@ -517,6 +542,7 @@
       document.getElementById("catalogView").hidden = false;
       document.getElementById("productView").hidden = true;
       document.getElementById("searchInput").value = "";
+      document.getElementById("priceFilter").value = "all";
 
       renderProducts(allProducts);
       document.title = "ZAhorix Watches";
@@ -618,7 +644,7 @@
       }
 
       if (normalizedValue === "") {
-        renderProducts(allProducts);
+        filterByPrice();
         return;
       }
 
@@ -649,7 +675,7 @@
         document.getElementById("productView").hidden = true;
         currentProduct = null;
       }
-      renderProducts(allProducts);
+      filterByPrice();
       searchInput.focus();
     }
 
@@ -658,11 +684,12 @@
     function selectNavTab(element, category) {
       document.querySelectorAll('.top-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
       if (element) element.classList.add('active');
+      currentCategory = category;
       filterProducts(category);
     }
 
 
-    /* فلترة الأقسام */
+    /* فلترة الأقسام والأسعار */
     function filterProducts(category) {
       document.getElementById("searchInput").value = "";
       currentProduct = null;
@@ -672,13 +699,32 @@
 
       window.history.pushState({}, "", window.location.pathname);
 
-      if (category === "all") {
-        renderProducts(allProducts);
-        return;
+      filterByPrice();
+    }
+
+
+    /* دالة الفلترة بنطاق الأسعار */
+    function filterByPrice() {
+      const priceVal = document.getElementById("priceFilter").value;
+
+      let filtered = allProducts;
+
+      if (currentCategory !== "all") {
+        filtered = filtered.filter(p => p.category === currentCategory);
       }
 
-      const filteredProducts = allProducts.filter(product => product.category === category);
-      renderProducts(filteredProducts);
+      if (priceVal !== "all") {
+        const [minStr, maxStr] = priceVal.split("-");
+        const min = Number(minStr);
+        const max = Number(maxStr);
+
+        filtered = filtered.filter(product => {
+          const priceNum = parseInt(product.price.replace(/[^\d]/g, ""), 10);
+          return !isNaN(priceNum) && priceNum >= min && priceNum <= max;
+        });
+      }
+
+      renderProducts(filtered);
     }
 
 
