@@ -76,20 +76,19 @@
       </button>
     </nav>
 
+    <!-- خانة البحث أصبحت داخل الهيدر مباشرة لتظهر فوراً تحت القائمة عند الضغط عليها حتى أثناء السكرول -->
+    <div class="search-panel" id="searchPanel">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="ابحث باسم الساعة بالعربي أو الإنجليزي..."
+        autocomplete="off"
+        oninput="searchProducts(this.value)"
+      >
+      <button type="button" onclick="clearSearch()">مسح</button>
+    </div>
+
   </header>
-
-
-  <!-- خانة البحث -->
-  <div class="search-panel" id="searchPanel">
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="ابحث باسم الساعة بالعربي أو الإنجليزي..."
-      autocomplete="off"
-      oninput="searchProducts(this.value)"
-    >
-    <button type="button" onclick="clearSearch()">مسح</button>
-  </div>
 
 
   <!-- صفحة الكتالوج الرئيسية -->
