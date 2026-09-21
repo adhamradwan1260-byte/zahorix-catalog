@@ -226,6 +226,29 @@ select {
 }
 
 
+/* Price Filter Select Element in Top Nav */
+
+.price-select-filter {
+  padding: 6px 12px;
+  border: 1px solid #c5a059;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.price-select-filter:hover,
+.price-select-filter:focus {
+  border-color: #b08d48;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
+}
+
+
 /* =========================
    Search Panel
 ========================= */
@@ -733,12 +756,17 @@ main {
   }
 
   .top-nav {
-    gap: 12px;
+    gap: 10px;
   }
 
   .top-nav .nav-btn {
     font-size: 13.5px;
     padding: 6px 2px;
+  }
+
+  .price-select-filter {
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   .grid {
@@ -777,6 +805,8 @@ main {
   }
 
 }
+
+
 /* =========================
    Order Modal Styling
 ========================= */
