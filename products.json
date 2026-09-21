@@ -280,5 +280,35 @@
       "ROLEW DATE JUST حريمي Gold.webp",
       "ROLEW DATE JUST حريمي Blue.webp"
     ]
+  },
+  {
+    "name": "Cartier Tank رجالي معدن",
+    "slug": "cartier-tank-metal",
+    "brand": "Cartier",
+    "oldPrice": "850 جنيه",
+    "price": "650 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة كارتير رجالي معدن أنيقة وفاخرة",
+    "badge": "جديد",
+    "colors": [
+      "مينا أبيض",
+      "مينا أسود"
+    ],
+    "keywords": [
+      "cartier",
+      "كارتير",
+      "كارتيه",
+      "كارتييه",
+      "معدن",
+      "رجالي معدن",
+      "تانك",
+      "tank",
+      "مينا أبيض",
+      "مينا أسود"
+    ],
+    "images": [
+      "Cartier رجالي معدن White Dial.webp",
+      "Cartier رجالي معدن Black Dial.webp"
+    ]
   }
 ]
