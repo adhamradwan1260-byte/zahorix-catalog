@@ -72,7 +72,6 @@
 
   <!-- خانة البحث -->
   <div class="search-panel" id="searchPanel">
-
     <input
       id="searchInput"
       type="search"
@@ -80,69 +79,44 @@
       autocomplete="off"
       oninput="searchProducts(this.value)"
     >
-
-    <button type="button" onclick="clearSearch()">
-      مسح
-    </button>
-
+    <button type="button" onclick="clearSearch()">مسح</button>
   </div>
 
 
   <!-- صفحة الكتالوج الرئيسية -->
   <main id="catalogView">
-
     <div id="products" class="grid"></div>
-
   </main>
 
 
   <!-- صفحة الساعة المنفردة -->
   <main id="productView" class="product-view" hidden>
-
     <div class="product-page-actions">
-
-      <button
-        class="back-button"
-        type="button"
-        onclick="showCatalog()"
-      >
+      <button class="back-button" type="button" onclick="showCatalog()">
         ← العودة لكل الساعات
       </button>
-
-      <button
-        class="share-button"
-        id="shareButton"
-        type="button"
-        onclick="shareCurrentProduct()"
-      >
+      <button class="share-button" id="shareButton" type="button" onclick="shareCurrentProduct()">
         🔗 مشاركة الساعة
       </button>
-
     </div>
-
     <div id="featuredProduct"></div>
-
     <section class="related-section">
-
-      <h2 class="related-title">
-        ساعات قد تعجبك أيضًا
-      </h2>
-
+      <h2 class="related-title">ساعات قد تعجبك أيضًا</h2>
       <div id="relatedProducts" class="grid related-grid"></div>
-
     </section>
-
   </main>
 
 
-  <!-- نافذة طلب الساعة (Order Modal) -->
-  <div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close-btn" type="button" onclick="closeOrderModal()">&times;</button>
-      <h3 class="modal-title">استمارة طلب ساعة</h3>
-      <p class="modal-subtitle" id="modalProductName">اسم الساعة</p>
+  <!-- صفحة استمارة الطلب المستقلة بالـ Slug -->
+  <main id="orderView" class="order-page-container" hidden>
+    <div class="order-card">
+      <button class="back-button" type="button" onclick="showCatalog()" style="margin-bottom: 15px;">
+        ← العودة للمتجر
+      </button>
+      <h2 class="order-title">استمارة طلب ساعة</h2>
+      <p class="order-subtitle" id="orderModalProductName">اسم الساعة</p>
 
-      <form id="orderForm" onsubmit="submitOrder(event)">
+      <form id="orderForm" class="order-form" onsubmit="submitOrder(event)">
         <div class="form-group">
           <label for="clientName">اسم العميل بالكامل *</label>
           <input type="text" id="clientName" required placeholder="أدخل اسمك الكريم">
@@ -150,7 +124,6 @@
 
         <div class="form-group">
           <label for="clientPhone">رقم الهاتف (للتواصل والتوصيل) *</label>
-
           <input type="tel" id="clientPhone" required placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
         </div>
 
@@ -176,7 +149,7 @@
 
         <div class="form-group">
           <label for="clientAddress">العنوان التفصيلي (المحافظة / المنطقة / الشارع) *</label>
-          <textarea id="clientAddress" rows="2" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
+          <textarea id="clientAddress" rows="3" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
         </div>
 
         <div class="form-group">
@@ -185,11 +158,11 @@
         </div>
 
         <button type="submit" class="submit-order-btn">
-          🚀 إرسال الطلب عبر الواتساب
+          🚀 تأكيد وإرسال الطلب
         </button>
       </form>
     </div>
-  </div>
+  </main>
 
 
   <!-- فوتر حقوق الملكية والتطوير -->
@@ -219,8 +192,6 @@
 
     /* أسماء البحث البديلة */
     const searchAliases = {
-
-      /* Rolex */
       "رولكس": "rolex",
       "روليكس": "rolex",
       "رولكس اويستر": "rolex oyster",
@@ -231,161 +202,114 @@
       "روليكس ستايل": "rolex style",
       "رولكس ازرق": "rolex style blue",
       "روليكس ازرق": "rolex style blue",
-
-      /* Cartier */
       "كارتير": "cartier",
       "كارتيه": "cartier",
       "كارتييه": "cartier",
       "كارتير تانك": "cartier tank",
       "كارتيه تانك": "cartier tank",
       "كارتييه تانك": "cartier tank",
-
-      /* Tissot */
       "تيسوت": "tissot",
       "تيسو": "tissot",
       "تيسوت كرونو": "tissot chrono",
       "تيسو كرونو": "tissot chrono",
-
-      /* Audemars Piguet */
       "اوديمار": "audemars",
       "اوديمارس": "audemars",
       "اوديمار بيجيه": "audemarspiguet",
       "اوديمار بيغيه": "audemarspiguet",
       "اوديمارس بيجيه": "audemarspiguet",
       "اي بي": "ap",
-
-      /* Categories */
       "ساعه جلد": "رجالي جلد",
       "ساعة جلد": "رجالي جلد",
       "ساعات جلد": "رجالي جلد",
       "جلد": "رجالي جلد",
-
       "ساعه معدن": "رجالي معدن",
       "ساعة معدن": "رجالي معدن",
       "ساعات معدن": "رجالي معدن",
       "معدن": "رجالي معدن",
-
       "حريمي": "حريمي",
       "ساعات حريمي": "حريمي",
       "نسائي": "حريمي",
       "ستاتي": "حريمي",
-
-      /* Features */
       "عدادات": "عدادات شغاله",
       "عدادات شغاله": "عدادات شغاله",
       "عدادات شغالة": "عدادات شغاله",
-
-      /* Suede */
       "شمواه": "suede",
       "رولكس شمواه": "suede rolex",
       "روليكس شمواه": "suede rolex"
-
     };
 
 
     /* تحميل بيانات الساعات */
     fetch("products.json")
       .then(response => {
-
-        if (!response.ok) {
-          throw new Error("تعذر تحميل بيانات الساعات");
-        }
-
+        if (!response.ok) throw new Error("تعذر تحميل بيانات الساعات");
         return response.json();
-
       })
       .then(products => {
-
         allProducts = products;
-
         loadPageFromUrl();
-
       })
       .catch(error => {
-
         console.error(error);
-
         document.getElementById("products").innerHTML = `
           <div class="no-results">
             حدث خطأ أثناء تحميل الساعات. حاول تحديث الصفحة.
           </div>
         `;
-
       });
 
 
-    /* معرفة هل الرابط يحتوي على ساعة معينة */
+    /* تتبع مسار الرابط (رئيسية، تفاصيل ساعة، أو صفحة طلب بالـ Slug) */
     function loadPageFromUrl() {
+      const urlParameters = new URLSearchParams(window.location.search);
+      const orderSlug = urlParameters.get("order");
+      const productSlug = urlParameters.get("product");
 
-      const urlParameters =
-        new URLSearchParams(window.location.search);
-
-      const productSlug =
-        urlParameters.get("product");
+      if (orderSlug) {
+        const product = allProducts.find(item => item.slug === orderSlug);
+        if (product) {
+          openOrderPage(product, false);
+          return;
+        }
+      }
 
       if (productSlug) {
-
-        const product = allProducts.find(
-          item => item.slug === productSlug
-        );
-
+        const product = allProducts.find(item => item.slug === productSlug);
         if (product) {
           renderProductPage(product, false);
           return;
         }
-
       }
 
       showCatalog(false);
-
     }
 
 
     /* إنشاء كارت ساعة */
     function createProductCard(product, options = {}) {
-
       const isFeatured = options.featured === true;
-
-      const images =
-        product.images || [product.image];
+      const images = product.images || [product.image];
 
       const directWaMessage = encodeURIComponent(
         `السلام عليكم أريد الاستفسار عن ساعة ${product.name} بسعر ${product.price}`
       );
 
-      const productLink =
-        `?product=${encodeURIComponent(product.slug)}`;
+      const productLink = `?product=${encodeURIComponent(product.slug)}`;
+      const orderLink = `?order=${encodeURIComponent(product.slug)}`;
 
       return `
         <article class="card ${isFeatured ? "featured-card" : ""}">
-
-          <div
-            class="slider"
-            data-product-slug="${product.slug}"
-            data-current-index="0"
-          >
-
-            ${
-              product.badge
-                ? `<span class="badge">${product.badge}</span>`
-                : ""
-            }
-
+          <div class="slider" data-product-slug="${product.slug}" data-current-index="0">
+            ${product.badge ? `<span class="badge">${product.badge}</span>` : ""}
             <img
               src="${images[0]}"
               class="product-img ${isFeatured ? "" : "clickable-product"}"
               alt="${product.name}"
               draggable="false"
               loading="${isFeatured ? "eager" : "lazy"}"
-              ${
-                isFeatured
-                  ? ""
-                  : `onclick="openProduct('${product.slug}')"`
-              }
+              ${isFeatured ? "" : `onclick="openProduct('${product.slug}')"`}
             >
-
             <div class="dots">
-
               ${images.map((image, imageIndex) => `
                 <button
                   class="dot ${imageIndex === 0 ? "active" : ""}"
@@ -394,9 +318,7 @@
                   aria-label="عرض الصورة ${imageIndex + 1}"
                 ></button>
               `).join("")}
-
             </div>
-
           </div>
 
           ${
@@ -404,47 +326,24 @@
               ? `<h1 class="product-title">${product.name}</h1>`
               : `
                 <h2>
-                  <a
-                    class="product-title-link"
-                    href="${productLink}"
-                  >
+                  <a class="product-title-link" href="${productLink}">
                     ${product.name}
                   </a>
                 </h2>
               `
           }
 
-          ${
-            product.subtitle
-              ? `<span class="subtitle">${product.subtitle}</span>`
-              : ""
-          }
+          ${product.subtitle ? `<span class="subtitle">${product.subtitle}</span>` : ""}
 
           <div class="price">
-
-            ${
-              product.oldPrice
-                ? `
-                  <span class="old-price">
-                    ${product.oldPrice}
-                  </span>
-                `
-                : ""
-            }
-
-            <span class="new-price">
-              ${product.price}
-            </span>
-
+            ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ""}
+            <span class="new-price">${product.price}</span>
           </div>
 
           ${
             !isFeatured
               ? `
-                <a
-                  class="product-details-button"
-                  href="${productLink}"
-                >
+                <a class="product-details-button" href="${productLink}">
                   عرض الساعة
                 </a>
               `
@@ -452,52 +351,35 @@
           }
 
           <div class="card-contact-row">
-            <a
-              class="btn call"
-              href="tel:+${phone}"
-            >
+            <a class="btn call" href="tel:+${phone}">
               ☎ اتصال
             </a>
-
-            <a
-              class="btn wa"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://wa.me/${phone}?text=${directWaMessage}"
-            >
+            <a class="btn wa" target="_blank" rel="noopener noreferrer" href="https://wa.me/${phone}?text=${directWaMessage}">
               💬 واتساب
             </a>
           </div>
 
-          <button
-            class="order"
-            type="button"
-            onclick="openOrderModal('${product.slug}')"
-          >
+          <a class="order" href="${orderLink}">
             🛒 اطلب الآن
-          </button>
-
+          </a>
         </article>
       `;
-
     }
 
 
-    /* فتح استمارة الطلب Modal */
-    function openOrderModal(productSlug) {
-
-      const product = allProducts.find(item => item.slug === productSlug);
-
-      if (!product) return;
-
+    /* الانتقال لصفحة الطلب المستقلة بالـ Slug */
+    function openOrderPage(product, updateHistory = true) {
       selectedProductForOrder = product;
 
-      document.getElementById("modalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
+      document.getElementById("catalogView").hidden = true;
+      document.getElementById("productView").hidden = true;
+      document.getElementById("orderView").hidden = false;
+      document.getElementById("searchPanel").classList.remove("open");
+
+      document.getElementById("orderModalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
 
       const colorSelect = document.getElementById("watchColor");
-
       colorSelect.innerHTML = "";
-
       const availableColors = product.colors || ["اللون الافتراضي"];
 
       availableColors.forEach(color => {
@@ -507,97 +389,49 @@
         colorSelect.appendChild(option);
       });
 
-      document.getElementById("orderModal").classList.add("active");
-
-      document.body.style.overflow = "hidden";
-
-    }
-
-
-    /* إغلاق استمارة الطلب Modal */
-    function closeOrderModal(event) {
-
-      if (event && event.target !== document.getElementById("orderModal") && !event.target.classList.contains("modal-close-btn")) {
-        return;
+      if (updateHistory) {
+        const orderUrl = `${window.location.pathname}?order=${encodeURIComponent(product.slug)}`;
+        window.history.pushState({ order: product.slug }, "", orderUrl);
       }
 
-      document.getElementById("orderModal").classList.remove("active");
-
-      document.body.style.overflow = "";
-
+      document.title = `طلب ${product.name} | ZAhorix Watches`;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
 
-    /* إرسال الطلب عبر الواتساب */
+    /* إرسال الطلب (يمكنك ربط هذا الفورم بخدمة مجانية مثل Formspree لكي يصلك الطلب على الإيميل أو يتم تخزينه مباشرة) */
     function submitOrder(event) {
-
       event.preventDefault();
 
       if (!selectedProductForOrder) return;
 
       const name = document.getElementById("clientName").value.trim();
-
       const phoneNum = document.getElementById("clientPhone").value.trim();
-
       const quantity = document.getElementById("watchQuantity").value;
-
       const color = document.getElementById("watchColor").value;
-
       const address = document.getElementById("clientAddress").value.trim();
-
       const notes = document.getElementById("clientNotes").value.trim();
 
-      let orderMessage = `*طلب جديد من موقع ZAhorix Watches* 🛒\n\n`;
+      // هنا يتم معالجة إرسال الطلب بدون فتح واتساب للعميل
+      alert(`شكراً لك يا ${name}! تم تسجيل طلبك بنجاح وسنقوم بالتواصل معك قريباً.`);
 
-      orderMessage += `📌 *اسم الساعة:* ${selectedProductForOrder.name}\n`;
-
-      orderMessage += `💰 *السعر:* ${selectedProductForOrder.price}\n`;
-
-      orderMessage += `🔢 *العدد:* ${quantity}\n`;
-
-      orderMessage += `🎨 *اللون المطلوب:* ${color}\n`;
-
-      orderMessage += `-----------------------------------\n`;
-
-      orderMessage += `👤 *اسم العميل:* ${name}\n`;
-
-      orderMessage += `📞 *رقم الهاتف:* ${phoneNum}\n`;
-
-      orderMessage += `📍 *العنوان:* ${address}\n`;
-
-      if (notes) {
-        orderMessage += `📝 *ملاحظات:* ${notes}\n`;
-      }
-
-      const encodedMessage = encodeURIComponent(orderMessage);
-
-      window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
-
-      closeOrderModal();
-
+      showCatalog();
       document.getElementById("orderForm").reset();
-
     }
 
 
     /* عرض مجموعة ساعات */
     function renderProducts(products) {
-
-      const productsBox =
-        document.getElementById("products");
-
+      const productsBox = document.getElementById("products");
       productsBox.innerHTML = "";
 
       if (products.length === 0) {
-
         productsBox.innerHTML = `
           <div class="no-results">
             لا توجد ساعات مطابقة لبحثك.
           </div>
         `;
-
         return;
-
       }
 
       productsBox.innerHTML = products
@@ -605,214 +439,92 @@
         .join("");
 
       initSwipe();
-
     }
 
 
     /* فتح صفحة ساعة معينة */
     function openProduct(productSlug) {
+      const product = allProducts.find(item => item.slug === productSlug);
+      if (!product) return;
 
-      const product = allProducts.find(
-        item => item.slug === productSlug
-      );
-
-      if (!product) {
-        return;
-      }
-
-      const productUrl =
-        `${window.location.pathname}?product=${encodeURIComponent(productSlug)}`;
-
-      window.history.pushState(
-        { product: productSlug },
-        "",
-        productUrl
-      );
-
+      const productUrl = `${window.location.pathname}?product=${encodeURIComponent(productSlug)}`;
+      window.history.pushState({ product: productSlug }, "", productUrl);
       renderProductPage(product, false);
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
 
     /* عرض صفحة الساعة */
     function renderProductPage(product, updateHistory = true) {
-
       currentProduct = product;
 
-      const catalogView =
-        document.getElementById("catalogView");
+      document.getElementById("catalogView").hidden = true;
+      document.getElementById("productView").hidden = false;
+      document.getElementById("orderView").hidden = true;
+      document.getElementById("searchPanel").classList.remove("open");
 
-      const productView =
-        document.getElementById("productView");
+      document.getElementById("featuredProduct").innerHTML =
+        createProductCard(product, { featured: true });
 
-      const featuredProduct =
-        document.getElementById("featuredProduct");
-
-      const relatedProductsBox =
-        document.getElementById("relatedProducts");
-
-      const searchPanel =
-        document.getElementById("searchPanel");
-
-      catalogView.hidden = true;
-
-      productView.hidden = false;
-
-      searchPanel.classList.remove("open");
-
-      featuredProduct.innerHTML =
-        createProductCard(product, {
-          featured: true
-        });
-
-      const relatedProducts =
-        getRelatedProducts(product);
-
-      relatedProductsBox.innerHTML = relatedProducts
+      const relatedProducts = getRelatedProducts(product);
+      document.getElementById("relatedProducts").innerHTML = relatedProducts
         .map(item => createProductCard(item))
         .join("");
 
       if (updateHistory) {
-
-        const productUrl =
-          `${window.location.pathname}?product=${encodeURIComponent(product.slug)}`;
-
-        window.history.pushState(
-          { product: product.slug },
-          "",
-          productUrl
-        );
-
+        const productUrl = `${window.location.pathname}?product=${encodeURIComponent(product.slug)}`;
+        window.history.pushState({ product: product.slug }, "", productUrl);
       }
 
-      document.title =
-        `${product.name} | ZAhorix Watches`;
-
+      document.title = `${product.name} | ZAhorix Watches`;
       initSwipe();
-
     }
 
 
     /* ترتيب الساعات المقترحة */
     function getRelatedProducts(selectedProduct) {
-
       return allProducts
-        .filter(product =>
-          product.slug !== selectedProduct.slug
-        )
-        .sort((firstProduct, secondProduct) => {
-
-          const firstScore =
-            getRelatedProductScore(
-              firstProduct,
-              selectedProduct
-            );
-
-          const secondScore =
-            getRelatedProductScore(
-              secondProduct,
-              selectedProduct
-            );
-
-          return secondScore - firstScore;
-
+        .filter(product => product.slug !== selectedProduct.slug)
+        .sort((first, second) => {
+          let score1 = (first.brand === selectedProduct.brand ? 10 : 0) + (first.category === selectedProduct.category ? 5 : 0);
+          let score2 = (second.brand === selectedProduct.brand ? 10 : 0) + (second.category === selectedProduct.category ? 5 : 0);
+          return score2 - score1;
         });
-
-    }
-
-
-    /* حساب أولوية المنتج المقترح */
-    function getRelatedProductScore(product, selectedProduct) {
-
-      let score = 0;
-
-      if (
-        product.brand &&
-        selectedProduct.brand &&
-        product.brand === selectedProduct.brand
-      ) {
-        score += 10;
-      }
-
-      if (
-        product.category &&
-        selectedProduct.category &&
-        product.category === selectedProduct.category
-      ) {
-        score += 5;
-      }
-
-      return score;
-
     }
 
 
     /* العودة لكل الساعات */
     function showCatalog(updateHistory = true) {
-
       currentProduct = null;
+      selectedProductForOrder = null;
 
-      const catalogView =
-        document.getElementById("catalogView");
-
-      const productView =
-        document.getElementById("productView");
-
-      const searchInput =
-        document.getElementById("searchInput");
-
-      catalogView.hidden = false;
-
-      productView.hidden = true;
-
-      searchInput.value = "";
+      document.getElementById("catalogView").hidden = false;
+      document.getElementById("productView").hidden = true;
+      document.getElementById("orderView").hidden = true;
+      document.getElementById("searchInput").value = "";
 
       renderProducts(allProducts);
-
       document.title = "ZAhorix Watches";
 
-      /* إعادة ضبط القسم النشط إلى الأول (كل الساعات) */
       document.querySelectorAll('.top-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
       const firstNavBtn = document.querySelector('.top-nav .nav-btn');
-      if (firstNavBtn) {
-        firstNavBtn.classList.add('active');
-      }
+      if (firstNavBtn) firstNavBtn.classList.add('active');
 
       if (updateHistory) {
-
-        window.history.pushState(
-          {},
-          "",
-          window.location.pathname
-        );
-
+        window.history.pushState({}, "", window.location.pathname);
       }
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
 
     /* مشاركة رابط الساعة */
     async function shareCurrentProduct() {
+      if (!currentProduct) return;
 
-      if (!currentProduct) {
-        return;
-      }
-
-      const shareButton =
-        document.getElementById("shareButton");
-
-      const productUrl =
-        `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(currentProduct.slug)}`;
+      const shareButton = document.getElementById("shareButton");
+      const productUrl = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(currentProduct.slug)}`;
 
       const shareData = {
         title: currentProduct.name,
@@ -821,68 +533,37 @@
       };
 
       try {
-
         if (navigator.share) {
-
           await navigator.share(shareData);
-
           return;
-
         }
-
         await navigator.clipboard.writeText(productUrl);
-
         shareButton.textContent = "✅ تم نسخ الرابط";
-
-        setTimeout(() => {
-          shareButton.textContent = "🔗 مشاركة الساعة";
-        }, 2000);
-
+        setTimeout(() => { shareButton.textContent = "🔗 مشاركة الساعة"; }, 2000);
       } catch (error) {
-
         if (error.name !== "AbortError") {
-
-          window.prompt(
-            "انسخ رابط الساعة:",
-            productUrl
-          );
-
+          window.prompt("انسخ رابط الساعة:", productUrl);
         }
-
       }
-
     }
 
 
     /* فتح وإغلاق البحث */
     function toggleSearch() {
+      const searchPanel = document.getElementById("searchPanel");
+      const searchInput = document.getElementById("searchInput");
 
-      const searchPanel =
-        document.getElementById("searchPanel");
-
-      const searchInput =
-        document.getElementById("searchInput");
-
-      if (currentProduct) {
-        showCatalog();
-      }
+      if (currentProduct) showCatalog();
 
       searchPanel.classList.toggle("open");
-
       if (searchPanel.classList.contains("open")) {
-
-        setTimeout(() => {
-          searchInput.focus();
-        }, 100);
-
+        setTimeout(() => { searchInput.focus(); }, 100);
       }
-
     }
 
 
     /* توحيد طريقة كتابة كلمات البحث */
     function normalizeSearchText(text) {
-
       return String(text || "")
         .toLowerCase()
         .trim()
@@ -894,365 +575,178 @@
         .replace(/[\u064B-\u065F]/g, "")
         .replace(/[()_-]/g, " ")
         .replace(/\s+/g, " ");
-
     }
 
 
     /* استخراج الكلمات المقابلة للبحث العربي */
     function getSearchTerms(searchValue) {
-
-      const normalizedValue =
-        normalizeSearchText(searchValue);
-
+      const normalizedValue = normalizeSearchText(searchValue);
       const searchTerms = [normalizedValue];
 
-      Object.entries(searchAliases).forEach(
-        ([arabicName, englishName]) => {
-
-          const normalizedArabicName =
-            normalizeSearchText(arabicName);
-
-          const normalizedEnglishName =
-            normalizeSearchText(englishName);
-
-          if (
-            normalizedArabicName.includes(normalizedValue) ||
-            normalizedValue.includes(normalizedArabicName)
-          ) {
-            searchTerms.push(normalizedEnglishName);
-          }
-
+      Object.entries(searchAliases).forEach(([arabicName, englishName]) => {
+        if (normalizeSearchText(arabicName).includes(normalizedValue) || normalizedValue.includes(normalizeSearchText(arabicName))) {
+          searchTerms.push(normalizeSearchText(englishName));
         }
-      );
+      });
 
       return [...new Set(searchTerms)];
-
     }
 
 
     /* البحث بالعربي والإنجليزي */
     function searchProducts(searchValue) {
-
-      const normalizedValue =
-        normalizeSearchText(searchValue);
+      const normalizedValue = normalizeSearchText(searchValue);
 
       if (currentProduct) {
-
         document.getElementById("catalogView").hidden = false;
-
         document.getElementById("productView").hidden = true;
-
         currentProduct = null;
-
       }
 
       if (normalizedValue === "") {
-
         renderProducts(allProducts);
-
         return;
-
       }
 
-      const searchTerms =
-        getSearchTerms(searchValue);
-
-      const filteredProducts =
-        allProducts.filter(product => {
-
-          const productKeywords =
-            Array.isArray(product.keywords)
-              ? product.keywords.join(" ")
-              : "";
-
-          const searchableText =
-            normalizeSearchText(`
-              ${product.name || ""}
-              ${product.brand || ""}
-              ${product.category || ""}
-              ${product.subtitle || ""}
-              ${product.badge || ""}
-              ${productKeywords}
-            `);
-
-          return searchTerms.some(term =>
-            searchableText.includes(term)
-          );
-
-        });
+      const searchTerms = getSearchTerms(searchValue);
+      const filteredProducts = allProducts.filter(product => {
+        const productKeywords = Array.isArray(product.keywords) ? product.keywords.join(" ") : "";
+        const searchableText = normalizeSearchText(`
+          ${product.name || ""}
+          ${product.brand || ""}
+          ${product.category || ""}
+          ${product.subtitle || ""}
+          ${product.badge || ""}
+          ${productKeywords}
+        `);
+        return searchTerms.some(term => searchableText.includes(term));
+      });
 
       renderProducts(filteredProducts);
-
     }
 
 
     /* مسح البحث */
     function clearSearch() {
-
-      const searchInput =
-        document.getElementById("searchInput");
-
+      const searchInput = document.getElementById("searchInput");
       searchInput.value = "";
-
       if (currentProduct) {
-
         document.getElementById("catalogView").hidden = false;
-
         document.getElementById("productView").hidden = true;
-
         currentProduct = null;
-
       }
-
       renderProducts(allProducts);
-
       searchInput.focus();
-
     }
 
 
     /* اختيار وتحديد القسم النشط */
     function selectNavTab(element, category) {
-
-      document.querySelectorAll('.top-nav .nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      if (element) {
-        element.classList.add('active');
-      }
-
+      document.querySelectorAll('.top-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
+      if (element) element.classList.add('active');
       filterProducts(category);
-
     }
 
 
     /* فلترة الأقسام */
     function filterProducts(category) {
-
-      const searchInput =
-        document.getElementById("searchInput");
-
-      searchInput.value = "";
-
+      document.getElementById("searchInput").value = "";
       currentProduct = null;
 
       document.getElementById("catalogView").hidden = false;
-
       document.getElementById("productView").hidden = true;
+      document.getElementById("orderView").hidden = true;
 
-      window.history.pushState(
-        {},
-        "",
-        window.location.pathname
-      );
+      window.history.pushState({}, "", window.location.pathname);
 
       if (category === "all") {
-
         renderProducts(allProducts);
-
         return;
-
       }
 
-      const filteredProducts =
-        allProducts.filter(
-          product => product.category === category
-        );
-
+      const filteredProducts = allProducts.filter(product => product.category === category);
       renderProducts(filteredProducts);
-
     }
 
 
     /* تغيير صورة الساعة */
     function changeImg(slider, imageIndex) {
+      if (!slider) return;
+      const productSlug = slider.dataset.productSlug;
+      const product = allProducts.find(item => item.slug === productSlug);
+      if (!product) return;
 
-      if (!slider) {
-        return;
-      }
+      const images = product.images || [product.image];
+      const imageElement = slider.querySelector(".product-img");
+      const dots = slider.querySelectorAll(".dot");
 
-      const productSlug =
-        slider.dataset.productSlug;
+      imageElement.src = images[imageIndex];
+      slider.dataset.currentIndex = imageIndex;
 
-      const product =
-        allProducts.find(
-          item => item.slug === productSlug
-        );
-
-      if (!product) {
-        return;
-      }
-
-      const images =
-        product.images || [product.image];
-
-      const imageElement =
-        slider.querySelector(".product-img");
-
-      const dots =
-        slider.querySelectorAll(".dot");
-
-      imageElement.src =
-        images[imageIndex];
-
-      slider.dataset.currentIndex =
-        imageIndex;
-
-      dots.forEach(dot => {
-        dot.classList.remove("active");
-      });
-
-      if (dots[imageIndex]) {
-        dots[imageIndex].classList.add("active");
-      }
-
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[imageIndex]) dots[imageIndex].classList.add("active");
     }
 
 
     /* الصورة التالية */
     function nextImg(slider) {
+      const productSlug = slider.dataset.productSlug;
+      const product = allProducts.find(item => item.slug === productSlug);
+      if (!product) return;
 
-      const productSlug =
-        slider.dataset.productSlug;
-
-      const product =
-        allProducts.find(
-          item => item.slug === productSlug
-        );
-
-      if (!product) {
-        return;
-      }
-
-      const images =
-        product.images || [product.image];
-
-      let currentIndex =
-        Number(slider.dataset.currentIndex || 0);
-
+      const images = product.images || [product.image];
+      let currentIndex = Number(slider.dataset.currentIndex || 0);
       currentIndex++;
-
-      if (currentIndex >= images.length) {
-        currentIndex = 0;
-      }
-
+      if (currentIndex >= images.length) currentIndex = 0;
       changeImg(slider, currentIndex);
-
     }
 
 
     /* الصورة السابقة */
     function prevImg(slider) {
+      const productSlug = slider.dataset.productSlug;
+      const product = allProducts.find(item => item.slug === productSlug);
+      if (!product) return;
 
-      const productSlug =
-        slider.dataset.productSlug;
-
-      const product =
-        allProducts.find(
-          item => item.slug === productSlug
-        );
-
-      if (!product) {
-        return;
-      }
-
-      const images =
-        product.images || [product.image];
-
-      let currentIndex =
-        Number(slider.dataset.currentIndex || 0);
-
+      const images = product.images || [product.image];
+      let currentIndex = Number(slider.dataset.currentIndex || 0);
       currentIndex--;
-
-      if (currentIndex < 0) {
-        currentIndex = images.length - 1;
-      }
-
+      if (currentIndex < 0) currentIndex = images.length - 1;
       changeImg(slider, currentIndex);
-
     }
 
 
     /* السحب بين الصور على الموبايل */
     function initSwipe() {
-
       document.querySelectorAll(".slider").forEach(slider => {
-
-        if (slider.dataset.swipeReady === "true") {
-          return;
-        }
-
+        if (slider.dataset.swipeReady === "true") return;
         slider.dataset.swipeReady = "true";
 
         let startX = 0;
         let endX = 0;
-        let didSwipe = false;
 
-        slider.addEventListener(
-          "touchstart",
-          event => {
+        slider.addEventListener("touchstart", event => {
+          startX = event.touches[0].clientX;
+          endX = startX;
+        }, { passive: true });
 
-            startX =
-              event.touches[0].clientX;
+        slider.addEventListener("touchmove", event => {
+          endX = event.touches[0].clientX;
+        }, { passive: true });
 
-            endX = startX;
-
-            didSwipe = false;
-
-          },
-          { passive: true }
-        );
-
-        slider.addEventListener(
-          "touchmove",
-          event => {
-
-            endX =
-              event.touches[0].clientX;
-
-            if (Math.abs(startX - endX) > 15) {
-              didSwipe = true;
-            }
-
-          },
-          { passive: true }
-        );
-
-        slider.addEventListener(
-          "touchend",
-          () => {
-
-            const difference =
-              startX - endX;
-
-            if (Math.abs(difference) > 40) {
-
-              if (difference > 0) {
-                nextImg(slider);
-              } else {
-                prevImg(slider);
-              }
-
-            }
-
-            setTimeout(() => {
-              didSwipe = false;
-            }, 100);
-
+        slider.addEventListener("touchend", () => {
+          const difference = startX - endX;
+          if (Math.abs(difference) > 40) {
+            if (difference > 0) nextImg(slider);
+            else prevImg(slider);
           }
-        );
-
+        });
       });
-
     }
 
 
     /* زر الرجوع في المتصفح */
-    window.addEventListener(
-      "popstate",
-      loadPageFromUrl
-    );
+    window.addEventListener("popstate", loadPageFromUrl);
 
   </script>
 
