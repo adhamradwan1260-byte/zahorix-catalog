@@ -17,11 +17,12 @@
       "ساعة معدن"
     ],
     "images": [
-      "ROLEX LAND DWELLER رجالي معدن Light Blue.webp",
-      "ROLEX LAND DWELLER رجالي معدن Black.webp",
-      "ROLEX LAND DWELLER رجالي معدن Silver.webp",
-      "ROLEX LAND DWELLER رجالي معدن Back.webp",
-      "ROLEX LAND DWELLER رجالي معدن Bracelet.webp"
+      "rolex-style-blue-1-front.png",
+      "rolex-style-blue-2-angle.png",
+      "rolex-style-blue-3-side.png",
+      "rolex-style-blue-4-back.png",
+      "rolex-style-blue-5-clasp.png",
+      "rolex-style-blue-6-profile.png"
     ]
   },
   {
@@ -255,7 +256,7 @@
     "oldPrice": "500 جنيه",
     "price": "400 جنيه",
     "category": "حريمي",
-    "subtitle": "تصميم ديت جَست الشهير ",
+    "subtitle": "تصميم ديت جَست الشهير - أنيق وفاخر",
     "badge": "جديد",
     "colors": ["ذهبي", "أبيض", "أحمر", "أزرق"],
     "keywords": [
@@ -284,9 +285,10 @@
     "name": "Cartier Tank",
     "slug": "cartier-tank-metal",
     "brand": "Cartier",
-    "oldPrice": "850 جنيه",
-    "price": "650 جنيه",
+    "oldPrice": "650 جنيه",
+    "price": "450 جنيه",
     "category": "رجالي معدن",
+    "subtitle": "ساعة كارتير رجالي معدن أنيقة وفاخرة",
     "badge": "جديد",
     "colors": [
       "مينا أبيض",
@@ -307,6 +309,34 @@
     "images": [
       "Cartier رجالي معدن White Dial.webp",
       "Cartier رجالي معدن Black Dial.webp"
+    ]
+  },
+  {
+    "name": "GUESS Marina",
+    "slug": "guess-marina-women",
+    "brand": "Guess",
+    "oldPrice": "500 جنيه",
+    "price": "299 جنيه",
+    "category": "حريمي",
+    "subtitle": "متوفرة باللون الأخضر والبرتقالي",
+    "colors": [
+      "أخضر",
+      "برتقالي"
+    ],
+    "keywords": [
+      "guess",
+      "جس",
+      "جيس",
+      "marina",
+      "مارينا",
+      "حريمي",
+      "ساعة حريمي",
+      "أخضر",
+      "برتقالي"
+    ],
+    "images": [
+      "GUESS Marina حريمي Green.webp",
+      "GUESS Marina حريمي Orange.webp"
     ]
   }
 ]
