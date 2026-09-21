@@ -114,21 +114,24 @@
       <p class="modal-subtitle" id="modalProductName" style="font-size: 18px; margin-top: 10px;">اسم الساعة</p>
 
       <form id="orderForm" onsubmit="submitOrder(event)">
+        <!-- حقول مخفية لتمرير بيانات الساعة وسعرها -->
+        <input type="hidden" id="watchNameInput" name="اسم الساعة">
+        <input type="hidden" id="watchPriceInput" name="سعر الساعة">
+
         <div class="form-group">
           <label for="clientName">اسم العميل بالكامل *</label>
-
-          <input type="text" id="clientName" required placeholder="أدخل الاسم">
+          <input type="text" id="clientName" name="اسم العميل" required placeholder="أدخل الاسم">
         </div>
 
         <div class="form-group">
           <label for="clientPhone">رقم الهاتف (للتواصل والتوصيل) *</label>
-          <input type="tel" id="clientPhone" required placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
+          <input type="tel" id="clientPhone" name="رقم الهاتف" required placeholder="01XXXXXXXXX" pattern="[0-9]{11}">
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="watchQuantity">عدد الساعات *</label>
-            <select id="watchQuantity" required>
+            <select id="watchQuantity" name="الكمية" required>
               <option value="1">1 قطعة</option>
               <option value="2">2 قطعة</option>
               <option value="3">3 قطع</option>
@@ -139,7 +142,7 @@
 
           <div class="form-group">
             <label for="watchColor">لون الساعة *</label>
-            <select id="watchColor" required>
+            <select id="watchColor" name="اللون" required>
               <!-- يتم ملء الخيارات تلقائياً -->
             </select>
           </div>
@@ -147,16 +150,15 @@
 
         <div class="form-group">
           <label for="clientAddress">العنوان التفصيلي (المحافظة / المنطقة / الشارع) *</label>
-
-          <textarea id="clientAddress" rows="2" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
+          <textarea id="clientAddress" name="العنوان" rows="2" required placeholder="مثال: القاهرة - نصر سيتي - شارع مصطفى النحاس عمارة 12"></textarea>
         </div>
 
         <div class="form-group">
           <label for="clientNotes">ملاحظات إضافية (اختياري)</label>
-          <input type="text" id="clientNotes" placeholder="أي تفاصيل أخرى تخص الشحن">
+          <input type="text" id="clientNotes" name="ملاحظات" placeholder="أي تفاصيل أخرى تخص الشحن">
         </div>
 
-        <button type="submit" class="submit-order-btn">
+        <button type="submit" class="submit-order-btn" id="submitBtn">
           تأكيد وإرسال الطلب
         </button>
       </form>
@@ -361,6 +363,10 @@
       selectedProductForOrder = product;
 
       document.getElementById("modalProductName").textContent = `ساعة ${product.name} (بسعر ${product.price})`;
+      
+      // تعبئة البيانات المخفية للساعة
+      document.getElementById("watchNameInput").value = product.name;
+      document.getElementById("watchPriceInput").value = product.price;
 
       const colorSelect = document.getElementById("watchColor");
       colorSelect.innerHTML = "";
@@ -389,23 +395,45 @@
     }
 
 
-    /* إرسال الطلب */
-    function submitOrder(event) {
+    /* إرسال الطلب عبر Formspree بدون إعادة توجيه الصفحة */
+    async function submitOrder(event) {
       event.preventDefault();
 
       if (!selectedProductForOrder) return;
 
-      const name = document.getElementById("clientName").value.trim();
-      const phoneNum = document.getElementById("clientPhone").value.trim();
-      const quantity = document.getElementById("watchQuantity").value;
-      const color = document.getElementById("watchColor").value;
-      const address = document.getElementById("clientAddress").value.trim();
-      const notes = document.getElementById("clientNotes").value.trim();
+      const form = event.target;
+      const submitBtn = document.getElementById("submitBtn");
+      const originalBtnText = submitBtn.textContent;
 
-      alert(`شكراً لك يا ${name}! تم تسجيل طلبك بنجاح وسنقوم بالتواصل معك قريباً.`);
+      submitBtn.disabled = true;
+      submitBtn.textContent = "جاري إرسال الطلب...";
 
-      closeOrderModal();
-      document.getElementById("orderForm").reset();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://formspree.io/f/moevddlz", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const clientName = document.getElementById("clientName").value.trim();
+          alert(`شكراً لك يا ${clientName}! تم تسجيل طلبك بنجاح وسنقوم بالتواصل معك قريباً.`);
+          closeOrderModal();
+          form.reset();
+        } else {
+          alert("حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى أو التواصل معنا عبر واتساب.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("حدث خطأ في الاتصال بالشبكة، يرجى إعادة المحاولة.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     }
 
 
