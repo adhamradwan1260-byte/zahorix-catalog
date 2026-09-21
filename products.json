@@ -312,8 +312,8 @@
     ]
   },
   {
-    "name": "GUESS Oval",
-    "slug": "guess-Oval-women",
+    "name": "GUESS Marina",
+    "slug": "guess-marina-women",
     "brand": "Guess",
     "oldPrice": "500 جنيه",
     "price": "299 جنيه",
@@ -327,7 +327,7 @@
       "guess",
       "جس",
       "جيس",
-      "Oval",
+      "marina",
       "مارينا",
       "حريمي",
       "ساعة حريمي",
@@ -340,13 +340,14 @@
     ]
   },
   {
-    "name": "GUESS Rectangle",
+    "name": "GUESS Rectangle حريمي",
     "slug": "guess-rectangle-women",
     "brand": "Guess",
     "oldPrice": "500 جنيه",
-    "price": "350 جنيه",
+    "price": "299 جنيه",
     "category": "حريمي",
-    "subtitle": "متوفرة باللون الوردي والأبيض",
+    "subtitle": "تصميم مستطيل أنيق - متوفرة باللون الوردي والأبيض",
+    "badge": "جديد",
     "colors": [
       "وردي",
       "أبيض"
@@ -366,6 +367,34 @@
     "images": [
       "GUESS Rectangle حريمي Pink.webp",
       "GUESS Rectangle حريمي White.webp"
+    ]
+  },
+  {
+    "name": "Carbon رجالي معدن",
+    "slug": "carbon-men-metal",
+    "brand": "Carbon",
+    "oldPrice": "650 جنيه",
+    "price": "450 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة كاربون رجالي معدن أنيقة - متوفرة باللون الأسود والأبيض",
+    "badge": "جديد",
+    "colors": [
+      "مينا أسود",
+      "مينا أبيض"
+    ],
+    "keywords": [
+      "carbon",
+      "كاربون",
+      "كاربن",
+      "معدن",
+      "رجالي معدن",
+      "ساعة رجالي",
+      "مينا أسود",
+      "مينا أبيض"
+    ],
+    "images": [
+      "Carbon رجالي معدن Black.webp",
+      "Carbon رجالي معدن White.webp"
     ]
   }
 ]
