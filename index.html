@@ -7,21 +7,6 @@
   <title>ZAhorix Watches</title>
   <!-- ربط ملف التنسيقات الخارجي -->
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* تنسيق فلتر الأسعار ليناسب شريط التنقل */
-    .price-select-filter {
-      padding: 6px 12px;
-      border: 1px solid #c5a059;
-      border-radius: 20px;
-      background-color: #fff;
-      color: #111;
-      font-size: 14px;
-      font-family: inherit;
-      cursor: pointer;
-      outline: none;
-      margin-right: 5px;
-    }
-  </style>
 </head>
 
 <body>
@@ -63,8 +48,17 @@
 
     </div>
 
-    <!-- الشريط الأفقي للأقسام المباشرة مع فلتر الأسعار -->
+    <!-- الشريط الأفقي للأقسام المباشرة -->
     <nav class="top-nav" aria-label="أقسام الكتالوج">
+
+      <!-- فلتر الأسعار على اليمين مباشرة قبل "كل الساعات" وتحت زرار البحث -->
+      <select id="priceFilter" class="price-select-filter" onchange="filterByPrice()">
+        <option value="all">كل الأسعار</option>
+        <option value="100-300">100 : 300 ج</option>
+        <option value="300-600">300 : 600 ج</option>
+        <option value="600-1000">600 : 1000 ج</option>
+      </select>
+
       <button type="button" class="nav-btn active" onclick="selectNavTab(this, 'all')">
         كل الساعات
       </button>
@@ -80,14 +74,6 @@
       <button type="button" class="nav-btn" onclick="selectNavTab(this, 'حريمي')">
         حريمي
       </button>
-
-      <!-- فلتر الأسعار بجانب الأقسام -->
-      <select id="priceFilter" class="price-select-filter" onchange="filterByPrice()">
-        <option value="all">كل الأسعار</option>
-        <option value="100-300">من 100 إلى 300 جنيه</option>
-        <option value="300-600">من 300 إلى 600 جنيه</option>
-        <option value="600-1000">من 600 إلى 1000 جنيه</option>
-      </select>
     </nav>
 
   </header>
@@ -538,6 +524,7 @@
     /* العودة لكل الساعات */
     function showCatalog(updateHistory = true) {
       currentProduct = null;
+      currentCategory = 'all';
 
       document.getElementById("catalogView").hidden = false;
       document.getElementById("productView").hidden = true;
@@ -685,11 +672,14 @@
       document.querySelectorAll('.top-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
       if (element) element.classList.add('active');
       currentCategory = category;
+      
+      // إرجاع خيار الفلتر إلى "كل الأسعار" تلقائياً لضمان ظهور كل منتجات القسم
+      document.getElementById("priceFilter").value = "all";
       filterProducts(category);
     }
 
 
-    /* فلترة الأقسام والأسعار */
+    /* فلترة الأقسام */
     function filterProducts(category) {
       document.getElementById("searchInput").value = "";
       currentProduct = null;
@@ -699,7 +689,13 @@
 
       window.history.pushState({}, "", window.location.pathname);
 
-      filterByPrice();
+      if (category === "all") {
+        renderProducts(allProducts);
+        return;
+      }
+
+      const filteredProducts = allProducts.filter(product => product.category === category);
+      renderProducts(filteredProducts);
     }
 
 
