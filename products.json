@@ -395,5 +395,119 @@
       "Carbon رجالي معدن Black.webp",
       "Carbon رجالي معدن White.webp"
     ]
+  },
+  {
+    "name": "TISSOT معدن رجالي",
+    "slug": "tissot-men-metal",
+    "brand": "Tissot",
+    "oldPrice": "900 جنيه",
+    "price": "700 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة تيسوت رجالي معدن أنيقة - متوفرة بألوان متعددة",
+    "badge": "جديد",
+    "colors": [
+      "مينا أسود",
+      "مينا أبيض",
+      "مينا أزرق"
+    ],
+    "keywords": [
+      "tissot",
+      "تيسوت",
+      "تيسو",
+      "معدن",
+      "رجالي معدن",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "TISSOT معدن رجالي Black.webp",
+      "TISSOT معدن رجالي White.webp",
+      "TISSOT معدن رجالي Blue.webp"
+    ]
+  },
+  {
+    "name": "PATEK PHILIPPE أرقام عربي رجالي معدن",
+    "slug": "patek-philippe-arabic-numerals",
+    "brand": "Patek Philippe",
+    "oldPrice": "950 جنيه",
+    "price": "750 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة باتيك فيليب بأرقام عربية مميزة - رجالي معدن",
+    "badge": "جديد",
+    "colors": [
+      "مينا أبيض",
+      "مينا أزرق",
+      "مينا أسود"
+    ],
+    "keywords": [
+      "patek philippe",
+      "باتيك فيليب",
+      "أرقام عربية",
+      "عربي",
+      "معدن",
+      "رجالي معدن",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "PATEK PHILIPPE ارقام عربي رجالي معدن White.webp",
+      "PATEK PHILIPPE ارقام عربي رجالي معدن Blue.webp",
+      "PATEK PHILIPPE ارقام عربي رجالي معدن Black.webp"
+    ]
+  },
+  {
+    "name": "PATEK PHILIPPE رجالي معدن",
+    "slug": "patek-philippe-men-metal",
+    "brand": "Patek Philippe",
+    "oldPrice": "900 جنيه",
+    "price": "699 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة باتيك فيليب رجالي معدن فاخرة - متوفرة بألوان متعددة",
+    "badge": "جديد",
+    "colors": [
+      "مينا أزرق",
+      "مينا أبيض",
+      "مينا أسود"
+    ],
+    "keywords": [
+      "patek philippe",
+      "باتيك فيليب",
+      "باتيك",
+      "معدن",
+      "رجالي معدن",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "PATEK PHILIPPE رجالي معدن Blue.webp",
+      "PATEK PHILIPPE رجالي معدن White.webp",
+      "PATEK PHILIPPE رجالي معدن Black.webp"
+    ]
+  },
+  {
+    "name": "OMEGA رجالي معدن",
+    "slug": "omega-men-metal",
+    "brand": "Omega",
+    "oldPrice": "800 جنيه",
+    "price": "600 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة أوميجا رجالي معدن أنيقة - متوفرة باللون الأخضر والأزرق",
+    "badge": "جديد",
+    "colors": [
+      "مينا أخضر",
+      "مينا أزرق"
+    ],
+    "keywords": [
+      "omega",
+      "أوميجا",
+      "اوميجا",
+      "معدن",
+      "رجالي معدن",
+      "ساعة رجالي",
+      "أخضر",
+      "أزرق"
+    ],
+    "images": [
+      "OMEGA رجالي معدن Green.webp",
+      "OMEGA رجالي معدن Blue.webp",
+      "OMEGA رجالي معدن Back.webp"
+    ]
   }
 ]
