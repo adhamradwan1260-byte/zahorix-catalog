@@ -397,13 +397,12 @@
     ]
   },
   {
-    "name": "TISSOT معدن رجالي",
+    "name": "TISSOT معدن",
     "slug": "tissot-men-metal",
     "brand": "Tissot",
-    "oldPrice": "900 جنيه",
-    "price": "700 جنيه",
+    "oldPrice": "650 جنيه",
+    "price": "450 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة تيسوت رجالي معدن أنيقة - متوفرة بألوان متعددة",
     "badge": "جديد",
     "colors": [
       "مينا أسود",
@@ -419,19 +418,19 @@
       "ساعة رجالي"
     ],
     "images": [
-      "TISSOT معدن رجالي Black.webp",
-      "TISSOT معدن رجالي White.webp",
-      "TISSOT معدن رجالي Blue.webp"
+      "TISSOT معدن رجالي معدن Blue.webp",
+      "TISSOT معدن رجالي معدن Black.webp",
+      "TISSOT معدن رجالي معدن White.webp"
     ]
   },
   {
-    "name": "PATEK PHILIPPE أرقام عربي رجالي معدن",
+    "name": "PATEK PHILIPPE",
     "slug": "patek-philippe-arabic-numerals",
     "brand": "Patek Philippe",
-    "oldPrice": "950 جنيه",
-    "price": "750 جنيه",
+    "oldPrice": "600 جنيه",
+    "price": "450 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة باتيك فيليب بأرقام عربية مميزة - رجالي معدن",
+    "subtitle": "ارقام عربي",
     "badge": "جديد",
     "colors": [
       "مينا أبيض",
@@ -441,7 +440,7 @@
     "keywords": [
       "patek philippe",
       "باتيك فيليب",
-      "أرقام عربية",
+      "ارقام عربية",
       "عربي",
       "معدن",
       "رجالي معدن",
@@ -454,13 +453,12 @@
     ]
   },
   {
-    "name": "PATEK PHILIPPE رجالي معدن",
+    "name": "PATEK PHILIPPE ",
     "slug": "patek-philippe-men-metal",
     "brand": "Patek Philippe",
-    "oldPrice": "900 جنيه",
-    "price": "699 جنيه",
+    "oldPrice": "600 جنيه",
+    "price": "450 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة باتيك فيليب رجالي معدن فاخرة - متوفرة بألوان متعددة",
     "badge": "جديد",
     "colors": [
       "مينا أزرق",
@@ -482,13 +480,13 @@
     ]
   },
   {
-    "name": "OMEGA رجالي معدن",
+    "name": "OMEGA معدن",
     "slug": "omega-men-metal",
     "brand": "Omega",
     "oldPrice": "800 جنيه",
-    "price": "600 جنيه",
+    "price": "700 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة أوميجا رجالي معدن أنيقة - متوفرة باللون الأخضر والأزرق",
+    "subtitle": "عدادات شغاله",
     "badge": "جديد",
     "colors": [
       "مينا أخضر",
