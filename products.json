@@ -507,5 +507,87 @@
       "OMEGA رجالي معدن Blue.webp",
       "OMEGA رجالي معدن Back.webp"
     ]
+  },
+  {
+    "name": "OMEGA جينز",
+    "slug": "omega-jeans-strap-men-leather",
+    "brand": "Omega",
+    "price": "700 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "استراب جينز رجالي",
+    "badge": "جديد",
+    "colors": [
+      "كحلي",
+      "أسود"
+    ],
+    "keywords": [
+      "omega",
+      "أوميجا",
+      "جينز",
+      "استراب جينز",
+      "جلد",
+      "رجالي جلد",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "OMEGA استراب جينز رجالي جلد Navy.webp",
+      "OMEGA استراب جينز رجالي جلد Black.webp"
+    ]
+  },
+  {
+    "name": "OMEGA رابر",
+    "slug": "omega-rubber-men-leather",
+    "brand": "Omega",
+    "oldPrice": "950 جنيه",
+    "price": "700 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "رابر رجالي",
+    "badge": "جديد",
+    "colors": [
+      "أبيض",
+      "ذهبي",
+      "أزرق فاتح"
+    ],
+    "keywords": [
+      "omega",
+      "أوميجا",
+      "رابر",
+      "جلد",
+      "رجالي جلد",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "OMEGA رابر رجالي جلد White.webp",
+      "OMEGA رابر رجالي جلد Gold.webp",
+      "OMEGA رابر رجالي جلد Light Blue.webp"
+    ]
+  },
+  {
+    "name": "TOMMY رابر",
+    "slug": "tommy-rubber-men-leather",
+    "brand": "Tommy Hilfiger",
+    "price": "700 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "رابر
+    عدادات شغاله",
+    "badge": "جديد",
+    "colors": [
+      "أبيض",
+      "أسود",
+      "ذهبي"
+    ],
+    "keywords": [
+      "tommy",
+      "تومي",
+      "رابر",
+      "جلد",
+      "رجالي جلد",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "TOMMY رابر White.webp",
+      "TOMMY رابر Black.webp",
+      "TOMMY رابر Gold.webp"
+    ]
   }
 ]
