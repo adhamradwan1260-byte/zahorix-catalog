@@ -311,8 +311,8 @@
     ]
   },
   {
-    "name": "GUESS Marina",
-    "slug": "guess-marina-women",
+    "name": "GUESS Oval",
+    "slug": "guess-Oval-women",
     "brand": "Guess",
     "oldPrice": "500 جنيه",
     "price": "299 جنيه",
@@ -339,7 +339,7 @@
     ]
   },
   {
-    "name": "GUESS Rectangle حريمي",
+    "name": "GUESS Rectangle",
     "slug": "guess-rectangle-women",
     "brand": "Guess",
     "oldPrice": "500 جنيه",
@@ -369,13 +369,13 @@
     ]
   },
   {
-    "name": "Carbon رجالي معدن",
+    "name": "Carbon",
     "slug": "carbon-men-metal",
     "brand": "Carbon",
     "oldPrice": "300 جنيه",
     "price": "199 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة كاربون رجالي معدن أنيقة - متوفرة باللون الأسود والأبيض",
+    "subtitle": "ساعة كاربون متوفرة باللون الأسود والأبيض",
     "badge": "جديد",
     "colors": [
       "مينا أسود",
