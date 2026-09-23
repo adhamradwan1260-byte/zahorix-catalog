@@ -586,7 +586,7 @@
       "TOMMY رابر White.webp",
       "TOMMY رابر Black.webp",
       "TOMMY رابر Gold.webp"
-  ]
+    ]
   },
   {
     "name": "VERSACE women",
@@ -685,6 +685,7 @@
     "colors": [
       "ذهبي",
       "فضي",
+      "Two Tone"
     ],
     "keywords": [
       "patek philippe",
@@ -701,7 +702,7 @@
   },
   {
     "name": "GUCCI Women",
-    "slug": "gucci-women",
+    "slug": "gucci-women-new",
     "brand": "Gucci",
     "oldPrice": "500 جنيه",
     "price": "350 جنيه",
