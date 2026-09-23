@@ -586,6 +586,226 @@
       "TOMMY رابر White.webp",
       "TOMMY رابر Black.webp",
       "TOMMY رابر Gold.webp"
+  ]
+  },
+  {
+    "name": "VERSACE women",
+    "slug": "versace-women",
+    "brand": "Versace",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "تصميم أنيق وفاخر بسير جلد وألوان مميزة",
+    "badge": "جديد",
+    "colors": [
+      "أبيض",
+      "أزرق",
+      "وردي"
+    ],
+    "keywords": [
+      "versace",
+      "فيرساتشي",
+      "فيرساتشي حريمي",
+      "ساعة حريمي",
+      "حريمي",
+      "ساعة جلد",
+      "أبيض",
+      "أزرق",
+      "وردي"
+    ],
+    "images": [
+      "VERSACE_حريمي_ابيض.webp",
+      "VERSACE_حريمي_ازرق.webp",
+      "VERSACE_حريمي_وردي.webp"
+    ]
+  },
+  {
+    "name": "Casio Couples",
+    "slug": "casio-couples",
+    "brand": "Casio",
+    "oldPrice": "450 جنيه",
+    "price": "300 جنيه",
+    "category": "كابلز",
+    "subtitle": "ساعة كاسيو كابلز بتصميم كلاسيكي أنيق",
+    "badge": "جديد",
+    "colors": [
+      "أسود",
+      "فضي"
+    ],
+    "keywords": [
+      "casio",
+      "كاسيو",
+      "ساعة كاسيو",
+      "ساعة كابلز",
+      "ساعة رجالي وحريمي",
+      "كابلز"
+    ],
+    "images": [
+      "Casio_كابلز_رجالي_جلد_اسود.webp",
+      "Casio_كابلز_رجالي_جلد_فضي.webp"
+    ]
+  },
+  {
+    "name": "Richard Mille Leather",
+    "slug": "richard-mille-leather",
+    "brand": "Richard Mille",
+    "oldPrice": "1000 جنيه",
+    "price": "700 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "ساعة ريتشارد ميل بتصميم رياضي فاخر وسير جلد ملون",
+    "badge": "جديد",
+    "colors": [
+      "أخضر",
+      "أصفر",
+      "برتقالي"
+    ],
+    "keywords": [
+      "richard mille",
+      "ريتشارد ميل",
+      "ساعة رجالي",
+      "ساعة جلد",
+      "رجالي جلد"
+    ],
+    "images": [
+      "RICHARD_MILLE_رجالي_جلد_اخضر.webp",
+      "RICHARD_MILLE_رجالي_جلد_اصفر.webp",
+      "RICHARD_MILLE_رجالي_جلد_برتقالي.webp",
+      "RICHARD_MILLE_رجالي_جلد_برتقالي_2.webp"
+    ]
+  },
+  {
+    "name": "Patek Philippe Women Metal",
+    "slug": "patek-philippe-women-metal",
+    "brand": "Patek Philippe",
+    "oldPrice": "600 جنيه",
+    "price": "450 جنيه",
+    "category": "حريمي معدن",
+    "subtitle": "ساعة باتيك فيليب حريمي معدن بتصميم فاخر",
+    "badge": "جديد",
+    "colors": [
+      "ذهبي",
+      "فضي",
+      Two Tone
+    ],
+    "keywords": [
+      "patek philippe",
+      "باتيك فيليب",
+      "ساعة حريمي",
+      "حريمي معدن",
+      "معدن"
+    ],
+    "images": [
+      "PATEK PHILIPPE حريمي معدن Gold Silver.webp",
+      "PATEK PHILIPPE حريمي معدن Gold.webp",
+      "PATEK PHILIPPE حريمي معدن Two Tone.webp"
+    ]
+  },
+  {
+    "name": "GUCCI Women",
+    "slug": "gucci-women",
+    "brand": "Gucci",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "ساعة جوتشي حريمي بتصميم ذهبي أنيق",
+    "badge": "جديد",
+    "colors": [
+      "وردي",
+      "فضي",
+      "أسود"
+    ],
+    "keywords": [
+      "gucci",
+      "جوتشي",
+      "قوتشي",
+      "ساعة حريمي",
+      "حريمي"
+    ],
+    "images": [
+      "GUCCI_وردي.webp",
+      "GUCCI_فضي.webp",
+      "GUCCI_اسود.webp"
+    ]
+  },
+  {
+    "name": "Rolex Date Just",
+    "slug": "rolex-date-just",
+    "brand": "Rolex",
+    "oldPrice": "700 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة رولكس ديت جست بتصميم كلاسيكي فاخر",
+    "badge": "جديد",
+    "colors": [
+      "أسود",
+      "فضي",
+      "أزرق"
+    ],
+    "keywords": [
+      "rolex",
+      "رولكس",
+      "date just",
+      "ديت جست",
+      "ساعة معدن",
+      "رجالي معدن"
+    ],
+    "images": [
+      "ROLEX_DATE_JUST_اسود.webp",
+      "ROLEX_DATE_JUST_فضي.webp",
+      "ROLEX_DATE_JUST_ازرق.webp"
+    ]
+  },
+  {
+    "name": "Rolex Land Dweller",
+    "slug": "rolex-land-dweller",
+    "brand": "Rolex",
+    "oldPrice": "800 جنيه",
+    "price": "600 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة رولكس لاند دويلر بتصميم فاخر",
+    "badge": "جديد",
+    "colors": [
+      "أبيض",
+      "أسود",
+      "أزرق"
+    ],
+    "keywords": [
+      "rolex",
+      "رولكس",
+      "land dweller",
+      "لاند دويلر",
+      "ساعة رجالي",
+      "ساعة معدن"
+    ],
+    "images": [
+      "ROLEX_LAND_DWELLER_ابيض.webp",
+      "ROLEX_LAND_DWELLER_اسود.webp",
+      "ROLEX_LAND_DWELLER_ازرق.webp"
+    ]
+  },
+  {
+    "name": "AUDEMARS PIGUET (AP)",
+    "slug": "audemars-piguet-ap-new",
+    "brand": "Audemars Piguet",
+    "oldPrice": "800 جنيه",
+    "price": "600 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة اوديمار بيجيه AP بتصميم رياضي فاخر",
+    "badge": "جديد",
+    "colors": [
+      "أبيض",
+      "أسود"
+    ],
+    "keywords": [
+      "audemars piguet",
+      "اوديمار بيجيه",
+      "AP",
+      "ساعة رجالي",
+      "رجالي معدن"
+    ],
+    "images": [
+      "AUDEMARS_PIGUET_AP_ابيض.webp",
+      "AUDEMARS_PIGUET_AP_اسود.webp"
     ]
   }
 ]
