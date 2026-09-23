@@ -1,10 +1,10 @@
 [
   {
-    "name": "Rolex Style Blue",
-    "slug": "rolex-style-blue",
+    "name": "Rolex Date Just",
+    "slug": "rolex-date-just",
     "brand": "Rolex",
     "oldPrice": "900 جنيه",
-    "price": "700 جنيه",
+    "price": "750 جنيه",
     "category": "رجالي معدن",
     "colors": ["مينا أزرق / استراب فضي"],
     "keywords": [
@@ -17,11 +17,9 @@
       "ساعة معدن"
     ],
     "images": [
-      "ROLEX LAND DWELLER رجالي معدن Light Blue.webp",
-      "ROLEX LAND DWELLER رجالي معدن Black.webp",
-      "ROLEX LAND DWELLER رجالي معدن Silver.webp",
-      "ROLEX LAND DWELLER رجالي معدن Bracelet.webp",
-      "ROLEX LAND DWELLER رجالي معدن Back.webp"
+      "ROLEX_DATE_JUST_ازرق.webp",
+      "ROLEX_DATE_JUST_فضي.webp",
+      "ROLEX_DATE_JUST_اسود.webp"
     ]
   },
   {
@@ -589,13 +587,12 @@
     ]
   },
   {
-    "name": "VERSACE women",
+    "name": "VERSACE حريمي",
     "slug": "versace-women",
     "brand": "Versace",
     "oldPrice": "500 جنيه",
-    "price": "350 جنيه",
+    "price": "200 جنيه",
     "category": "حريمي",
-    "subtitle": "تصميم أنيق وفاخر بسير جلد وألوان مميزة",
     "badge": "جديد",
     "colors": [
       "أبيض",
@@ -620,12 +617,12 @@
     ]
   },
   {
-    "name": "Casio Couples",
+    "name": "Casio كابلز",
     "slug": "casio-couples",
     "brand": "Casio",
-    "oldPrice": "450 جنيه",
-    "price": "300 جنيه",
-    "category": "كابلز",
+    "oldPrice": "1000 جنيه",
+    "price": "700 جنيه",
+    "category": "كل الساعات",
     "subtitle": "ساعة كاسيو كابلز بتصميم كلاسيكي أنيق",
     "badge": "جديد",
     "colors": [
@@ -649,10 +646,10 @@
     "name": "Richard Mille Leather",
     "slug": "richard-mille-leather",
     "brand": "Richard Mille",
-    "oldPrice": "1000 جنيه",
-    "price": "700 جنيه",
+    "oldPrice": "700 جنيه",
+    "price": "400 جنيه",
     "category": "رجالي جلد",
-    "subtitle": "ساعة ريتشارد ميل بتصميم رياضي فاخر وسير جلد ملون",
+    "subtitle": "رابر سليكون مريح جدا",
     "badge": "جديد",
     "colors": [
       "أخضر",
@@ -674,13 +671,12 @@
     ]
   },
   {
-    "name": "Patek Philippe Women Metal",
+    "name": "Patek Philippe حريمي",
     "slug": "patek-philippe-women-metal",
     "brand": "Patek Philippe",
     "oldPrice": "600 جنيه",
     "price": "450 جنيه",
-    "category": "حريمي معدن",
-    "subtitle": "ساعة باتيك فيليب حريمي معدن بتصميم فاخر",
+    "category": "حريمي",
     "badge": "جديد",
     "colors": [
       "ذهبي",
@@ -701,11 +697,11 @@
     ]
   },
   {
-    "name": "GUCCI Women",
+    "name": "GUCCI حريمي",
     "slug": "gucci-women-new",
     "brand": "Gucci",
     "oldPrice": "500 جنيه",
-    "price": "350 جنيه",
+    "price": "450 جنيه",
     "category": "حريمي",
     "subtitle": "ساعة جوتشي حريمي بتصميم ذهبي أنيق",
     "badge": "جديد",
@@ -728,41 +724,13 @@
     ]
   },
   {
-    "name": "Rolex Date Just",
-    "slug": "rolex-date-just",
-    "brand": "Rolex",
-    "oldPrice": "700 جنيه",
-    "price": "550 جنيه",
-    "category": "رجالي معدن",
-    "subtitle": "ساعة رولكس ديت جست بتصميم كلاسيكي فاخر",
-    "badge": "جديد",
-    "colors": [
-      "أسود",
-      "فضي",
-      "أزرق"
-    ],
-    "keywords": [
-      "rolex",
-      "رولكس",
-      "date just",
-      "ديت جست",
-      "ساعة معدن",
-      "رجالي معدن"
-    ],
-    "images": [
-      "ROLEX_DATE_JUST_اسود.webp",
-      "ROLEX_DATE_JUST_فضي.webp",
-      "ROLEX_DATE_JUST_ازرق.webp"
-    ]
-  },
-  {
     "name": "Rolex Land Dweller",
     "slug": "rolex-land-dweller",
     "brand": "Rolex",
-    "oldPrice": "800 جنيه",
-    "price": "600 جنيه",
+    "oldPrice": "900 جنيه",
+    "price": "750 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة رولكس لاند دويلر بتصميم فاخر",
+    "subtitle": "ضهر شفاف",
     "badge": "جديد",
     "colors": [
       "أبيض",
@@ -787,10 +755,10 @@
     "name": "AUDEMARS PIGUET (AP)",
     "slug": "audemars-piguet-ap-new",
     "brand": "Audemars Piguet",
-    "oldPrice": "800 جنيه",
-    "price": "600 جنيه",
+    "oldPrice": "900 جنيه",
+    "price": "750 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة اوديمار بيجيه AP بتصميم رياضي فاخر",
+    "subtitle": "عدادات شغاله",
     "badge": "جديد",
     "colors": [
       "أبيض",
