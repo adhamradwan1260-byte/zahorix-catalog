@@ -774,5 +774,134 @@
       "AUDEMARS_PIGUET_AP_ابيض.webp",
       "AUDEMARS_PIGUET_AP_اسود.webp"
     ]
+  },
+  {
+    "name": "Skone مدور",
+    "slug": "skone-round-women",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["مينا أسود", "مينا ذهبي", "مينا أبيض"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي",
+      "مدور"
+    ],
+    "images": [
+      "Skone حريمي مدور مينا اسود.webp",
+      "Skone حريمي مدور مينا ذهبي.webp",
+      "Skone حريمي مدور مينا ابيض.webp"
+    ]
+  },
+  {
+    "name": "Skone مستطيل مينا",
+    "slug": "skone-rectangle-dial-women",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["مينا أسود", "مينا أبيض", "مينا ذهبي"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي",
+      "مستطيل"
+    ],
+    "images": [
+      "Skone حريمي مستطيل مينا اسود.webp",
+      "Skone حريمي مستطيل مينا ابيض.webp",
+      "Skone حريمي مستطيل مينا ذهبي.webp"
+    ]
+  },
+  {
+    "name": "Skone حريمي",
+    "slug": "skone-women-1",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["أبيض", "أسود", "ذهبي"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي"
+    ],
+    "images": [
+      "Skone حريمي ابيض.webp",
+      "Skone حريمي اسود.webp",
+      "Skone حريمي ذهبي.webp"
+    ]
+  },
+  {
+    "name": "Skone مستطيل",
+    "slug": "skone-rectangle-women",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["أسود", "ذهبي", "فضي"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي",
+      "مستطيل"
+    ],
+    "images": [
+      "Skone حريمي مستطيل اسود.webp",
+      "Skone حريمي مستطيل ذهبي.webp",
+      "Skone حريمي مستطيل فضي.webp"
+    ]
+  },
+  {
+    "name": "Skone كلاسيك",
+    "slug": "skone-classic",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["ذهبي", "فضي"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي"
+    ],
+    "images": [
+      "Skone ذهبي.webp",
+      "Skone فضي.webp"
+    ]
+  },
+  {
+    "name": "Skone حريمي معدن",
+    "slug": "skone-women-metal",
+    "brand": "Skone",
+    "oldPrice": "500 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["فضي", "ذهبي", "أسود"],
+    "keywords": [
+      "skone",
+      "سكون",
+      "حريمي",
+      "ساعة حريمي",
+      "معدن"
+    ],
+    "images": [
+      "Skone حريمي Silver.webp",
+      "Skone حريمي Gold.webp",
+      "Skone حريمي Black.webp"
+    ]
   }
 ]
