@@ -1083,5 +1083,52 @@
       "OMEGA رجالي معدن ابيض.webp",
       "OMEGA رجالي معدن ذهبي.webp"
     ]
+  },
+  {
+    "name": "SHEEN جلد تايجر",
+    "slug": "sheen-tiger-leather-women",
+    "brand": "Sheen",
+    "oldPrice": "600 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "subtitle": "استراب جلد تايجر",
+    "badge": "جديد",
+    "colors": ["اوف وايت", "نبيتي", "أخضر", "شامبين"],
+    "keywords": [
+      "sheen",
+      "شين",
+      "جلد تايجر",
+      "حريمي",
+      "ساعة حريمي"
+    ],
+    "images": [
+      "SHEEN_حريمي_جلد_تايجر_مينا_اوف_وايت.webp",
+      "SHEEN_حريمي_جلد_تايجر_مينا_نبيتي.webp",
+      "SHEEN_حريمي_جلد_تايجر_مينا_اخضر.webp",
+      "SHEEN_حريمي_جلد_تايجر_مينا_شامبين.webp"
+    ]
+  },
+  {
+    "name": "GUCCI حريمي",
+    "slug": "gucci-women-metal",
+    "brand": "Gucci",
+    "oldPrice": "600 جنيه",
+    "price": "350 جنيه",
+    "category": "حريمي",
+    "badge": "جديد",
+    "colors": ["فضي", "ذهبي", "ميكس"],
+    "keywords": [
+      "gucci",
+      "جوتشي",
+      "قوتشي",
+      "حريمي",
+      "ساعة حريمي",
+      "معدن"
+    ],
+    "images": [
+      "GUCCI_حريمي_فضي.webp",
+      "GUCCI_حريمي_ذهبي.webp",
+      "GUCCI_حريمي_ميكس.webp"
+    ]
   }
 ]
