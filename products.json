@@ -905,11 +905,11 @@
     ]
   },
   {
-    "name": "HUBLOT كرونوغراف",
+    "name": "HUBLOT جلد",
     "slug": "hublot-chronograph-leather",
     "brand": "Hublot",
     "oldPrice": "900 جنيه",
-    "price": "650 جنيه",
+    "price": "450 جنيه",
     "category": "رجالي جلد",
     "subtitle": "هوبلو كرونوغراف رجالي جلد فاخر",
     "badge": "جديد",
@@ -930,7 +930,7 @@
     ]
   },
   {
-    "name": "TISSOT PR516",
+    "name": "TISSOT",
     "slug": "tissot-pr516-metal",
     "brand": "Tissot",
     "oldPrice": "800 جنيه",
@@ -957,9 +957,8 @@
     "slug": "hublot-men-leather",
     "brand": "Hublot",
     "oldPrice": "800 جنيه",
-    "price": "550 جنيه",
+    "price": "500 جنيه",
     "category": "رجالي جلد",
-    "subtitle": "هوبلو رجالي جلد بتصميم مميز",
     "badge": "جديد",
     "colors": ["فضي", "ذهبي"],
     "keywords": [
@@ -981,7 +980,8 @@
     "oldPrice": "700 جنيه",
     "price": "450 جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة كاسيو رجالي معدن كلاسيكية",
+    "subtitle": "ارقام عربي 
+",
     "badge": "جديد",
     "colors": ["أخضر", "فضي", "أزرق فاتح"],
     "keywords": [
@@ -998,13 +998,14 @@
     ]
   },
   {
-    "name": "Casio أرقام عربي",
+    "name": "Casio رابر",
     "slug": "casio-arabic-numerals-rubber",
     "brand": "Casio",
     "oldPrice": "750 جنيه",
-    "price": "499 جنيه",
+    "price": "400 جنيه",
     "category": "رجالي جلد",
-    "subtitle": "أرقام عربي رجالي رابر مريحة",
+    "subtitle": "أرقام عربي 
+    رابر مريحة",
     "badge": "جديد",
     "colors": ["أزرق", "أسود", "أبيض"],
     "keywords": [
@@ -1021,13 +1022,13 @@
     ]
   },
   {
-    "name": "TISSOT معدن كلاسيك",
+    "name": "TISSOT كلاسيك",
     "slug": "tissot-classic-metal",
     "brand": "Tissot",
-    "oldPrice": "800 جنيه",
-    "price": "550 جنيه",
+    "oldPrice": "1000 جنيه",
+    "price": "700  جنيه",
     "category": "رجالي معدن",
-    "subtitle": "تيسوت رجالي معدن بتصميم فخم",
+    "subtitle": "عدادات شغاله",
     "badge": "جديد",
     "colors": ["أبيض", "أسود"],
     "keywords": [
@@ -1046,10 +1047,9 @@
     "name": "Calvin Klein",
     "slug": "calvin-klein-men-metal",
     "brand": "Calvin Klein",
-    "oldPrice": "800 جنيه",
-    "price": "550 جنيه",
+    "oldPrice": "900 جنيه",
+    "price": "700  جنيه",
     "category": "رجالي معدن",
-    "subtitle": "ساعة كالفن كلاين رجالي معدن أنيقة",
     "badge": "جديد",
     "colors": ["أبيض", "أزرق"],
     "keywords": [
@@ -1065,13 +1065,13 @@
     ]
   },
   {
-    "name": "OMEGA كلاسيك معدن",
+    "name": "OMEGA كلاسيك",
     "slug": "omega-classic-metal",
     "brand": "Omega",
     "oldPrice": "900 جنيه",
-    "price": "650 جنيه",
+    "price": "750  جنيه",
     "category": "رجالي معدن",
-    "subtitle": "أوميجا رجالي معدن بتصميم راقي",
+    "subtitle": "ماكينه سحاب",
     "badge": "جديد",
     "colors": ["أزرق", "أبيض", "ذهبي"],
     "keywords": [
