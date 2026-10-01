@@ -903,5 +903,188 @@
       "Skone حريمي Gold.webp",
       "Skone حريمي Black.webp"
     ]
+  },
+  {
+    "name": "HUBLOT كرونوغراف",
+    "slug": "hublot-chronograph-leather",
+    "brand": "Hublot",
+    "oldPrice": "900 جنيه",
+    "price": "650 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "هوبلو كرونوغراف رجالي جلد فاخر",
+    "badge": "جديد",
+    "colors": ["روز جولد", "جملي", "أزرق", "أبيض"],
+    "keywords": [
+      "hublot",
+      "هوبلو",
+      "هوبلت",
+      "كرونوغراف",
+      "رجالي جلد",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "HUBLOT كرونوغراف رجالي جلد روز جولد.webp",
+      "HUBLOT كرونوغراف رجالي جلد جملي.webp",
+      "HUBLOT كرونوغراف رجالي جلد ازرق.webp",
+      "HUBLOT كرونوغراف رجالي جلد ابيض.webp"
+    ]
+  },
+  {
+    "name": "TISSOT PR516",
+    "slug": "tissot-pr516-metal",
+    "brand": "Tissot",
+    "oldPrice": "800 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "تيسوت PR516 معدن أنيقة",
+    "badge": "جديد",
+    "colors": ["أسود", "أزرق"],
+    "keywords": [
+      "tissot",
+      "تيسوت",
+      "pr516",
+      "رجالي معدن",
+      "ساعة رجالي",
+      "معدن"
+    ],
+    "images": [
+      "TISSOT PR516 رجالي معدن اسود.webp",
+      "TISSOT PR516 رجالي معدن ازرق.webp"
+    ]
+  },
+  {
+    "name": "HUBLOT جلد",
+    "slug": "hublot-men-leather",
+    "brand": "Hublot",
+    "oldPrice": "800 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "هوبلو رجالي جلد بتصميم مميز",
+    "badge": "جديد",
+    "colors": ["فضي", "ذهبي"],
+    "keywords": [
+      "hublot",
+      "هوبلو",
+      "هوبلت",
+      "رجالي جلد",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "HUBLOT رجالي جلد فضي.webp",
+      "HUBLOT رجالي جلد ذهبي.webp"
+    ]
+  },
+  {
+    "name": "CASIO معدن",
+    "slug": "casio-men-metal",
+    "brand": "Casio",
+    "oldPrice": "700 جنيه",
+    "price": "450 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة كاسيو رجالي معدن كلاسيكية",
+    "badge": "جديد",
+    "colors": ["أخضر", "فضي", "أزرق فاتح"],
+    "keywords": [
+      "casio",
+      "كاسيو",
+      "رجالي معدن",
+      "ساعة رجالي",
+      "معدن"
+    ],
+    "images": [
+      "CASIO رجالي معدن اخضر.webp",
+      "CASIO رجالي معدن فضي.webp",
+      "CASIO رجالي معدن ازرق فاتح.webp"
+    ]
+  },
+  {
+    "name": "Casio أرقام عربي",
+    "slug": "casio-arabic-numerals-rubber",
+    "brand": "Casio",
+    "oldPrice": "750 جنيه",
+    "price": "499 جنيه",
+    "category": "رجالي جلد",
+    "subtitle": "أرقام عربي رجالي رابر مريحة",
+    "badge": "جديد",
+    "colors": ["أزرق", "أسود", "أبيض"],
+    "keywords": [
+      "casio",
+      "كاسيو",
+      "ارقام عربي",
+      "رابر",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "Casio ارقام عربي رجالي رابر ازرق.webp",
+      "Casio ارقام عربي رجالي رابر اسود.webp",
+      "Casio ارقام عربي رجالي رابر ابيض.webp"
+    ]
+  },
+  {
+    "name": "TISSOT معدن كلاسيك",
+    "slug": "tissot-classic-metal",
+    "brand": "Tissot",
+    "oldPrice": "800 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "تيسوت رجالي معدن بتصميم فخم",
+    "badge": "جديد",
+    "colors": ["أبيض", "أسود"],
+    "keywords": [
+      "tissot",
+      "تيسوت",
+      "رجالي معدن",
+      "ساعة رجالي",
+      "معدن"
+    ],
+    "images": [
+      "TISSOT رجالي معدن ابيض.webp",
+      "TISSOT رجالي معدن اسود.webp"
+    ]
+  },
+  {
+    "name": "Calvin Klein",
+    "slug": "calvin-klein-men-metal",
+    "brand": "Calvin Klein",
+    "oldPrice": "800 جنيه",
+    "price": "550 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "ساعة كالفن كلاين رجالي معدن أنيقة",
+    "badge": "جديد",
+    "colors": ["أبيض", "أزرق"],
+    "keywords": [
+      "calvin klein",
+      "كالفن كلاين",
+      "ck",
+      "رجالي معدن",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "Calvin Klein رجالي معدن ابيض.webp",
+      "Calvin Klein رجالي معدن ازرق.webp"
+    ]
+  },
+  {
+    "name": "OMEGA كلاسيك معدن",
+    "slug": "omega-classic-metal",
+    "brand": "Omega",
+    "oldPrice": "900 جنيه",
+    "price": "650 جنيه",
+    "category": "رجالي معدن",
+    "subtitle": "أوميجا رجالي معدن بتصميم راقي",
+    "badge": "جديد",
+    "colors": ["أزرق", "أبيض", "ذهبي"],
+    "keywords": [
+      "omega",
+      "أوميجا",
+      "اوميجا",
+      "رجالي معدن",
+      "ساعة رجالي"
+    ],
+    "images": [
+      "OMEGA رجالي معدن ازرق.webp",
+      "OMEGA رجالي معدن ابيض.webp",
+      "OMEGA رجالي معدن ذهبي.webp"
+    ]
   }
 ]
